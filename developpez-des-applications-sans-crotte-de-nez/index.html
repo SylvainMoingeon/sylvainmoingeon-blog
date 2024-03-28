@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Développez des applications sans crotte de nez ! - Sylvain Moingeon </title>
+        <meta name="description" content="Livrer des applications fonctionnelles est nécessaire mais pas suffisant. Un vrai boulanger ne laisse pas de crotte de nez dans son pain." />
+        
+        <meta name="generator" content="Publii Open-Source CMS for Static Site" />
+
+        <link rel="canonical" href="https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/">
+        
+        <link rel="alternate" type="application/atom+xml" href="https://www.sylvainmoingeon.fr/feed.xml" />
+<link rel="alternate" type="application/json" href="https://www.sylvainmoingeon.fr/feed.json" />
+
+        <meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@SylvainMoingeon" /><meta name="twitter:title" content="Développez des applications sans crotte de nez !" /><meta name="twitter:description" content="Livrer des applications fonctionnelles est nécessaire mais pas suffisant. Un vrai boulanger ne laisse pas de crotte de nez dans son pain." /><meta name="twitter:image" content="https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg" />
+		<!-- Fontawesome -->
+		<link href="https://www.sylvainmoingeon.fr/assets/fontawesome/css/all.css" rel="stylesheet"> 
+    <!-- Prism (syntax highlighting) -->
+    <link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/prism.css">
+
+	        <link rel="shortcut icon" href="https://www.sylvainmoingeon.fr/media/website/favicon.png" type="image/png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+        <style>:root{--body-font:'DM Sans',sans-serif;--heading-font:var(--body-font);--post-entry-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style>
+        <link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/style.css?v=2c8d1f0d0689c5a4f4ff50b8f1122140">
+        <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/"},"headline":"Développez des applications sans crotte de nez !","datePublished":"2020-08-26T16:22","dateModified":"2020-08-26T16:22","image":{"@type":"ImageObject","url":"https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg","height":3744,"width":5616},"description":"Livrer des applications fonctionnelles est nécessaire mais pas suffisant. Un vrai boulanger ne laisse pas de crotte de nez dans son pain.","author":{"@type":"Person","name":"Sylvain","url":"https://www.sylvainmoingeon.fr/auteurs/sylvain/"},"publisher":{"@type":"Organization","name":"Sylvain"}}</script>
+        
+        
+		
+    <script>
+             
+      function addEmailAddresses(){     
+      document.querySelectorAll('.email').forEach(function(linkElement) {
+      
+        var domainname = window.atob("c3lsdmFpbm1vaW5nZW9uLmZy");
+        var username = window.atob(linkElement.getAttribute("id"));
+        var emailaddress = username + "@" + domainname;
+        var mailto = window.atob("bWFpbHRv");  // mailto:
+        //linkElement.innerHTML = emailaddress;
+        linkElement.setAttribute("href", mailto + ":" + emailaddress + "?subject=[Contact%20site%20web]");
+      });      
+    }
+            
+    </script>
+
+	    </head>
+    <body onload="addEmailAddresses()" class="line-numbers">
+        
+
+
+
+<div class="container">
+   <header class="top" id="js-top">
+      <div>
+         <a class="logo" href="https://www.sylvainmoingeon.fr/">
+               Sylvain Moingeon
+         </a>
+
+               <nav class="navbar">
+                  <button
+                     class="navbar__toggle"
+                     aria-label="Menu"
+                     aria-haspopup="true"
+                     aria-expanded="false">
+                     <span class="navbar__toggle-box">
+                        <span class="navbar__toggle-inner">Menu</span>
+                     </span>
+                  </button>
+                <ul class="navbar__menu">
+                         <li>
+                           <a
+                              href="https://www.sylvainmoingeon.fr/"
+                                 target="_self"
+            >
+                              Accueil
+                          </a>
+            
+                     </li>
+                         <li>
+                           <a
+                              href="https://www.sylvainmoingeon.fr/contact/"
+                                 target="_self"
+            >
+                              Contact
+                          </a>
+            
+                     </li>
+                </ul>
+               </nav>
+
+            <div class="search">
+               <div class="search__overlay js-search-overlay">
+                  <div class="search__overlay-inner">
+                     <form action="https://www.sylvainmoingeon.fr/search.html" class="search__form">
+                        <input
+                           class="search__input js-search-input"
+                           type="search"
+                           name="q"
+                           placeholder="chercher..."
+                           aria-label="Search input"
+                           autofocus="autofocus"/>
+                     </form>
+                     <button
+                        class="search__close js-search-close"
+                        aria-label="Fermer">
+                        Fermer
+                     </button>
+                  </div>
+               </div>
+               <button
+                  class="search__btn js-search-btn"
+                  aria-label="Search">
+                  <svg role="presentation" focusable="false" height="15px" width="15px">
+                     <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#search"/>
+                  </svg>
+               </button>
+            </div>          
+
+         </div>
+      </header>
+<main>
+      <article class="post wrapper">
+         <div class="hero hero--narrow">
+            <header>
+                     <p>
+                        <a href="https://www.sylvainmoingeon.fr/tags/bonnes-pratiques/" title="">bonnes pratiques</a>
+                     </p>                    
+               <h1>
+                  Développez des applications sans crotte de nez !
+               </h1>
+                  <address>
+                     par
+                        <a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" rel="author">Sylvain</a>
+                  </address>
+                  publié le
+                  <time datetime="2020-08-26T16:22">
+                        mercredi 26 août 2020
+                  </time>
+            </header>
+                  <figure class="hero__image post__featured-image">
+                     <img
+                        src="https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg"
+                            srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-lg.jpg 1024w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-xl.jpg 1360w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
+                         loading="eager"
+                        height="3744"
+                        width="5616"
+                        alt="Un boulanger pétrit sa pâte sans crotte de nez">
+                      
+                        <figcaption>
+                           
+                           Image par Free-Photos de Pixabay
+                        </figcaption>                      
+                  </figure>
+         </div>
+         <div class="post__entry">            
+            <p>Récemment, j’ai entendu un développeur tenir les propos suivants :</p><blockquote>
+<p>Non mais ça ne sert à rien de faire du bon code, tout ce que le client demande c’est que ça fonctionne.</p></blockquote>
+<p>Et malheureusement, sur la deuxième partie de l’assertion il n’a pas tort. Mais c’est parce que le client ne connait pas le métier et n’a aucune idée des répercussions sur le moyen/long terme d’un code de mauvaise qualité. Alors il faut que ça cesse ! </p><p>Et si au lieu de profiter de la situation pour justifier du travail de sagouin, on en profitait plutôt pour prendre ses responsabilités ?</p>
+
+<h1 id="être-vraiment-professionnel">Être vraiment professionnel</h1>
+<p>Laissez-moi vous raconter une histoire :</p><p>Vous vous rendez à la boulangerie, ça sent bon le pain chaud, la baguette est bien dorée, croustillante à l’extérieur, moelleuse à l’intérieur, une véritable baguette 100% fonctionnelle. Vous en salivez déjà.</p><p>Et maintenant, si je vous raconte que j’ai surpris le boulanger la main dans le froc en train de se gratter l’anus pendant qu’il pétrissait la pâte. Toujours envie de vous en faire des tartines ?</p><p>Livrer une baguette seulement <em>fonctionnelle</em> est-ce vraiment tout ce qu’on demande à un artisan boulanger ? Non, on exige de lui qu’il prépare son pain dans les règles de l’art, en respectant les bonnes pratiques de son métier et en suivant scrupuleusement les règles sanitaires.</p><p>Si je vous raconte qu’en cette période de crise covid19, votre boulanger travaille sans porter de masque et en éternuant allégrement sur la pâte des croissants qu’il est en train de préparer. Vous voyez la scène ? Un gros <em>ATCHOUM</em> accompagné d’un feu d’artifice de postillons et de sécrétions nasales qui viennent se déposer gaiement un peu partout dans la pâte. Mmmm, <em>un délice</em>. Vous en pensez quoi ? Sérieusement ? C’est professionnel comme comportement ?</p><p>Ça vous dit un croissant totalement fonctionnel aromatisé à la crotte de nez ?</p><figure class="post__image">
+    <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/30/croissants.jpg" alt="Croissants dans un panier - Image par Pexels de Pixabay" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-lg.jpg 1024w"></img>
+    <figcaption>Ce serait dommage d'y trouver des crottes de nez, n'est-ce-pas ?</figcaption>
+</figure>
+
+<p>Bien entendu, vous avez parfaitement le droit de répondre oui et de trouver que c’est normal de travailler comme ça tout en prétendant être un professionnel du métier. Mais je n’irai pas manger chez vous ni vous recommander auprès de mes clients !</p><p>Parce qu’un produit fonctionnel, c’est juste le B-A-BA, c’est le niveau zéro du métier. C’est ce qu’on demande de produire à un étudiant pour son projet de première année. Juste un truc qui marche. Mais être professionnel, c’est un peu plus que ça non ? Non !?</p><h1 id="artisan-développeur">Artisan développeur</h1>
+<p>Bien entendu, je ne prétends pas que tout est toujours parfait, peut-être le boulanger va-t-il y laisser un poil de bras ou une goutte de sueur. On ne peut pas tout prévoir, on n’est pas toujours au top. Parfois aussi on se trompe, c’est humain. Je vous le dis discrètement, ça reste entre nous, mais on n’a pas non plus la science infuse. Parfois on ne sait pas bien faire et on aurait pu faire mieux. </p><p>Alors quoi ?</p><p>Alors, on prend soin de respecter au mieux les bonnes pratiques, on se forme, on s’exerce, on ne se cache pas derrière un <em>de toute façon le client attend juste que ça fonctionne</em>. On se comporte comme un véritable artisan du code.</p><p>C’est-à-dire que s’il y a des bugs, c’est accidentel. Si le code lève une <em>exception</em>, c’est parce qu’on a rencontré un cas <em>exceptionnel</em> (le terme d’<em>exception</em> n’a pas été choisi par hasard).</p><p>Un bug issu de <em>l’erreur humaine</em> est acceptable. Un bug issu de <em>non mais ce n’est pas la peine de coder proprement il suffit juste que ça fonctionne</em> est juste inacceptable. Vous saisissez la nuance ?</p><p>Autrement dit, on évite autant que possible d’éternuer sur le clavier et de laisser des crottes de nez partout dans le code.</p><h1 id="cest-quoi-une-crotte-de-nez-dans-le-code--il-est-où-le-problème-">C’est quoi une crotte de nez dans le code ? Il est où le problème ?</h1>
+<p>Je pourrais écrire une thèse sur le sujet mais, que vous soyez développeur ou que vous ayez un projet de développement, je vous recommande plutôt la lecture du fantastique <a href="https://amzn.to/3gj03ST" title="Lien vers le livre The Pragmatic Programmer">The Pragmatic  Programmer, from journeyman to master</a> de Andrew Hunt et David Thomas.</p><figure class="post__image">
+    <a href="https://amzn.to/3gj03ST"![Image description](https://www.sylvainmoingeon.fr/media/posts/30/atchoum.jpg =5760x3840)>
+    <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/30/the-pragmatic-programmer.jpg" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-lg.jpg 1024w"></img>
+    </a>
+    <figcaption>The Pragmatic  Programmer, from journeyman to master</figcaption>
+</figure>
+
+<p>Ce livre qui date de plus d’une vingtaine d’années reste complètement d’actualité tant les thèmes qu’il aborde sont tranverses au développement informatique et se basent avant tout sur les bonnes pratiques et surtout les risques de ne pas les suivre.</p><p>Vous y apprendrez par exemple pourquoi en vertu de <em><a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_de_la_vitre_bris%C3%A9e" title="Lien vers l&#39;article Wikipédia sur l&#39;hypothèse de la vitre brisée">l’hypothèse de la vitre brisée</a></em>, si un développeur laisse traîner quelques crottes de nez par-ci par-là, le code finira irrémédiablement recouvert de sécrétions nasales.</p><p>Et en informatique, une crotte de nez peut avoir des répercussions graves.</p><p>En fait, une crotte de nez dans le code, c’est ce truc-là, qu’on ne voit pas de l’extérieur, qui ne semble pas influer sur le fonctionnel du point de vue de l’utilisateur mais qui, dans certains cas, laisse un arrière-goût plutôt désagréable.</p><p>Comme oublier de crypter des mots de passe. Je veux dire, au niveau du code, ce n’est pas grand-chose, hein (ah si ?). On oublie juste de passer le mot de passe dans la moulinette, rien de très grave en soit, personne ne s’en rend compte, tout est parfaitement fonctionnel. Et puis, un beau jour, c’est le scandale…</p><ul>
+<li><a href="https://www.commentcamarche.net/news/5872520-facebook-stockait-des-centaines-de-millions-de-mots-de-passe-en-clair" title="Lien vers un article qui explique que Facebook stockait des millions de mot de passe en clair">Facebook stockait des millions de mot de passe instagram en clair</a></li>
+<li><a href="https://www.cnetfrance.fr/news/oups-google-a-stocke-en-clair-des-mots-de-passe-durant-des-annees-39884993.htm" title="Lien vers un article qui explique que Google stockait des millions de mot de passe en clair">Petite crotte de nez chez Google : des mots de passe stockés en clair pendant des années</a></li>
+</ul>
+<p>J’ai une autre anecdote sympa, c’est cocasse vous allez voir. J’ai assisté à une scène surréaliste ou un développeur a voulu montrer à un opérateur comment supprimer des données dans la base clients. Jusque-là, rien de dramatique, on manipule des données, on les insère, on les modifie, on les supprime, c’est la raison d’être des bases de données.</p><p>Sauf qu’il a, par mégarde, sélectionné l’ensemble des données d’une table. Et que cette table avait une relation directe ou indirecte avec l’ensemble de toutes les autres tables de la base de données.</p><p>Vous voyez le coup venir ? Une crise d’éternuement en approche !</p><figure class="post__image">
+    <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/30/atchoum-2.jpg" alt="Femme sur le point d'éternuer" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-lg.jpg 1024w"></img>
+    <figcaption>Noooon, pas dans le code !</figcaption>
+</figure>
+
+<p>Dans le meilleur des mondes, il aurait dû y avoir une boite de dialogue de confirmation de suppression au niveau applicatif. Il aurait dû y avoir un contrôle au niveau de la base de données, en particulier sur une table critique comme celle-ci.</p><p>Mais voilà, la boite de dialogue est restée engluée dans une flaque de morve et la base de donnée a <strong>supprimé toutes les données en cascade</strong> sans broncher.</p><p>Quand le développeur a demandé, l’espoir dans l’âme, <em>Ce n’est rien, nous allons restaurer les données, vous avez bien une sauvegarde récente ?</em>, l’opérateur a constaté que les scripts de sauvegarde ne tournaient plus depuis des semaines, sans envoyer les messages d’avertissement prévus dans ce cas. La faute à une crotte de nez. Encore.</p><h1 id="conclusion">Conclusion</h1>
+<p>Être professionnel, ce n’est pas seulement produire du code fonctionnel, c’est aussi garantir une <strong>qualité</strong>, une <strong>pérennité</strong>, une <strong>évolutivité</strong> du code. C’est-à-dire un code qui fonctionne aujourd’hui et continuera de fonctionner demain, même après modification.</p><p>Je pourrais également parler de <strong>stabilité</strong> (ça fonctionne mais c’est un peu bancal), de <strong>fiabilité</strong> (ça fonctionne très bien… quand ça fonctionne), ou de <strong>performance</strong> (ça fonctionne mais il faut être patient, très patient).</p><p>Ou encore, insister sur la <strong>lisibilité</strong> d’un code que d’autres développeurs n’auront pas de mal à lire et à comprendre. D’un code qui <em>coule de source</em> (ah ah ah) dans lequel les autres n’auront pas peur de mettre les mains. J’ai failli dire les doigts… dans le nez, bien entendu.</p><blockquote>
+<p>Code toujours comme si la personne qui va maintenir ton code est un violent psychopathe qui sait où tu habites.</p><p><em>John F. Woods</em></p></blockquote>
+<p>Alors évidemment, comme je l’ai dit, on ne pas toujours être au top, on va parfois laisser quelques gouttes de sueurs perler dans la farine, le pain sera un peu moins cuit ou la pâte moins croustillante que d’habitude. C’est comme ça, c’est la vie.</p><p><strong>Mais s’il vous plait, cessez de vous gratter le cul ou de vous curer le nez en bossant sous prétexte que ça ne va pas se voir !</strong></p>          
+         </div>
+            <aside>
+                     <p class="post__last-updated">
+                        Mis-à-jour le
+                           mercredi 26 août 2020
+                     </p>
+                  <div class="post__share">
+                      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share facebook" title="Facebook" rel="nofollow noopener noreferrer">
+                         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook" />
+                         </svg> Facebook
+                     </a>
+                     
+                     <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F&amp;via=Sylvain%20Moingeon&amp;text=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20!
+                     " class="js-share twitter" title="Twitter" rel="nofollow noopener noreferrer">
+                         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter" />
+                         </svg> Twitter
+                     </a>
+                     
+                     
+                     <a href="https://mix.com/add?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share mix" title="Mix" rel="nofollow noopener noreferrer">
+                         <svg  aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#mix" />
+                         </svg>  Mix    
+                     </a>
+                     
+                     
+                     <a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F&amp;title=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20!" class="js-share linkedin" title="LinkedIn" rel="nofollow noopener noreferrer">
+                         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#linkedin" />
+                         </svg> LinkedIn
+                     </a>
+                     
+                     
+                        <a
+                           href="https://api.whatsapp.com/send?text=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20! https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" 
+                           class="js-share whatsapp"
+                           rel="nofollow noopener noreferrer">
+                           <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                              <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#whatsapp"/>
+                           </svg> WhatsApp
+                        </a>
+                  </div>
+            </aside>
+            <footer>
+                     <div class="post__bio">
+                           <img src="https://www.gravatar.com/avatar/f0139f72232177b730a57cff5c38c0b2?s&#x3D;240"  loading="lazy" alt="Sylvain">                          
+                           <h3>
+                              <a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" class="inverse" title="Sylvain">Sylvain</a>
+                           </h3>
+                           <p>Un peu geek, diplômé en sciences (bac+5) et informatique (BTS IG),  Sylvain confectionne logiciels et applications depuis 2007.
+
+
+C&#x27;est aussi un père de famille, instructeur de Yoseikan Budo, photographe éclairé et musicien amateur.
+                           </p>
+                     </div>
+
+                     <ul class="post__tag">
+                           <li>
+                              <a href="https://www.sylvainmoingeon.fr/tags/bonnes-pratiques/">bonnes pratiques</a>
+                           </li>
+                           <li>
+                              <a href="https://www.sylvainmoingeon.fr/tags/professionnalisme/">professionnalisme</a>
+                           </li>
+                           <li>
+                              <a href="https://www.sylvainmoingeon.fr/tags/software-craftsmanship/">software craftsmanship</a>
+                           </li>
+                     </ul>
+
+                     <nav class="post__nav">
+                           <div class="post__nav__prev">
+                              Article précédent
+                              <h3 class="h5">
+                                 <a href="https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/" class="inverse" rel="prev">
+                                    Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT
+                                 </a>
+                              </h5>
+                           </div>
+                           <div class="post__nav__next">
+                              Article suivant
+                              <h3 class="h5">
+                                 <a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/" class="inverse" rel="next">
+                                    [Xamarin.Forms] MVVM - A quoi ça sert ?
+                                 </a>
+                              </h5>
+                           </div>
+                     </nav>
+
+                     <div class="post__related">
+                        <h3>
+                           Cela vous intéressera peut-être
+                        </h3>
+                        <div class="post__related__wrap">
+                              <figure>
+                                      <a href="https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/">
+                                         <img 
+                                                  src="https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-xs.jpg"
+                                               loading="lazy"
+                                              alt="">
+                                      </a>
+                                 <figcaption>
+                                    <time datetime="2020-07-14T17:00">
+                                          mardi 14 juillet 2020
+                                    </time>
+                                    <h4>
+                                       <a href="https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/" class="inverse">Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT</a>
+                                    </h4>
+                                 </figcaption>
+                              </figure>
+                        </div>
+                     </div>
+            </footer>
+      </article>
+
+         <div class="comments wrapper">
+            <h3>
+               Commentaires
+            </h3>
+            <div id="disqus_thread">
+            <p>
+            Pour utiliser les commentaires, merci d'<a href="https://www.sylvainmoingeon.fr/#cookie-settings" title="configuration des cookies">accepter les cookies du groupe "Disqus"</a>.
+            </p></div>
+            <script type="gdpr-blocker/disqus">
+                var disqus_config = function () {
+                    this.page.url = 'https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/';
+            		this.page.identifier = '30';
+                    this.page.title = ' Développez des applications sans crotte de nez !';
+                };
+            
+                var disqus_loaded = false;
+            
+                function publiiLoadDisqus() {
+                    if(disqus_loaded) {
+                        return false;
+                    }
+            
+                    var top = document.getElementById('disqus_thread').offsetTop;
+            
+                    if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
+                        disqus_loaded = true;
+            
+                        (function () {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://artisanlogiciel.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                }
+            
+                publiiLoadDisqus();
+            
+                window.onscroll = function() {
+                    publiiLoadDisqus();
+                };
+            </script>
+            <noscript>Veuillez activer javascript pour voir les <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>         </div>
+    
+    
+</main>
+</div>
+ <footer class="footer">
+    <p>       
+         <a href="https://www.planetxamarin.com/">Featured by <br />
+            <img src="https://www.planetxamarin.com/Content/img/planetxamarin-featured-badge.png" alt="Logo Planet Xamarin" width="180"/>
+         </a>
+    </p>
+
+      <div class="footer__copyright">
+         <p>Powered by <a href="https://getpublii.com" target="_blank" rel="nofollow noopener">Publii Static CMS</a> - <a href="https://icons8.com/icon/38641/xamarin">using  Xamarin icon by Icons8</a> </p>
+<p><a href="../../../../../../../../../../mentions-legales" title="Mention légales">Mentions légales</a> - <a href="../../../../../../../../../../politique-des-commentaires" title="politique des commentaires">Politique des commentaires</a> - <a href="../../../../../../../../../../#cookie-settings" title="configuration des cookies">Configuration des cookies</a> - <a href="../../../../../../../../../../feed.xml">Abonnez vous au flux rss <i class="fas fa-rss"></i></a></p>
+      </div>
+      <div class="footer__social">
+            <a href="https://www.facebook.com/smoingeon" aria-label="Facebook" class="facebook">
+               <svg>
+                  <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/>
+               </svg>
+            </a>
+            <a href="https://twitter.com/SylvainMoingeon" aria-label="Twitter" class="twitter">
+               <svg>
+                  <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/>
+               </svg>
+            </a>
+            <a href="https://www.instagram.com/yoseikanquetigny/" aria-label="Instagram" class="instagram">
+               <svg>
+                  <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#instagram"/>
+               </svg>
+            </a>
+
+         <!-- OVERRIDE AT END -->
+         <a href="https://dev.to/sylvainmoingeon" style="font-size: 1.2rem; margin:28.8px 7.2px 0px" class="linkedin"> 
+            <i class="fab fa-dev" title="sylvainmoingeon's DEV Profile"></i>
+         </a>
+      </div>
+      <button class="footer__bttop js-footer__bttop" aria-label="On remonte tout en haut"> 
+         <svg>
+            <title>On remonte tout en haut</title>
+            <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#toparrow" />
+         </svg>
+      </button>   
+</footer>
+
+<!-- Prism syntax higlighting-->
+<script defer src="https://www.sylvainmoingeon.fr/assets/js/prism.js"></script>
+
+<script>
+   window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.top',
+   };
+</script>
+<script defer src="https://www.sylvainmoingeon.fr/assets/js/scripts.min.js?v=18410cbe84c2356f2fa9c4bf730b3bca"></script>
+    <script>        
+        var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }
+    </script>
+
+
+<!-- Start main cookie container -->
+<div 
+    class="pcb"
+    data-behaviour="badge-link"
+    data-behaviour-link="#cookie-settings"
+    data-revision="1"
+    data-config-ttl="90"
+    data-debug-mode="false">
+    <!-- Start Banner -->
+    <div 
+        role="dialog" 
+        aria-modal="true" 
+        aria-hidden="true" 
+        aria-labelledby="pcb-title" 
+        aria-describedby="pcb-txt" 
+        class="pcb__banner ">
+        <div class="pcb__inner">
+            <div 
+                id="pcb-title" 
+                role="heading" 
+                aria-level="2" 
+                class="pcb__title">
+                Ce site web mange des cookies
+            </div>
+            <div 
+                id="pcb-txt" 
+                class="pcb__txt">
+                Le système de commentaire (Disqus) utilisé sur ce site enregistre des cookies sur votre appareil.
+
+Et c'est tout.
+                
+            </div>
+          
+            <div class="pcb__buttons">
+                
+                <button 
+                    type="button" 
+                    class="pcb__btn pcb__btn--link pcb__btn--configure" 
+                    aria-haspopup="dialog">
+                    Manage preferences
+                </button>
+                
+                
+                <button 
+                    type="button" 
+                    class="pcb__btn pcb__btn--solid pcb__btn--accept">
+                    Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- End of Banner -->
+
+    
+    <!-- Start Popup -->
+    <div 
+        class="pcb__popup" 
+        role="dialog" 
+        aria-modal="true" 
+        aria-hidden="true" 
+        aria-labelledby="pcb-popup-title">
+        <div class="pcb__popup__wrapper">
+            <div class="pcb__inner pcb__popup__inner">
+                <div class="pcb__popup__heading">
+                    <div 
+                        id="pcb-popup-title" 
+                        role="heading" 
+                        aria-level="2"
+                        class="pcb__title">
+                        Cookie settings
+                    </div>
+                    <button class="pcb__popup__close" aria-label="Close"></button>
+                </div>
+             
+                <div class="pcb__popup__content">
+                    <div class="pcb__txt pcb__popup__txt">
+                        We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+
+                        
+                        
+                        
+                    </div>
+                
+                    <ul class="pcb__groups">
+                        <li class="pcb__group">
+                    <details>
+                        <summary class="pcb__group__title no-desc">
+                            Obligatoire
+                        </summary>
+                        
+                    </details>
+                    <div class="pcb__popup__switch is-checked">
+                        <input 
+                            type="checkbox" 
+                            data-group-name=""
+                            id="pcb-group-0" 
+                            checked />
+                        <label for="pcb-group-0">Obligatoire</label>
+                    </div>
+                </li>
+            <li class="pcb__group">
+                <details>
+                    <summary class="pcb__group__title no-desc">
+                        Disqus (système de commentaires)
+                    </summary>
+                    
+                </details>
+                <div class="pcb__popup__switch">
+                    <input 
+                        type="checkbox"
+                        data-group-name="disqus"
+                        id="disqus-cookies" />
+                    <label for="disqus-cookies">
+                        Disqus (système de commentaires)
+                    </label>
+                </div>
+            </li>
+                    </ul>
+                </div>
+
+                <div class="pcb__buttons pcb__popup__buttons">
+                    <button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button>
+                    <button type="button" class="pcb__btn pcb__btn--reject">Reject all</button>
+                    <button type="button" class="pcb__btn pcb__btn--save">Save settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End of Popup -->
+    <!-- Overlay -->
+    <div class="pcb__overlay" aria-hidden="true"></div>
+    <!-- End of Overlay -->
+    
+
+    
+    <!-- Badge -->
+    <button 
+        class="pcb__badge" 
+        aria-label="Cookies"
+        aria-hidden="true">
+        <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            aria-hidden="true" 
+            focusable="false" 
+            width="40" 
+            height="40" 
+            viewBox="0 0 23 23" 
+            fill="currentColor">
+            <path d="M21.41 12.71c-.08-.01-.15 0-.22 0h-.03c-.03 0-.05 0-.08.01-.07 0-.13.01-.19.04-.52.21-1.44.19-2.02-.22-.44-.31-.65-.83-.62-1.53a.758.758 0 0 0-.27-.61.73.73 0 0 0-.65-.14c-1.98.51-3.49.23-4.26-.78-.82-1.08-.73-2.89.24-4.49.14-.23.14-.52 0-.75a.756.756 0 0 0-.67-.36c-.64.03-1.11-.1-1.31-.35-.19-.26-.13-.71-.01-1.29.04-.18.06-.38.03-.59-.05-.4-.4-.7-.81-.66C5.1 1.54 1 6.04 1 11.48 1 17.28 5.75 22 11.6 22c5.02 0 9.39-3.54 10.39-8.42.08-.4-.18-.78-.58-.87Zm-9.81 7.82c-5.03 0-9.12-4.06-9.12-9.06 0-4.34 3.05-8 7.25-8.86-.08.7.05 1.33.42 1.81.24.32.66.67 1.38.84-.76 1.86-.65 3.78.36 5.11.61.81 2.03 2 4.95 1.51.18.96.71 1.54 1.18 1.87.62.43 1.38.62 2.1.62.05 0 .09 0 .13-.01-1.23 3.64-4.7 6.18-8.64 6.18ZM13 17c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm5.29-12.3a.99.99 0 0 1-.29-.71c0-.55.45-.99 1-.99a1 1 0 0 1 .71.3c.19.19.29.44.29.71 0 .55-.45.99-1 .99a1 1 0 0 1-.71-.3ZM9 13.5c0 .83-.67 1.5-1.5 1.5S6 14.33 6 13.5 6.67 12 7.5 12s1.5.67 1.5 1.5Zm3.25.81a.744.744 0 0 1-.06-1.05c.28-.32.75-.34 1.05-.06.31.28.33.75.05 1.06-.15.16-.35.25-.56.25-.18 0-.36-.06-.5-.19ZM8.68 7.26c.41.37.44 1 .07 1.41-.2.22-.47.33-.75.33a.96.96 0 0 1-.67-.26c-.41-.37-.44-1-.07-1.41.37-.42 1-.45 1.41-.08Zm11.48 1.88c.18-.19.52-.19.7 0 .05.04.09.1.11.16.03.06.04.12.04.19 0 .13-.05.26-.15.35-.09.1-.22.15-.35.15s-.26-.05-.35-.15a.355.355 0 0 1-.11-.16.433.433 0 0 1-.04-.19c0-.13.05-.26.15-.35Zm-4.93-1.86a.75.75 0 1 1 1.059-1.06.75.75 0 0 1-1.059 1.06Z" />
+        </svg>
+    </button>
+    <!-- End of Badge -->
+    
+</div>
+<!-- End of main cookie container -->
+
+        <script>
+            
+            (function(win) {
+    if (!document.querySelector('.pcb')) {
+        return;
+    }
+
+    var cbConfig = {
+        behaviour: document.querySelector('.pcb').getAttribute('data-behaviour'),
+        behaviourLink: document.querySelector('.pcb').getAttribute('data-behaviour-link'),
+        revision: document.querySelector('.pcb').getAttribute('data-revision'),
+        configTTL: parseInt(document.querySelector('.pcb').getAttribute('data-config-ttl'), 10),
+        debugMode: document.querySelector('.pcb').getAttribute('data-debug-mode') === 'true',
+        initialState: null,
+        initialLsState: null,
+        previouslyAccepted: []
+    };
+
+    var cbUI = {
+        wrapper: document.querySelector('.pcb'),
+        banner: {
+            element: null,
+            btnAccept: null,
+            btnReject: null,
+            btnConfigure: null
+        },
+        popup: {
+            element: null,
+            btnClose: null,
+            btnSave: null,
+            btnAccept: null,
+            btnReject: null,
+            checkboxes: null,
+        },
+        overlay: null,
+        badge: null,
+        blockedScripts: document.querySelectorAll('script[type^="gdpr-blocker/"]'),
+        triggerLinks: cbConfig.behaviourLink ? document.querySelectorAll('a[href*="' + cbConfig.behaviourLink + '"]') : null
+    };
+
+    function initUI () {
+        // setup banner elements
+        cbUI.banner.element = cbUI.wrapper.querySelector('.pcb__banner');
+        cbUI.banner.btnAccept = cbUI.banner.element.querySelector('.pcb__btn--accept');
+        cbUI.banner.btnReject = cbUI.banner.element.querySelector('.pcb__btn--reject');
+        cbUI.banner.btnConfigure = cbUI.banner.element.querySelector('.pcb__btn--configure');
+
+        // setup popup elements
+        if (cbUI.wrapper.querySelector('.pcb__popup')) {
+            cbUI.popup.element = cbUI.wrapper.querySelector('.pcb__popup');
+            cbUI.popup.btnClose = cbUI.wrapper.querySelector('.pcb__popup__close');
+            cbUI.popup.btnSave = cbUI.popup.element.querySelector('.pcb__btn--save');
+            cbUI.popup.btnAccept = cbUI.popup.element.querySelector('.pcb__btn--accept');
+            cbUI.popup.btnReject = cbUI.popup.element.querySelector('.pcb__btn--reject');
+            cbUI.popup.checkboxes = cbUI.popup.element.querySelector('input[type="checkbox"]');
+            // setup overlay
+            cbUI.overlay = cbUI.wrapper.querySelector('.pcb__overlay');
+        }
+
+        cbUI.badge = cbUI.wrapper.querySelector('.pcb__badge');
+
+        if (cbConfig.behaviour.indexOf('link') > -1) {
+            for (var i = 0; i < cbUI.triggerLinks.length; i++) {
+                cbUI.triggerLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBannerOrPopup();
+                });
+            }
+        }
+    }
+
+    function initState () {
+        var lsKeyName = getConfigName();
+        var currentConfig = localStorage.getItem(lsKeyName);
+        var configIsFresh = checkIfConfigIsFresh();
+
+        if (!configIsFresh || currentConfig === null) {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config not found, or configuration expired');
+            }
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                    'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                    'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                    'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                    'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                    'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                    'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                });  
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                        'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                        'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                        'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                        'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                        'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                        'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                    }));
+                }
+            }
+
+            showBanner();
+        } else if (typeof currentConfig === 'string') {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config founded');
+            }
+
+            cbConfig.initialLsState = currentConfig.split(',');
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                    'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                    'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                    'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                    'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                    'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                    'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                });
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                        'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                        'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                        'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                        'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                        'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                        'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                    }));
+                }
+            }
+
+            showBadge();
+
+            if (cbUI.popup.element) {
+                var allowedGroups = currentConfig.split(',');
+                var checkedCheckboxes = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+
+                for (var j = 0; j < checkedCheckboxes.length; j++) {
+                    var name = checkedCheckboxes[j].getAttribute('data-group-name');
+
+                    if (name && name !== '-' && allowedGroups.indexOf(name) === -1) {
+                        checkedCheckboxes[j].checked = false;
+                    }
+                }
+
+                for (var i = 0; i < allowedGroups.length; i++) {
+                    var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + allowedGroups[i] + '"]');
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+
+                    allowCookieGroup(allowedGroups[i]);
+                }
+            }
+        }
+
+        setTimeout(function () {
+            cbConfig.initialState = getInitialStateOfConsents();
+        }, 0);
+    }
+
+    function checkIfConfigIsFresh () {
+        var lastConfigSave = localStorage.getItem('publii-gdpr-cookies-config-save-date');
+
+        if (lastConfigSave === null) {
+            return false;
+        }
+
+        lastConfigSave = parseInt(lastConfigSave, 10);
+
+        if (lastConfigSave === 0) {
+            return true;
+        }
+
+        if (+new Date() - lastConfigSave < cbConfig.configTTL * 24 * 60 * 60 * 1000) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getDefaultConsentState (currentConfig, consentGroup) {
+        let configGroups = currentConfig.split(',');
+
+        for (let i = 0; i < configGroups.length; i++) {
+            let groupName = configGroups[i];
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === groupName);
+
+            if (group && group[consentGroup]) {
+                return 'granted';
+            }
+        }  
+        
+        if (window.publiiCBGCM.defaultState[consentGroup]) {
+            return 'granted'; 
+        }
+        
+        return 'denied';
+    }
+
+    function initBannerEvents () {
+        cbUI.banner.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('banner');
+            showBadge();
+        }, false);
+
+        if (cbUI.banner.btnReject) {
+            cbUI.banner.btnReject.addEventListener('click', function (e) {
+                e.preventDefault();
+                rejectAllCookies();
+                showBadge();
+            }, false);
+        }
+
+        if (cbUI.banner.btnConfigure) {
+            cbUI.banner.btnConfigure.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideBanner();
+                showAdvancedPopup();
+                showBadge();
+            }, false);
+        }
+    }
+
+    function initPopupEvents () {
+        if (!cbUI.popup.element) {
+            return;
+        }
+
+        cbUI.overlay.addEventListener('click', function (e) {
+            hideAdvancedPopup();
+        }, false);
+
+        cbUI.popup.element.addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+
+        cbUI.popup.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('popup');
+        }, false);
+
+        cbUI.popup.btnReject.addEventListener('click', function (e) {
+            e.preventDefault();
+            rejectAllCookies();
+        }, false);
+
+        cbUI.popup.btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            saveConfiguration();
+        }, false);
+
+        cbUI.popup.btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideAdvancedPopup();
+        }, false);
+    }
+
+    function initBadgeEvents () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.addEventListener('click', function (e) {
+            showBannerOrPopup();
+        }, false);
+    }
+
+    initUI();
+    initState();
+    initBannerEvents();
+    initPopupEvents();
+    initBadgeEvents();
+
+    /**
+     * API
+     */
+    function addScript (src, inline) {
+        var newScript = document.createElement('script');
+
+        if (src) {
+            newScript.setAttribute('src', src);
+        }
+
+        if (inline) {
+            newScript.text = inline;
+        }
+
+        document.body.appendChild(newScript);
+    }
+
+    function allowCookieGroup (allowedGroup) {
+        var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+        cbConfig.previouslyAccepted.push(allowedGroup);
+    
+        for (var j = 0; j < scripts.length; j++) {
+            addScript(scripts[j].src, scripts[j].text);
+        }
+
+        var groupEvent = new Event('publii-cookie-banner-unblock-' + allowedGroup);
+        document.body.dispatchEvent(groupEvent);
+        unlockEmbeds(allowedGroup);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Allowed group: ' + allowedGroup);
+        }
+
+        if (window.publiiCBGCM && cbConfig.initialLsState.indexOf(allowedGroup) === -1) {
+            let consentResult = {};
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
+
+            if (group) {
+                let foundSomeConsents = false;
+
+                Object.keys(group).forEach(key => {
+                    if (key !== 'cookieGroup' && group[key] === true) {
+                        consentResult[key] = 'granted';
+                        foundSomeConsents = true;
+                    }
+                });
+
+                if (foundSomeConsents) {
+                    gtag('consent', 'update', consentResult);   
+
+                    if (cbConfig.debugMode) {
+                        console.log('🍪 GCMv2 UPDATE: ' + JSON.stringify(consentResult));
+                    }
+                }
+            }
+        }
+    }
+
+    function showBannerOrPopup () {
+        if (cbUI.popup.element) {
+            showAdvancedPopup();
+        } else {
+            showBanner();
+        }
+    }
+
+    function showAdvancedPopup () {
+        cbUI.popup.element.classList.add('is-visible');
+        cbUI.overlay.classList.add('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'false');
+        cbUI.overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideAdvancedPopup () {
+        cbUI.popup.element.classList.remove('is-visible');
+        cbUI.overlay.classList.remove('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'true');
+        cbUI.overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBanner () {
+        cbUI.banner.element.classList.add('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner () {
+        cbUI.banner.element.classList.remove('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBadge () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.classList.add('is-visible');
+        cbUI.badge.setAttribute('aria-hidden', 'false');
+    }
+
+    function getConfigName () {
+        var lsKeyName = 'publii-gdpr-allowed-cookies';
+
+        if (cbConfig.revision) {
+            lsKeyName = lsKeyName + '-v' + parseInt(cbConfig.revision, 10);
+        }
+
+        return lsKeyName;
+    }
+
+    function storeConfiguration (allowedGroups) {
+        var lsKeyName = getConfigName();
+        var dataToStore = allowedGroups.join(',');
+        localStorage.setItem(lsKeyName, dataToStore);
+
+        if (cbConfig.configTTL === 0) {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', 0);
+
+            if (cbConfig.debugMode) {
+                console.log('🍪 Store never expiring configuration');
+            }
+        } else {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', +new Date());
+        }
+    }
+
+    function getInitialStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Initial state: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getCurrentStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 State to save: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getAllGroups () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        return groups;
+    }
+
+    function acceptAllCookies (source) {
+        var groupsToAccept = getAllGroups();
+        storeConfiguration(groupsToAccept);
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        if (cbUI.popup.element) {
+            var checkboxesToCheck = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+
+            for (var j = 0; j < checkboxesToCheck.length; j++) {
+                checkboxesToCheck[j].checked = true;
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Accept all cookies: ', groupsToAccept.join(', '));
+        }
+
+        if (source === 'popup') {
+            hideAdvancedPopup();
+        } else if (source === 'banner') {
+            hideBanner();
+        }
+    }
+
+    function rejectAllCookies () {
+        if (cbConfig.debugMode) {
+            console.log('🍪 Reject all cookies');
+        }
+
+        storeConfiguration([]);
+        setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
+
+    function saveConfiguration () {
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+
+        if (reloadIsNeeded(groupsToAccept)) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 100);
+            return;
+        }
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        hideAdvancedPopup();
+    }
+
+    function reloadIsNeeded (groupsToAccept) {
+        // check if user rejected consent for initial groups
+        var initialGroups = cbConfig.initialState;
+        var previouslyAcceptedGroups = cbConfig.previouslyAccepted;
+        var groupsToCheck = initialGroups.concat(previouslyAcceptedGroups);
+
+        for (var i = 0; i < groupsToCheck.length; i++) {
+            var groupToCheck = groupsToCheck[i];
+
+            if (groupToCheck !== '' && groupsToAccept.indexOf(groupToCheck) === -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Reload is needed due lack of: ', groupToCheck);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function unlockEmbeds (cookieGroup) {
+        var iframesToUnlock = document.querySelectorAll('.pec-wrapper[data-consent-group-id="' + cookieGroup + '"]');
+
+        for (var i = 0; i < iframesToUnlock.length; i++) {
+            var iframeWrapper = iframesToUnlock[i];
+            iframeWrapper.querySelector('.pec-overlay').classList.remove('is-active');
+            iframeWrapper.querySelector('.pec-overlay').setAttribute('aria-hidden', 'true');
+            var iframe = iframeWrapper.querySelector('iframe');
+            iframe.setAttribute('src', iframe.getAttribute('data-consent-src'));
+        }
+    }
+
+    win.publiiEmbedConsentGiven = function (cookieGroup) {
+        // it will unlock embeds
+        allowCookieGroup(cookieGroup);
+
+        var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + cookieGroup + '"]');
+
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+    }
+})(window);
+
+        </script>
+</body>
+</html>

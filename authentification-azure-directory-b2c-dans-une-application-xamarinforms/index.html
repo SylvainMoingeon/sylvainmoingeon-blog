@@ -1,0 +1,878 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Authentification Azure Directory B2C dans une application Xamarin.Forms - Sylvain Moingeon</title><meta name="description" content="Cet article détaille pas-à-pas la création d'un tenant Active Directory B2C dans Azure, ainsi que l'implémentation de l'authentification dans Xamarin.Forms"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://www.sylvainmoingeon.fr/authentification-azure-directory-b2c-dans-une-application-xamarinforms/"><link rel="alternate" type="application/atom+xml" href="https://www.sylvainmoingeon.fr/feed.xml"><link rel="alternate" type="application/json" href="https://www.sylvainmoingeon.fr/feed.json"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@SylvainMoingeon"><meta name="twitter:title" content="Authentification Azure Directory B2C dans une application Xamarin.Forms"><meta name="twitter:description" content="Cet article détaille pas-à-pas la création d'un tenant Active Directory B2C dans Azure, ainsi que l'implémentation de l'authentification dans Xamarin.Forms"><meta name="twitter:image" content="https://www.sylvainmoingeon.fr/media/website/screenshot.png"><link href="https://www.sylvainmoingeon.fr/assets/fontawesome/css/all.css" rel="stylesheet"><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/prism.css"><link rel="shortcut icon" href="https://www.sylvainmoingeon.fr/media/website/favicon.png" type="image/png"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap&subset=latin-ext" rel="stylesheet"><style>:root{--body-font:'DM Sans',sans-serif;--heading-font:var(--body-font);--post-entry-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/style.css?v=2c8d1f0d0689c5a4f4ff50b8f1122140"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sylvainmoingeon.fr/authentification-azure-directory-b2c-dans-une-application-xamarinforms/"},"headline":"Authentification Azure Directory B2C dans une application Xamarin.Forms","datePublished":"2021-03-19T18:21","dateModified":"2021-03-23T11:42","description":"Cet article détaille pas-à-pas la création d'un tenant Active Directory B2C dans Azure, ainsi que l'implémentation de l'authentification dans Xamarin.Forms","author":{"@type":"Person","name":"Sylvain","url":"https://www.sylvainmoingeon.fr/auteurs/sylvain/"},"publisher":{"@type":"Organization","name":"Sylvain"}}</script><script>function addEmailAddresses(){     
+      document.querySelectorAll('.email').forEach(function(linkElement) {
+      
+        var domainname = window.atob("c3lsdmFpbm1vaW5nZW9uLmZy");
+        var username = window.atob(linkElement.getAttribute("id"));
+        var emailaddress = username + "@" + domainname;
+        var mailto = window.atob("bWFpbHRv");  // mailto:
+        //linkElement.innerHTML = emailaddress;
+        linkElement.setAttribute("href", mailto + ":" + emailaddress + "?subject=[Contact%20site%20web]");
+      });      
+    }</script></head><body onload="addEmailAddresses()" class="line-numbers"><div class="container"><header class="top" id="js-top"><div><a class="logo" href="https://www.sylvainmoingeon.fr/">Sylvain Moingeon</a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://www.sylvainmoingeon.fr/" target="_self">Accueil</a></li><li><a href="https://www.sylvainmoingeon.fr/contact/" target="_self">Contact</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="https://www.sylvainmoingeon.fr/search.html" class="search__form"><input class="search__input js-search-input" type="search" name="q" placeholder="chercher..." aria-label="Search input" autofocus="autofocus"></form><button class="search__close js-search-close" aria-label="Fermer">Fermer</button></div></div><button class="search__btn js-search-btn" aria-label="Search"><svg role="presentation" focusable="false" height="15px" width="15px"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#search"/></svg></button></div></div></header><main><article class="post wrapper"><div class="hero hero--narrow"><header><p><a href="https://www.sylvainmoingeon.fr/tags/xamarinforms/">Xamarin.Forms</a></p><h1>Authentification Azure Directory B2C dans une application Xamarin.Forms</h1><address>par <a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" rel="author">Sylvain</a></address>publié le <time datetime="2021-03-19T18:21">vendredi 19 mars 2021</time></header></div><div class="post__entry"><p>On m’a récemment demandé d’étudier la faisabilité d’une authentification depuis Azure Directory B2C dans une application Xamarin.Forms.</p><p>La documentation officielle a un peu tendance à tourner en rond avec des liens en références circulaires, le portail Azure est vaste et pas super user-friendly (on peut passer beaucoup de temps à chercher une option qu’on est pourtant certain d’avoir aperçue cinq minutes plus tôt…).</p><p>J’ai donc rédigé un guide rapide à l’attention des développeurs de l’équipe, je vous le livre tel quel, ce n’est donc pas nécessairement très bien rédigé, mais vous aurez toutes les informations pour débuter, depuis la création du <em>Directory B2C</em> sur Azure jusqu’à l’authentification et la récupération des données de l’utilisateur dans l’application Xamarin.Forms.</p><h1 id="résumé">Résumé</h1><ol><li>Créer un tenant <em>Active Directory B2C</em> dans Azure.</li><li>Enregistrer l’application mobile dans le tenant <em>Active Directory B2C</em>.</li><li>Créer des <em>User Flows</em> avec des polices de <em>Signin</em>, réinitialisation de mot de passe…</li><li>Utiliser la <em>Microsoft Authentication Library (MSAL)</em> pour gérer le flux d’authentification dans l’application.</li></ol><h2 id="sources">Sources</h2><ul><li><a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/data-cloud/authentication/azure-ad-b2c">Authenticate Users with Azure Active Directory B2C</a></li><li><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tenant">Tutorial: Create an Azure Active Directory B2C tenant</a></li><li><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-register-applications?tabs=app-reg-ga">Tutorial: Register a web application in Azure Active Directory B2C</a></li></ul><h1 id="côté-serveur">Côté serveur</h1><h2 id="création-du-compte-azure">Création du compte Azure</h2><p><a href="https://aka.ms/azfree-docs-mobileapps">https://aka.ms/azfree-docs-mobileapps</a></p><p>Pré-requis :</p><ul><li>Un compte microsoft</li><li>Une carte bancaire</li></ul><p>Je ne détaille pas, il suffit de suivre les étapes. Sachez simplement que vous disposez d’un crédit de 170€ pour débuter, de quoi faire des tests et de l’autoformation.</p><h2 id="configuration-du-portail-en-anglais">Configuration du portail en ANGLAIS</h2><p>Très important, peut-être un bug temporaire, mais si vous conservez le portail en français, la création de AD B2C échouera avec un message abscons vous indiquant que la valeur de <em>l’emplacement du groupe de ressource</em> est invalide alors qu’on la sélectionne dans une liste (et peu importe la valeur sélectionnée) !</p><p>C’est simplement que la liste est traduite et que visiblement quelque part dans le code, Azure attend une valeur en dur tirée de la liste en anglais. Franchement, j’ai honte pour Microsoft !</p><p>Donc évitons-nous bien des soucis et passons immédiatement le portail en anglais.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/6ce4a4c4b1004751bddf92e7f88a9f98.png" alt="Configuration du portail en anglais" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/6ce4a4c4b1004751bddf92e7f88a9f98-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/6ce4a4c4b1004751bddf92e7f88a9f98-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/6ce4a4c4b1004751bddf92e7f88a9f98-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/6ce4a4c4b1004751bddf92e7f88a9f98-lg.png 1024w"></figure><p></p><h2 id="enregistrement-du-namespace-mirosoftazureactivedirectory">Enregistrement du namespace <em>Mirosoft.AzureActiveDirectory</em></h2><p>Aucun tuto ne vous le dira, et c’est peut-être un bug temporaire, mais si vous ne le faites pas maintenant, vous obtiendrez cette erreur à la toute fin du processus et vous devrez tout recommencer. :-)</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/eae4e6e303ba45cfaf377ae3ab2f522e.png" alt="Message d&#39;erreur concernant Microsoft.AzureActiveDirectory" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/eae4e6e303ba45cfaf377ae3ab2f522e-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/eae4e6e303ba45cfaf377ae3ab2f522e-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/eae4e6e303ba45cfaf377ae3ab2f522e-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/eae4e6e303ba45cfaf377ae3ab2f522e-lg.png 1024w"></figure><p><strong>Cliquez sur <em>Subscriptions</em></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/d821b9e2f1a84d46b574a439df9c1fc9.png" alt="Navigation vers les subscriptions" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/d821b9e2f1a84d46b574a439df9c1fc9-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/d821b9e2f1a84d46b574a439df9c1fc9-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/d821b9e2f1a84d46b574a439df9c1fc9-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/d821b9e2f1a84d46b574a439df9c1fc9-lg.png 1024w"></figure><p></p><p><strong>Dans la liste, sélectionnez votre subscription courante.</strong></p><p>Si vous venez de créer un compte gratuit, il n’y en aura qu’une :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/13427f5008fb459db2ea5276dd729262.png" alt="Sélection de la subscription" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/13427f5008fb459db2ea5276dd729262-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/13427f5008fb459db2ea5276dd729262-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/13427f5008fb459db2ea5276dd729262-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/13427f5008fb459db2ea5276dd729262-lg.png 1024w"></figure><p></p><p><strong>Dans le panneau de gauche, cliquez sur <em>Resource providers</em></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/979a2d1abb4a48b59a7bf9ad8486880f.png" alt="Navigation vers les resource providers" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/979a2d1abb4a48b59a7bf9ad8486880f-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/979a2d1abb4a48b59a7bf9ad8486880f-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/979a2d1abb4a48b59a7bf9ad8486880f-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/979a2d1abb4a48b59a7bf9ad8486880f-lg.png 1024w"></figure><p></p><p><strong>Cherchez Azure, sélectionnez <em>Microsoft.AzureActiveDirectory</em> et <strong>cliquez sur Register</strong></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/8fa48e6076574a9eb090837d9231fd87.png" alt="Recherche de Microsoft.AzureActiveDirectory" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fa48e6076574a9eb090837d9231fd87-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fa48e6076574a9eb090837d9231fd87-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fa48e6076574a9eb090837d9231fd87-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fa48e6076574a9eb090837d9231fd87-lg.png 1024w"></figure><p></p><p>Patientez… patientez… patientez… patientez… Cliquez de temps en temps sur <em>Refresh</em> au cas où. Si ça ne fonctionne pas, recommencez (sélection, register), au bout d’un moment ça finit par passer. :-)</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/941ed15f975649aca20eeb624c4192fd.png" alt="Microsoft.AzureActiveDirectory est enregistré" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/941ed15f975649aca20eeb624c4192fd-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/941ed15f975649aca20eeb624c4192fd-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/941ed15f975649aca20eeb624c4192fd-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/941ed15f975649aca20eeb624c4192fd-lg.png 1024w"></figure><p></p><p>C’est bon, on y est, on peut commencer !</p><h2 id="création-de-lactive-directory-b2c">Création de l’Active Directory B2C</h2><p><strong>Cliquez sur <em>Create a resource</em></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/26cd2d69e0cf4e2c9533a45c7ef1e726.png" alt="Créer une ressources" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/26cd2d69e0cf4e2c9533a45c7ef1e726-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/26cd2d69e0cf4e2c9533a45c7ef1e726-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/26cd2d69e0cf4e2c9533a45c7ef1e726-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/26cd2d69e0cf4e2c9533a45c7ef1e726-lg.png 1024w"></figure><p></p><p><strong>Cherchez et sélectionnez <em>Active Directory B2C</em></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/3734c6c0c609497b8523c2ac5ee56045.png" alt="Sélectionner Active Directory B2C" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/3734c6c0c609497b8523c2ac5ee56045-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/3734c6c0c609497b8523c2ac5ee56045-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/3734c6c0c609497b8523c2ac5ee56045-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/3734c6c0c609497b8523c2ac5ee56045-lg.png 1024w"></figure><p></p><p><strong>Cliquez sur <em>Create</em></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/8fb8757ce94343aea6ddb6b375e139ac.png" alt="Cliquer sur Create" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fb8757ce94343aea6ddb6b375e139ac-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fb8757ce94343aea6ddb6b375e139ac-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fb8757ce94343aea6ddb6b375e139ac-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/8fb8757ce94343aea6ddb6b375e139ac-lg.png 1024w"></figure><p></p><p><strong>Create a New Azure AD B2C tenant</strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/0f44978924974827b83e5498624e1827.png" alt="Create a New Azure AD B2C tenant" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/0f44978924974827b83e5498624e1827-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/0f44978924974827b83e5498624e1827-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/0f44978924974827b83e5498624e1827-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/0f44978924974827b83e5498624e1827-lg.png 1024w"></figure><p></p><p><strong>Renseignez les informations du tenant</strong></p><p>Créer un <em>Groupe de ressources</em> avec le lien <em>Create New</em> s’il n’en existe pas déjà un.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/bfa01cbf52b14c7b9969c162f08e83ba.png" alt="Renseigner les informations du tenant" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/bfa01cbf52b14c7b9969c162f08e83ba-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bfa01cbf52b14c7b9969c162f08e83ba-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bfa01cbf52b14c7b9969c162f08e83ba-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bfa01cbf52b14c7b9969c162f08e83ba-lg.png 1024w"></figure><p></p><p><strong>Cliquez sur <em>Review + Create</em> pour valider les informations</strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/eeac2be3682d457dae69874ee0e04525.png" alt="Valider les informations" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/eeac2be3682d457dae69874ee0e04525-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/eeac2be3682d457dae69874ee0e04525-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/eeac2be3682d457dae69874ee0e04525-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/eeac2be3682d457dae69874ee0e04525-lg.png 1024w"></figure><p></p><p><strong>Cliquez sur <em>Create</em> pour en finir !</strong></p><p>Patientez. Tant que ça gigote là-dedans c’est que ça bosse :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/2fdbea7151f948278ae450c27839495d.png" alt="Indicateur d&#39;activité dans la toolbar" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/2fdbea7151f948278ae450c27839495d-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/2fdbea7151f948278ae450c27839495d-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/2fdbea7151f948278ae450c27839495d-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/2fdbea7151f948278ae450c27839495d-lg.png 1024w"></figure><p></p><p>Cliquez sur le lien, bienvenue à Black Mesa !</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/000cf65ea90e48b0b774d8405119b298.png" alt="Lien menant vers votre tenant Active Directory B2C" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/000cf65ea90e48b0b774d8405119b298-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/000cf65ea90e48b0b774d8405119b298-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/000cf65ea90e48b0b774d8405119b298-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/000cf65ea90e48b0b774d8405119b298-lg.png 1024w"></figure><p></p><h2 id="configuration-dune-application-côté-serveur">Configuration d’une <em>application</em> côté serveur</h2><h3 id="selection-du-tenant-b2c">Selection du tenant B2C</h3><p>Dans la toolbar en haut à droite, trouvez le bouton qui ressemble à un carnet avec un entonnoir :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/0dc10f53aef94e8cb578f3eb0351b5bc.png" alt="Buton de sélection des directories" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/0dc10f53aef94e8cb578f3eb0351b5bc-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/0dc10f53aef94e8cb578f3eb0351b5bc-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/0dc10f53aef94e8cb578f3eb0351b5bc-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/0dc10f53aef94e8cb578f3eb0351b5bc-lg.png 1024w"></figure><p></p><p>Mais en principe vous devriez déjà être dessus si vous avez cliqué sur le lien à la fin de l’étape précédente.</p><p>Si vous vous retrouvez sur une page d’accueil comme ça et que vous ne retrouvez pas votre <em>tenant AD B2C</em>…</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/619e486c4a054f2cb3ee928a143a1963.png" alt="Page d&#39;accueil du Directory" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/619e486c4a054f2cb3ee928a143a1963-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/619e486c4a054f2cb3ee928a143a1963-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/619e486c4a054f2cb3ee928a143a1963-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/619e486c4a054f2cb3ee928a143a1963-lg.png 1024w"></figure><p></p><p>Saisissez simplement <em>B2C</em> dans la barre de recherche en haut et dans la rubrique <em>Services</em>, sélectionnez <em>Azure AD B2C</em>.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/636efe75e666412e9c7584f700c45f51.png" alt="Recherche du tenant B2C" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/636efe75e666412e9c7584f700c45f51-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/636efe75e666412e9c7584f700c45f51-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/636efe75e666412e9c7584f700c45f51-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/636efe75e666412e9c7584f700c45f51-lg.png 1024w"></figure><p></p><h3 id="enregistrement-de-lapplication">Enregistrement de l’application</h3><p><strong>Sélectionnez <em>App registrations</em>…</strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/1c9cbee5394f46a397a8efbdcf1dc132.png" alt="Navigation vers l&#39;enregistrement d&#39;applications" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/1c9cbee5394f46a397a8efbdcf1dc132-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/1c9cbee5394f46a397a8efbdcf1dc132-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/1c9cbee5394f46a397a8efbdcf1dc132-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/1c9cbee5394f46a397a8efbdcf1dc132-lg.png 1024w"></figure><p></p><p><strong>Puis <em>New registration</em></strong></p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/5f5448c2423e48b4bdbc92b536d2453d.png" alt="Nouvel enregistrement" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/5f5448c2423e48b4bdbc92b536d2453d-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/5f5448c2423e48b4bdbc92b536d2453d-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/5f5448c2423e48b4bdbc92b536d2453d-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/5f5448c2423e48b4bdbc92b536d2453d-lg.png 1024w"></figure><p></p><p><strong>Renseignez les informations</strong></p><ul><li><p><em>Nom</em> et <em>type de compte</em> supporté :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/ebba5c97abd241ac81af607acb811a19.png" alt="Nom et type de compte" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/ebba5c97abd241ac81af607acb811a19-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ebba5c97abd241ac81af607acb811a19-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ebba5c97abd241ac81af607acb811a19-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ebba5c97abd241ac81af607acb811a19-lg.png 1024w"></figure><p></p></li><li><p><em>Redirect URI</em> : Cela dépend du type d’application (application mobile, web app…). Dans notre cas, il s’agira d’une application mobile Xamarin.Forms. <strong>Attention, l’uri répond à un schéma bien particulier :</strong> <code>msal[redirect_uri]://auth</code>.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/f551892b4b9f48a8973694ff7473b391.png" alt="Redirect URi" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/f551892b4b9f48a8973694ff7473b391-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f551892b4b9f48a8973694ff7473b391-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f551892b4b9f48a8973694ff7473b391-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f551892b4b9f48a8973694ff7473b391-lg.png 1024w"></figure><p></p></li></ul><p>Cet URi sera à renseigner dans les manifestes Android et iOS.</p><ul><li><em>Permissions :</em></li></ul><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/f6990694e50e4f59bbf304ab240ed75f.png" alt="Permisssions" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/f6990694e50e4f59bbf304ab240ed75f-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f6990694e50e4f59bbf304ab240ed75f-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f6990694e50e4f59bbf304ab240ed75f-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f6990694e50e4f59bbf304ab240ed75f-lg.png 1024w"></figure><p>Validez le tout en cliquant sur le bouton <em>Register</em>. Bravo ! Votre application est enregistrée :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/21fa88ac0c1e4b8d97cba7c22496698f.png" alt="Application enregistrée" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/21fa88ac0c1e4b8d97cba7c22496698f-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/21fa88ac0c1e4b8d97cba7c22496698f-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/21fa88ac0c1e4b8d97cba7c22496698f-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/21fa88ac0c1e4b8d97cba7c22496698f-lg.png 1024w"></figure><p></p><h3 id="mais-ce-nest-pas-fini--la-case-à-cocher-secrète">Mais ce n’est pas fini : la case à cocher secrète</h3><p>Si vous vous en tenez là et suivez le tuto Microsoft et l’application <em>Sample</em> fournie, cela ne fonctionnera pas : les URI utilisés comme point d’accès dans l’application ne sont pas autorisés par défaut !</p><p>Rendez-vous dans la rubrique <em>Authentication</em> et cochez les cases :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/cde6cd6048fa407e81ed0c4ba8559687.png" alt="Cocher les Uri d&#39;authentification" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/cde6cd6048fa407e81ed0c4ba8559687-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/cde6cd6048fa407e81ed0c4ba8559687-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/cde6cd6048fa407e81ed0c4ba8559687-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/cde6cd6048fa407e81ed0c4ba8559687-lg.png 1024w"></figure><p></p><p>Pensez bien à sauvegarder. Le bouton en haut, je vous laisse le trouver tout seul.</p><h3 id="création-des-user-flows">Création des <em>User Flows</em></h3><p>Créer un <em>user flow</em> revient à autoriser les utilisateurs à interagir avec leur compte AD : se connecter, réinitialiser son mot de passe, modifier son profile…</p><p>NB : les flows sont partageables entre les applications.</p><h4 id="sign-in">Sign In</h4><p>Au minima, les utilisateurs auront besoin de se connecter. Dans la page de votre <em>tenant AD B2C</em>, allez sur <em>User flows</em> dans la rubrique <em>Policies</em> et cliquez sur <em>New user flow</em>.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/ff407a8e293349ff8cc82e83e5a3e4c7.png" alt="New User Flow" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff407a8e293349ff8cc82e83e5a3e4c7-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff407a8e293349ff8cc82e83e5a3e4c7-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff407a8e293349ff8cc82e83e5a3e4c7-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff407a8e293349ff8cc82e83e5a3e4c7-lg.png 1024w"></figure><p></p><p>Puis sélectionnez <em>Sign In</em> et créez le flow dans sa version recommandée.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/436019a0fe0643ebbcb99156b00edbbe.png" alt="Signin User Flow" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/436019a0fe0643ebbcb99156b00edbbe-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/436019a0fe0643ebbcb99156b00edbbe-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/436019a0fe0643ebbcb99156b00edbbe-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/436019a0fe0643ebbcb99156b00edbbe-lg.png 1024w"></figure><p></p><p>Renseignez les informations en fonction du mode de connexion et de l’authentification multiple souhaités.</p><p>Notez bien le nom, vous en aurez besoin côté client :</p><figure class="post__image"><img decoding="async" src="https://www.sylvainmoingeon.fr/media/posts/42/67382c4d40224b36a0f04c9054364cae.png" alt="Nom de la police" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/67382c4d40224b36a0f04c9054364cae-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/67382c4d40224b36a0f04c9054364cae-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/67382c4d40224b36a0f04c9054364cae-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/67382c4d40224b36a0f04c9054364cae-lg.png 1024w"></figure><p></p><p>La dernière rubrique permet de sélectionner les données qui seront récupérées côté client lors de la connexion utilisateur. Cliquez sur <em>Show more…</em> pour obtenir la liste complète.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/f65a66c9662f40dc9aaf15676ed7bd5a.png" alt="Claims" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/f65a66c9662f40dc9aaf15676ed7bd5a-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f65a66c9662f40dc9aaf15676ed7bd5a-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f65a66c9662f40dc9aaf15676ed7bd5a-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/f65a66c9662f40dc9aaf15676ed7bd5a-lg.png 1024w"></figure><p>Finalisez en cliquant sur le bouton <em>Create</em>.</p><h4 id="autres-flows">Autres flows</h4><p>La procédure est similaire pour les autres types de <em>flows</em>. Créez ceux dont vous avez besoin.</p><h3 id="création-des-utilisateurs">Création des utilisateurs</h3><p>Sur la page de votre <em>tenant Azure AD B2C</em>, cliquez sur <em>Users</em> dans la rubrique <em>Manage</em>.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/ce85fccb56374fcab27e51b008093cde.png" alt="Création des utilisateurs" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/ce85fccb56374fcab27e51b008093cde-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ce85fccb56374fcab27e51b008093cde-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ce85fccb56374fcab27e51b008093cde-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ce85fccb56374fcab27e51b008093cde-lg.png 1024w"></figure><p></p><p>Ensuite, cela dépend du mode de connexion envisagé. Il sera peut-être nécessaire de d’abord configurer un ou plusieurs fournisseurs d’identité (compte Microsoft, compte local, Github, Facebook…), dans la même rubrique que précédemment, lien <em>Identity providers</em>.</p><p>A priori, tout est en place côté serveur, reste à implémenter la couche MSAL côté client.</p><h1 id="côté-client">Côté client</h1><h2 id="package-nuget-microsoft-authentication-library-msal">Package nuget <em>Microsoft Authentication Library (MSAL)</em></h2><p>Direction le nuget package manager. Installez <em>Microsoft.Identity.Client</em> sur le projet commun et les projets des plateformes :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/bf2ed89bfb2644a79b5f1cd0c9857761.png" alt="Package nuget Microsoft.Identity.Client" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/bf2ed89bfb2644a79b5f1cd0c9857761-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bf2ed89bfb2644a79b5f1cd0c9857761-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bf2ed89bfb2644a79b5f1cd0c9857761-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bf2ed89bfb2644a79b5f1cd0c9857761-lg.png 1024w"></figure><p></p><h2 id="préparation-du-projet-commun">Préparation du projet commun</h2><h3 id="définition-de-quelques-constantes">Définition de quelques constantes</h3><p>Pour commencer, il est nécessaire de définir quelques constantes.</p><ul><li><p><code>tenantName</code> : le nom de domaine que vous avez défini pour votre tenant Directory B2C</p></li><li><p><code>tenantId</code> : le même suffixé par <code>.onmicrosoft.com</code></p></li><li><p><code>clientId</code> : <em>Application (client) Id</em>, vous trouverez cette information dans l’<em>overview</em> de votre application sur le portail Azure :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/99664b9fc9504d75b03489fffe708bfe.png" alt="ClientId dans l&#39;overview de l&#39;application" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/99664b9fc9504d75b03489fffe708bfe-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/99664b9fc9504d75b03489fffe708bfe-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/99664b9fc9504d75b03489fffe708bfe-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/99664b9fc9504d75b03489fffe708bfe-lg.png 1024w"></figure><p></p></li><li><p><code>redirect_uri</code> : l’uri enregistré côté azure</p></li><li><p><code>policySignin</code> et <code>policyPassword</code> : le nom des polices telles que vous les avez définies précédemment</p></li><li><p><code>iosKeychainSecurityGroup</code> : identifiant du Bundle iOS que vous trouvez dans <code>Info.plist</code>.</p></li></ul><pre><code class="language-csharp">public static class Constants
+{
+    const string tenantName = &quot;[your_tenant_name]&quot;;
+    const string tenantId = &quot;[your_tenant_name].onmicrosoft.com&quot;;
+    const string clientId = &quot;[your_application_client_id]&quot;;
+    const string redirectUri = &quot;[redirect_uri]&quot;;
+    const string policySignin = &quot;B2C_1_signin&quot;;
+    const string policyPassword = &quot;B2C_1_resetpassword&quot;;
+    const string iosKeychainSecurityGroup = &quot;[application iOS Bundle identifier]&quot;;
+    
+    static readonly string[] scopes = { &quot;&quot; };
+    static readonly string authorityBase = $&quot;https://{tenantName}.b2clogin.com/tfp/{tenantId}/&quot;;
+
+    public static string RedirectMsalScheme =&gt; $&quot;msal{redirectUri}://auth&quot;; 
+    public static string AuthorityBase =&gt; authorityBase;
+    public static string[] Scopes =&gt; scopes;
+    public static string PolicySignin =&gt; policySignin;
+    public static string PolicyPassword =&gt; policyPassword;
+    public static string IosKeychainSecurityGroups =&gt; iosKeychainSecurityGroup;
+    public static string ClientId =&gt; clientId;
+    public static string AuthoritySignin =&gt; $&quot;{authorityBase}{policySignin}&quot;;
+    public static string AuthorityPasswordReset =&gt; $&quot;{authorityBase}{policyPassword}&quot;;
+}
+</code></pre><h3 id="le-service-dauthentification--authenticationclient">Le service d’authentification : <code>AuthenticationClient</code></h3><p>Dans le fichier <code>App.xaml.cs</code>, définir les propriétés <code>AppUi</code> (nécessaire pour l’implémentation dans Android) et <code>AuthenticationClient</code> :</p><pre><code class="language-csharp">using Microsoft.Identity.Client;
+[...]
+
+public partial class App : Application
+{
+    public static IPublicClientApplication AuthenticationClient { get; private set; }
+    public static object UIParent { get; set; } = null;
+    
+    [...]
+}
+</code></pre><p>Le service d’authentification implémente <code>IPublicClientApplication</code>, pour l’instancier, on utilise le builder <code>PublicClientApplicationBuilder</code> :</p><pre><code class="language-csharp">public App()
+{
+    InitializeComponent();
+
+    AuthenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
+            .WithIosKeychainSecurityGroup(Constants.IosKeychainSecurityGroups)
+            .WithB2CAuthority(Constants.AuthoritySignin)
+            .WithRedirectUri(Constants.RedirectMsalScheme)
+            .Build();
+    [...]
+}
+</code></pre><h2 id="configuration-de-lapplication-ios">Configuration de l’application iOS</h2><h3 id="infoplist">Info.plist</h3><p>Souvenez-vous côté serveur, vous avez configuré un <em>Redirect Uri</em> sous la forme <code>msal[redirect_uri]://auth</code></p><p>Il s’agit ici de renseigner cette valeur dans le fichier Info.plist du projet iOS. Cela se passe dans l’onglet <em>Advanced</em>, rubrique <em>URL Types</em> :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/e69e5ca4a86d40aaba291deee5c60caf.png" alt="Redirect Uri dans Info.plist" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/e69e5ca4a86d40aaba291deee5c60caf-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/e69e5ca4a86d40aaba291deee5c60caf-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/e69e5ca4a86d40aaba291deee5c60caf-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/e69e5ca4a86d40aaba291deee5c60caf-lg.png 1024w"></figure><p></p><h3 id="keychain-dans-entitlementsplist">Keychain dans Entitlements.plist</h3><p>Il est ensuite nécessaire d’enregistrer un Keychain dans <em>Entitlements.plist</em> :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/ed660e0f6cf54409b5237432c27a3909.png" alt="Keychain dans Entitlements.plist" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/ed660e0f6cf54409b5237432c27a3909-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ed660e0f6cf54409b5237432c27a3909-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ed660e0f6cf54409b5237432c27a3909-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ed660e0f6cf54409b5237432c27a3909-lg.png 1024w"></figure><p></p><p>Si cela ne s’est pas fait automatiquement, vérifiez bien que le fichier <em>Entitlements.plist</em> est sélectionné comme <em>Custom Entitlements</em> dans l’onglet <em>iOS Bundle Signing</em> du projet iOS.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/bd0f850cd2e8445688885dbc6c689b59.png" alt="Custom Entitlements" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/bd0f850cd2e8445688885dbc6c689b59-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bd0f850cd2e8445688885dbc6c689b59-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bd0f850cd2e8445688885dbc6c689b59-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bd0f850cd2e8445688885dbc6c689b59-lg.png 1024w"></figure><p></p><p>Faîtes-le bien pour chacune de vos configurations de Build, sinon vous aurez une exception à l’exécution concernant le Keychain !</p><h3 id="surcharge-de-la-méthode-openurl-dans-appdelegate">Surcharge de la méthode OpenUrl dans AppDelegate</h3><pre><code class="language-csharp">using Microsoft.Identity.Client;
+[...]
+
+[Register(&quot;AppDelegate&quot;)]
+public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+{
+    [...]
+    
+    public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
+    {
+        AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(url);
+        return base.OpenUrl(app, url, options);
+    }
+}
+</code></pre><h2 id="configuration-lapplication-android">Configuration l’application Android</h2><h3 id="manifeste">Manifeste</h3><p>Comme pour iOS, le <em>Redirect Uri</em> doit être déclaré dans le manifeste Android.</p><pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; android:versionCode=&quot;1&quot; android:versionName=&quot;1.0&quot; package=&quot;com.companyname.adb2capp&quot;&gt;
+    &lt;uses-sdk android:minSdkVersion=&quot;21&quot; android:targetSdkVersion=&quot;30&quot; /&gt;
+    &lt;application android:label=&quot;ADB2CApp.Android&quot; android:theme=&quot;@style/MainTheme&quot;&gt;
+        
+        &lt;!-- MSAL REGISTRATION START --&gt;
+        &lt;activity android:name=&quot;microsoft.identity.client.BrowserTabActivity&quot;&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
+                &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
+                &lt;data android:scheme=&quot;msal[redirect_uri]&quot; android:host=&quot;auth&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+        &lt;!-- MSAL REGISTRATION END --&gt;
+    &lt;/application&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+&lt;/manifest&gt;
+</code></pre><h3 id="modifications-dans-mainactivity">Modifications dans <em>MainActivity</em></h3><p>L’authentification MSAL nécessite :</p><ul><li>De passer l’activity à <em>App.UIParent</em></li><li>De surcharger <em>OnActivityResult</em></li></ul><pre><code class="language-csharp">using Microsoft.Identity.Client;
+[...]
+
+public class MainActivity : FormsAppCompatActivity
+{
+    protected override void OnCreate(Bundle bundle)
+    {
+        TabLayoutResource = Resource.Layout.Tabbar;
+        ToolbarResource = Resource.Layout.Toolbar;
+
+        base.OnCreate(bundle);
+
+        Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+        global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+        LoadApplication(new App());
+        // ADDED
+        App.UIParent = this;
+    }
+
+    // OVERRIDED
+    protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+    {
+        base.OnActivityResult(requestCode, resultCode, data);
+        AuthenticationContinuationHelper.SetAuthenticationContinuationEventArgs(requestCode, resultCode, data);
+    }
+    
+    [...]
+}
+</code></pre><h2 id="implémentation-dans-le-projet-xamarinforms">Implémentation dans le projet Xamarin.Forms</h2><h3 id="création-dune-page-de-login">Création d’une page de Login</h3><p>On va faire super simple, créez une page <code>LoginPage.xaml</code>, ajoutez-y un bouton <code>Login</code> et abonnez-le à l’événement <code>Clicked</code>.</p><pre><code class="language-xml">&lt;ContentPage.Content&gt;
+    &lt;Button x:Name=&quot;LoginButton&quot;
+        Text=&quot;LOGIN&quot;
+        Clicked=&quot;LoginButton_Clicked&quot;
+        VerticalOptions=&quot;Center&quot;
+        HorizontalOptions=&quot;Center&quot;
+        /&gt;
+&lt;/ContentPage.Content&gt;
+</code></pre><p>Visuellement, difficile de faire plus basique :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/c2336499611b40d4a380610ef52dabe7.png" alt="Login Page" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/c2336499611b40d4a380610ef52dabe7-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/c2336499611b40d4a380610ef52dabe7-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/c2336499611b40d4a380610ef52dabe7-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/c2336499611b40d4a380610ef52dabe7-lg.png 1024w"></figure><p></p><p>A l’apparition de la page, appelez <code>AcquireTokenSilentAsync</code> pour rafraîchir le token d’authentification, au cas où un utilisateur soit déjà authentifié.</p><pre><code class="language-csharp">public partial class LoginPage : ContentPage
+{
+    [...]
+
+    protected override async void OnAppearing()
+    {
+        try
+        {
+            // Look for existing account
+            IEnumerable&lt;IAccount&gt; accounts = await App.AuthenticationClient.GetAccountsAsync();
+            
+            AuthenticationResult result = await App.AuthenticationClient
+                .AcquireTokenSilent(Constants.Scopes, accounts.FirstOrDefault())
+                .ExecuteAsync();
+                
+            await Navigation.PushAsync(new LogoutPage(result));
+        }
+        catch
+        {
+            // Do nothing - the user isn&#39;t logged in
+        }
+        base.OnAppearing();
+    }
+
+    [...]
+}
+</code></pre><p>Au clic sur le bouton, <code>AcquireTokenInteractive</code> est utilisé pour ouvrir le navigateur de l’appareil et afficher la page de Signin.</p><ul><li>Si la connexion réussit le résultat de l’authentification est passé à la page <code>LogoutPage</code>.</li><li>Si l’utilisateur clique sur l’option “j’ai oublié mon mot de passe”, une exception particulière est interceptée pour lancer la procédure de récupération de mot de passe.</li></ul><pre><code class="language-csharp">private async void LoginButton_Clicked(object sender, EventArgs e)
+{
+    AuthenticationResult result;
+    try
+    {
+        result = await App.AuthenticationClient
+            .AcquireTokenInteractive(Constants.Scopes)
+            .WithPrompt(Prompt.SelectAccount)
+            .WithParentActivityOrWindow(App.UIParent)
+            .ExecuteAsync();
+
+        await Navigation.PushAsync(new LogoutPage(result));
+    }
+    catch (MsalException ex)
+    {
+        if (ex.Message != null &amp;&amp; ex.Message.Contains(&quot;AADB2C90118&quot;))
+        {
+            result = await OnForgotPassword();
+            await Navigation.PushAsync(new LogoutPage(result));
+        }
+        else if (ex.ErrorCode != &quot;authentication_canceled&quot;)
+        {
+            await DisplayAlert(&quot;An error has occurred&quot;, &quot;Exception message: &quot; + ex.Message, &quot;Dismiss&quot;);
+        }
+    }
+}
+</code></pre><p>Et voici le code pour la réinitialisation du mot de passe :</p><pre><code class="language-csharp">private async Task&lt;AuthenticationResult&gt; OnForgotPassword()
+{
+    try
+    {
+        return await App.AuthenticationClient
+            .AcquireTokenInteractive(Constants.Scopes)
+            .WithPrompt(Prompt.SelectAccount)
+            .WithParentActivityOrWindow(App.UIParent)
+            .WithB2CAuthority(Constants.AuthorityPasswordReset)
+            .ExecuteAsync();
+    }
+    catch (MsalException)
+    {
+        // Do nothing - ErrorCode will be displayed in OnLoginButtonClicked
+        return null;
+    }
+}
+</code></pre><p>Une fois la page créée, remplacez <code>MainPage</code> dans <code>App</code> par une <code>NavigationPage</code> : <code>MainPage = new NavigationPage(new LoginPage());</code> de façon à naviguer directement sur la <code>LoginPage</code> à l’ouverture de l’application.</p><h3 id="création-dune-page-de-logout">Création d’une page de logout</h3><p>La page <code>LogoutPage</code> est très similaire à la page de login à ceci près :</p><ul><li>Son constructeur reçoit en paramètre le résultat de l’authentification</li><li>Un <code>Label</code> affiche les informations de base de l’utilisateur</li><li>Le bouton <code>Login</code> est remplacé par un bouton <code>Logout</code></li></ul><pre><code class="language-xml">&lt;ContentPage.Content&gt;
+    &lt;StackLayout VerticalOptions=&quot;Center&quot; HorizontalOptions=&quot;Center&quot;&gt;
+        &lt;Label x:Name=&quot;UserInfoLabel&quot;
+                   FontSize=&quot;Large&quot;
+                   HorizontalTextAlignment=&quot;Center&quot;
+                   /&gt;
+        &lt;Button x:Name=&quot;LogoutButton&quot;
+                    Text=&quot;LOGOUT&quot;
+                    Clicked=&quot;LogoutButton_Clicked&quot;
+                    HorizontalOptions=&quot;Center&quot;
+                    VerticalOptions=&quot;Center&quot;
+                    /&gt;
+    &lt;/StackLayout&gt;
+&lt;/ContentPage.Content&gt;
+</code></pre><p>Commençons par récupérer l’<code>AuthenticationResult</code> dans le constructeur de la page :</p><pre><code class="language-csharp">AuthenticationResult authenticationResult;
+public LogoutPage(AuthenticationResult result)
+{
+    InitializeComponent();	
+    authenticationResult = result;
+}
+</code></pre><h4 id="les-informations-utilisateur-claims">Les informations utilisateur (Claims)</h4><p>Les informations concernant l’utilisateur, celles que vous avez sélectionnées parmi les <code>Claims</code> lors de la création de votre <code>User Flow Signin</code> sont codées dans la propriété <code>authenticationResult.IdToken</code> sous la forme d’un <strong><a href="https://fr.wikipedia.org/wiki/JSON_Web_Token">token jwt</a>.</strong> Pour le décoder, vous aurez besoin d’installer le package nuget <code>System.IdentityModel.Tokens.Jwt</code>.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/bab1879b2fd647caabcab68ccfaa7a27.png" alt="Package nuget JWT" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/bab1879b2fd647caabcab68ccfaa7a27-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bab1879b2fd647caabcab68ccfaa7a27-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bab1879b2fd647caabcab68ccfaa7a27-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/bab1879b2fd647caabcab68ccfaa7a27-lg.png 1024w"></figure><p></p><p>Et voici le snippet pour le décoder :</p><pre><code class="language-csharp">var stream = authenticationResult.IdToken;
+var handler = new JwtSecurityTokenHandler();
+JwtSecurityToken decodedToken = (JwtSecurityToken)handler.ReadToken(stream);
+</code></pre><p>Vous retrouverez toutes les informations dans une collection d’objet <code>Claim</code>, notamment au travers les propriétés <code>Type</code> et <code>Value</code> :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/85c24b29abca478a83d2c41aa5f504b3.png" alt="Structure des données de Claim" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/85c24b29abca478a83d2c41aa5f504b3-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/85c24b29abca478a83d2c41aa5f504b3-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/85c24b29abca478a83d2c41aa5f504b3-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/85c24b29abca478a83d2c41aa5f504b3-lg.png 1024w"></figure><p></p><p>Exemple, pour afficher le nom et la ville de l’utilisateur :</p><pre><code class="language-csharp">string name = decodedToken.Claims.FirstOrDefault(c =&gt; c.Type == &quot;name&quot;)?.Value ?? &quot;Noname&quot;;
+string city = decodedToken.Claims.FirstOrDefault(c =&gt; c.Type == &quot;city&quot;)?.Value ?? &quot;Unknown city&quot;;
+
+UserInfoLabel.Text = $&quot;Welcome {name}, from {city}&quot;;
+</code></pre><p>Le code sera appelé de préférence dans le <code>OnAppearing</code> de la page plutôt que dans son constructeur.</p><p>Et voilà le résultat :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/1050e4916bdf4788b637930fa9fad470.png" alt="Page de Logout" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/1050e4916bdf4788b637930fa9fad470-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/1050e4916bdf4788b637930fa9fad470-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/1050e4916bdf4788b637930fa9fad470-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/1050e4916bdf4788b637930fa9fad470-lg.png 1024w"></figure><p></p><h3 id="déconnexion">Déconnexion</h3><p>La déconnexion consiste principalement à retirer un compte de <code>AuthenticationClient</code> :</p><pre><code class="language-csharp">private async void LogoutButton_Clicked(object sender, EventArgs e)
+{
+    IEnumerable&lt;IAccount&gt; accounts = await App.AuthenticationClient.GetAccountsAsync();
+    while (accounts.Any())
+    {
+        await App.AuthenticationClient.RemoveAsync(accounts.First());
+        accounts = await App.AuthenticationClient.GetAccountsAsync();
+    }
+    
+    await Navigation.PopAsync();
+}
+</code></pre><h3 id="la-page-de-signin">La page de Signin</h3><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/cd085170ebd9443da4c69f613d06d631.png" alt="Page de Signin" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/cd085170ebd9443da4c69f613d06d631-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/cd085170ebd9443da4c69f613d06d631-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/cd085170ebd9443da4c69f613d06d631-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/cd085170ebd9443da4c69f613d06d631-lg.png 1024w"></figure><h3 id="page-de-réinitialisation-de-mot-de-passe">Page de réinitialisation de mot de passe</h3><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/42/ff9ca60e682d4f16acd619ee2d0aa7c6.png" alt="Page de réinitialisation de mot de passe" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff9ca60e682d4f16acd619ee2d0aa7c6-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff9ca60e682d4f16acd619ee2d0aa7c6-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff9ca60e682d4f16acd619ee2d0aa7c6-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/42/responsive/ff9ca60e682d4f16acd619ee2d0aa7c6-lg.png 1024w"></figure></div><aside><p class="post__last-updated">Mis-à-jour le mardi 23 mars 2021</p><div class="post__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fauthentification-azure-directory-b2c-dans-une-application-xamarinforms%2F" class="js-share facebook" title="Facebook" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/></svg> Facebook </a><a href="https://twitter.com/share?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fauthentification-azure-directory-b2c-dans-une-application-xamarinforms%2F&amp;via=Sylvain%20Moingeon&amp;text=Authentification%20Azure%20Directory%20B2C%20dans%20une%20application%20Xamarin.Forms" class="js-share twitter" title="Twitter" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/></svg> Twitter </a><a href="https://mix.com/add?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fauthentification-azure-directory-b2c-dans-une-application-xamarinforms%2F" class="js-share mix" title="Mix" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#mix"/></svg> Mix </a><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fauthentification-azure-directory-b2c-dans-une-application-xamarinforms%2F&amp;title=Authentification%20Azure%20Directory%20B2C%20dans%20une%20application%20Xamarin.Forms" class="js-share linkedin" title="LinkedIn" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#linkedin"/></svg> LinkedIn </a><a href="https://api.whatsapp.com/send?text=Authentification%20Azure%20Directory%20B2C%20dans%20une%20application%20Xamarin.Forms https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fauthentification-azure-directory-b2c-dans-une-application-xamarinforms%2F" class="js-share whatsapp" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#whatsapp"/></svg> WhatsApp</a></div></aside><footer><div class="post__bio"><img src="https://www.gravatar.com/avatar/f0139f72232177b730a57cff5c38c0b2?s&#x3D;240" loading="lazy" alt="Sylvain"><h3><a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" class="inverse" title="Sylvain">Sylvain</a></h3><p>Un peu geek, diplômé en sciences (bac+5) et informatique (BTS IG), Sylvain confectionne logiciels et applications depuis 2007. C&#x27;est aussi un père de famille, instructeur de Yoseikan Budo, photographe éclairé et musicien amateur.</p></div><ul class="post__tag"><li><a href="https://www.sylvainmoingeon.fr/tags/active-directory-b2c/">Active Directory B2C</a></li><li><a href="https://www.sylvainmoingeon.fr/tags/azure/">Azure</a></li><li><a href="https://www.sylvainmoingeon.fr/tags/xamarinforms/">Xamarin.Forms</a></li></ul><nav class="post__nav"><div class="post__nav__prev">Article précédent<h3 class="h5"><a href="https://www.sylvainmoingeon.fr/le-xamarin-community-toolkit/" class="inverse" rel="prev">Le Xamarin Community Toolkit</a></h3></div></nav><div class="post__related"><h3>Cela vous intéressera peut-être</h3><div class="post__related__wrap"><figure><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/"><img src="https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-xs.jpg" loading="lazy" alt=""></a><figcaption><time datetime="2020-11-10T18:22">mardi 10 novembre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/" class="inverse">Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2</a></h4></figcaption></figure><figure><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/"><img src="https://www.sylvainmoingeon.fr/media/posts/36/responsive/micro-assembly-xs.jpg" loading="lazy" alt=""></a><figcaption><time datetime="2020-10-22T12:13">jeudi 22 octobre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/" class="inverse">Créer un contrôle réutilisable 100% Xamarin.Forms, partie 1</a></h4></figcaption></figure><figure><a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/"><img src="https://www.sylvainmoingeon.fr/media/posts/33/responsive/question-mark-xs.jpg" loading="lazy" alt=""></a><figcaption><time datetime="2020-09-04T19:15">vendredi 4 septembre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/" class="inverse">[Xamarin.Forms] MVVM - A quoi ça sert ?</a></h4></figcaption></figure></div></div></footer></article><div class="comments wrapper"><h3>Commentaires</h3><div id="disqus_thread"><p>Pour utiliser les commentaires, merci d'<a href="https://www.sylvainmoingeon.fr/#cookie-settings" title="configuration des cookies">accepter les cookies du groupe "Disqus"</a>.</p></div><script type="gdpr-blocker/disqus">var disqus_config = function () {
+                    this.page.url = 'https://www.sylvainmoingeon.fr/authentification-azure-directory-b2c-dans-une-application-xamarinforms/';
+            		this.page.identifier = '42';
+                    this.page.title = ' Authentification Azure Directory B2C dans une application Xamarin.Forms';
+                };
+            
+                var disqus_loaded = false;
+            
+                function publiiLoadDisqus() {
+                    if(disqus_loaded) {
+                        return false;
+                    }
+            
+                    var top = document.getElementById('disqus_thread').offsetTop;
+            
+                    if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
+                        disqus_loaded = true;
+            
+                        (function () {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://artisanlogiciel.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                }
+            
+                publiiLoadDisqus();
+            
+                window.onscroll = function() {
+                    publiiLoadDisqus();
+                };</script><noscript>Veuillez activer javascript pour voir les <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div></main></div><footer class="footer"><p><a href="https://www.planetxamarin.com/">Featured by<br><img src="https://www.planetxamarin.com/Content/img/planetxamarin-featured-badge.png" alt="Logo Planet Xamarin" width="180"></a></p><div class="footer__copyright"><p>Powered by <a href="https://getpublii.com" target="_blank" rel="nofollow noopener">Publii Static CMS</a> - <a href="https://icons8.com/icon/38641/xamarin">using  Xamarin icon by Icons8</a> </p><p><a href="../../../../../../../../../../mentions-legales" title="Mention légales">Mentions légales</a> - <a href="../../../../../../../../../../politique-des-commentaires" title="politique des commentaires">Politique des commentaires</a> - <a href="../../../../../../../../../../#cookie-settings" title="configuration des cookies">Configuration des cookies</a> - <a href="../../../../../../../../../../feed.xml">Abonnez vous au flux rss <i class="fas fa-rss"></i></a></p></div><div class="footer__social"><a href="https://www.facebook.com/smoingeon" aria-label="Facebook" class="facebook"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/></svg> </a><a href="https://twitter.com/SylvainMoingeon" aria-label="Twitter" class="twitter"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/></svg> </a><a href="https://www.instagram.com/yoseikanquetigny/" aria-label="Instagram" class="instagram"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#instagram"/></svg> </a><a href="https://dev.to/sylvainmoingeon" style="font-size: 1.2rem; margin:28.8px 7.2px 0px" class="linkedin"><i class="fab fa-dev" title="sylvainmoingeon's DEV Profile"></i></a></div><button class="footer__bttop js-footer__bttop" aria-label="On remonte tout en haut"><svg><title>On remonte tout en haut</title><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#toparrow"/></svg></button></footer><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/prism.js"></script><script>window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.top',
+   };</script><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/scripts.min.js?v=18410cbe84c2356f2fa9c4bf730b3bca"></script><script>var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><div class="pcb" data-behaviour="badge-link" data-behaviour-link="#cookie-settings" data-revision="1" data-config-ttl="90" data-debug-mode="false"><div role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-title" aria-describedby="pcb-txt" class="pcb__banner"><div class="pcb__inner"><div id="pcb-title" role="heading" aria-level="2" class="pcb__title">Ce site web mange des cookies</div><div id="pcb-txt" class="pcb__txt">Le système de commentaire (Disqus) utilisé sur ce site enregistre des cookies sur votre appareil. Et c'est tout.</div><div class="pcb__buttons"><button type="button" class="pcb__btn pcb__btn--link pcb__btn--configure" aria-haspopup="dialog">Manage preferences</button> <button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Enregistrer</button></div></div></div><div class="pcb__popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-popup-title"><div class="pcb__popup__wrapper"><div class="pcb__inner pcb__popup__inner"><div class="pcb__popup__heading"><div id="pcb-popup-title" role="heading" aria-level="2" class="pcb__title">Cookie settings</div><button class="pcb__popup__close" aria-label="Close"></button></div><div class="pcb__popup__content"><div class="pcb__txt pcb__popup__txt">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</div><ul class="pcb__groups"><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Obligatoire</summary></details><div class="pcb__popup__switch is-checked"><input type="checkbox" data-group-name="" id="pcb-group-0" checked="checked"> <label for="pcb-group-0">Obligatoire</label></div></li><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Disqus (système de commentaires)</summary></details><div class="pcb__popup__switch"><input type="checkbox" data-group-name="disqus" id="disqus-cookies"> <label for="disqus-cookies">Disqus (système de commentaires)</label></div></li></ul></div><div class="pcb__buttons pcb__popup__buttons"><button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button> <button type="button" class="pcb__btn pcb__btn--reject">Reject all</button> <button type="button" class="pcb__btn pcb__btn--save">Save settings</button></div></div></div></div><div class="pcb__overlay" aria-hidden="true"></div><button class="pcb__badge" aria-label="Cookies" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 23 23" fill="currentColor"><path d="M21.41 12.71c-.08-.01-.15 0-.22 0h-.03c-.03 0-.05 0-.08.01-.07 0-.13.01-.19.04-.52.21-1.44.19-2.02-.22-.44-.31-.65-.83-.62-1.53a.758.758 0 0 0-.27-.61.73.73 0 0 0-.65-.14c-1.98.51-3.49.23-4.26-.78-.82-1.08-.73-2.89.24-4.49.14-.23.14-.52 0-.75a.756.756 0 0 0-.67-.36c-.64.03-1.11-.1-1.31-.35-.19-.26-.13-.71-.01-1.29.04-.18.06-.38.03-.59-.05-.4-.4-.7-.81-.66C5.1 1.54 1 6.04 1 11.48 1 17.28 5.75 22 11.6 22c5.02 0 9.39-3.54 10.39-8.42.08-.4-.18-.78-.58-.87Zm-9.81 7.82c-5.03 0-9.12-4.06-9.12-9.06 0-4.34 3.05-8 7.25-8.86-.08.7.05 1.33.42 1.81.24.32.66.67 1.38.84-.76 1.86-.65 3.78.36 5.11.61.81 2.03 2 4.95 1.51.18.96.71 1.54 1.18 1.87.62.43 1.38.62 2.1.62.05 0 .09 0 .13-.01-1.23 3.64-4.7 6.18-8.64 6.18ZM13 17c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm5.29-12.3a.99.99 0 0 1-.29-.71c0-.55.45-.99 1-.99a1 1 0 0 1 .71.3c.19.19.29.44.29.71 0 .55-.45.99-1 .99a1 1 0 0 1-.71-.3ZM9 13.5c0 .83-.67 1.5-1.5 1.5S6 14.33 6 13.5 6.67 12 7.5 12s1.5.67 1.5 1.5Zm3.25.81a.744.744 0 0 1-.06-1.05c.28-.32.75-.34 1.05-.06.31.28.33.75.05 1.06-.15.16-.35.25-.56.25-.18 0-.36-.06-.5-.19ZM8.68 7.26c.41.37.44 1 .07 1.41-.2.22-.47.33-.75.33a.96.96 0 0 1-.67-.26c-.41-.37-.44-1-.07-1.41.37-.42 1-.45 1.41-.08Zm11.48 1.88c.18-.19.52-.19.7 0 .05.04.09.1.11.16.03.06.04.12.04.19 0 .13-.05.26-.15.35-.09.1-.22.15-.35.15s-.26-.05-.35-.15a.355.355 0 0 1-.11-.16.433.433 0 0 1-.04-.19c0-.13.05-.26.15-.35Zm-4.93-1.86a.75.75 0 1 1 1.059-1.06.75.75 0 0 1-1.059 1.06Z"/></svg></button></div><script>(function(win) {
+    if (!document.querySelector('.pcb')) {
+        return;
+    }
+
+    var cbConfig = {
+        behaviour: document.querySelector('.pcb').getAttribute('data-behaviour'),
+        behaviourLink: document.querySelector('.pcb').getAttribute('data-behaviour-link'),
+        revision: document.querySelector('.pcb').getAttribute('data-revision'),
+        configTTL: parseInt(document.querySelector('.pcb').getAttribute('data-config-ttl'), 10),
+        debugMode: document.querySelector('.pcb').getAttribute('data-debug-mode') === 'true',
+        initialState: null,
+        initialLsState: null,
+        previouslyAccepted: []
+    };
+
+    var cbUI = {
+        wrapper: document.querySelector('.pcb'),
+        banner: {
+            element: null,
+            btnAccept: null,
+            btnReject: null,
+            btnConfigure: null
+        },
+        popup: {
+            element: null,
+            btnClose: null,
+            btnSave: null,
+            btnAccept: null,
+            btnReject: null,
+            checkboxes: null,
+        },
+        overlay: null,
+        badge: null,
+        blockedScripts: document.querySelectorAll('script[type^="gdpr-blocker/"]'),
+        triggerLinks: cbConfig.behaviourLink ? document.querySelectorAll('a[href*="' + cbConfig.behaviourLink + '"]') : null
+    };
+
+    function initUI () {
+        // setup banner elements
+        cbUI.banner.element = cbUI.wrapper.querySelector('.pcb__banner');
+        cbUI.banner.btnAccept = cbUI.banner.element.querySelector('.pcb__btn--accept');
+        cbUI.banner.btnReject = cbUI.banner.element.querySelector('.pcb__btn--reject');
+        cbUI.banner.btnConfigure = cbUI.banner.element.querySelector('.pcb__btn--configure');
+
+        // setup popup elements
+        if (cbUI.wrapper.querySelector('.pcb__popup')) {
+            cbUI.popup.element = cbUI.wrapper.querySelector('.pcb__popup');
+            cbUI.popup.btnClose = cbUI.wrapper.querySelector('.pcb__popup__close');
+            cbUI.popup.btnSave = cbUI.popup.element.querySelector('.pcb__btn--save');
+            cbUI.popup.btnAccept = cbUI.popup.element.querySelector('.pcb__btn--accept');
+            cbUI.popup.btnReject = cbUI.popup.element.querySelector('.pcb__btn--reject');
+            cbUI.popup.checkboxes = cbUI.popup.element.querySelector('input[type="checkbox"]');
+            // setup overlay
+            cbUI.overlay = cbUI.wrapper.querySelector('.pcb__overlay');
+        }
+
+        cbUI.badge = cbUI.wrapper.querySelector('.pcb__badge');
+
+        if (cbConfig.behaviour.indexOf('link') > -1) {
+            for (var i = 0; i < cbUI.triggerLinks.length; i++) {
+                cbUI.triggerLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBannerOrPopup();
+                });
+            }
+        }
+    }
+
+    function initState () {
+        var lsKeyName = getConfigName();
+        var currentConfig = localStorage.getItem(lsKeyName);
+        var configIsFresh = checkIfConfigIsFresh();
+
+        if (!configIsFresh || currentConfig === null) {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config not found, or configuration expired');
+            }
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                    'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                    'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                    'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                    'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                    'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                    'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                });  
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                        'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                        'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                        'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                        'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                        'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                        'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                    }));
+                }
+            }
+
+            showBanner();
+        } else if (typeof currentConfig === 'string') {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config founded');
+            }
+
+            cbConfig.initialLsState = currentConfig.split(',');
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                    'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                    'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                    'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                    'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                    'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                    'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                });
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                        'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                        'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                        'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                        'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                        'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                        'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                    }));
+                }
+            }
+
+            showBadge();
+
+            if (cbUI.popup.element) {
+                var allowedGroups = currentConfig.split(',');
+                var checkedCheckboxes = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+
+                for (var j = 0; j < checkedCheckboxes.length; j++) {
+                    var name = checkedCheckboxes[j].getAttribute('data-group-name');
+
+                    if (name && name !== '-' && allowedGroups.indexOf(name) === -1) {
+                        checkedCheckboxes[j].checked = false;
+                    }
+                }
+
+                for (var i = 0; i < allowedGroups.length; i++) {
+                    var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + allowedGroups[i] + '"]');
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+
+                    allowCookieGroup(allowedGroups[i]);
+                }
+            }
+        }
+
+        setTimeout(function () {
+            cbConfig.initialState = getInitialStateOfConsents();
+        }, 0);
+    }
+
+    function checkIfConfigIsFresh () {
+        var lastConfigSave = localStorage.getItem('publii-gdpr-cookies-config-save-date');
+
+        if (lastConfigSave === null) {
+            return false;
+        }
+
+        lastConfigSave = parseInt(lastConfigSave, 10);
+
+        if (lastConfigSave === 0) {
+            return true;
+        }
+
+        if (+new Date() - lastConfigSave < cbConfig.configTTL * 24 * 60 * 60 * 1000) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getDefaultConsentState (currentConfig, consentGroup) {
+        let configGroups = currentConfig.split(',');
+
+        for (let i = 0; i < configGroups.length; i++) {
+            let groupName = configGroups[i];
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === groupName);
+
+            if (group && group[consentGroup]) {
+                return 'granted';
+            }
+        }  
+        
+        if (window.publiiCBGCM.defaultState[consentGroup]) {
+            return 'granted'; 
+        }
+        
+        return 'denied';
+    }
+
+    function initBannerEvents () {
+        cbUI.banner.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('banner');
+            showBadge();
+        }, false);
+
+        if (cbUI.banner.btnReject) {
+            cbUI.banner.btnReject.addEventListener('click', function (e) {
+                e.preventDefault();
+                rejectAllCookies();
+                showBadge();
+            }, false);
+        }
+
+        if (cbUI.banner.btnConfigure) {
+            cbUI.banner.btnConfigure.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideBanner();
+                showAdvancedPopup();
+                showBadge();
+            }, false);
+        }
+    }
+
+    function initPopupEvents () {
+        if (!cbUI.popup.element) {
+            return;
+        }
+
+        cbUI.overlay.addEventListener('click', function (e) {
+            hideAdvancedPopup();
+        }, false);
+
+        cbUI.popup.element.addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+
+        cbUI.popup.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('popup');
+        }, false);
+
+        cbUI.popup.btnReject.addEventListener('click', function (e) {
+            e.preventDefault();
+            rejectAllCookies();
+        }, false);
+
+        cbUI.popup.btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            saveConfiguration();
+        }, false);
+
+        cbUI.popup.btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideAdvancedPopup();
+        }, false);
+    }
+
+    function initBadgeEvents () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.addEventListener('click', function (e) {
+            showBannerOrPopup();
+        }, false);
+    }
+
+    initUI();
+    initState();
+    initBannerEvents();
+    initPopupEvents();
+    initBadgeEvents();
+
+    /**
+     * API
+     */
+    function addScript (src, inline) {
+        var newScript = document.createElement('script');
+
+        if (src) {
+            newScript.setAttribute('src', src);
+        }
+
+        if (inline) {
+            newScript.text = inline;
+        }
+
+        document.body.appendChild(newScript);
+    }
+
+    function allowCookieGroup (allowedGroup) {
+        var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+        cbConfig.previouslyAccepted.push(allowedGroup);
+    
+        for (var j = 0; j < scripts.length; j++) {
+            addScript(scripts[j].src, scripts[j].text);
+        }
+
+        var groupEvent = new Event('publii-cookie-banner-unblock-' + allowedGroup);
+        document.body.dispatchEvent(groupEvent);
+        unlockEmbeds(allowedGroup);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Allowed group: ' + allowedGroup);
+        }
+
+        if (window.publiiCBGCM && cbConfig.initialLsState.indexOf(allowedGroup) === -1) {
+            let consentResult = {};
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
+
+            if (group) {
+                let foundSomeConsents = false;
+
+                Object.keys(group).forEach(key => {
+                    if (key !== 'cookieGroup' && group[key] === true) {
+                        consentResult[key] = 'granted';
+                        foundSomeConsents = true;
+                    }
+                });
+
+                if (foundSomeConsents) {
+                    gtag('consent', 'update', consentResult);   
+
+                    if (cbConfig.debugMode) {
+                        console.log('🍪 GCMv2 UPDATE: ' + JSON.stringify(consentResult));
+                    }
+                }
+            }
+        }
+    }
+
+    function showBannerOrPopup () {
+        if (cbUI.popup.element) {
+            showAdvancedPopup();
+        } else {
+            showBanner();
+        }
+    }
+
+    function showAdvancedPopup () {
+        cbUI.popup.element.classList.add('is-visible');
+        cbUI.overlay.classList.add('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'false');
+        cbUI.overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideAdvancedPopup () {
+        cbUI.popup.element.classList.remove('is-visible');
+        cbUI.overlay.classList.remove('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'true');
+        cbUI.overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBanner () {
+        cbUI.banner.element.classList.add('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner () {
+        cbUI.banner.element.classList.remove('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBadge () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.classList.add('is-visible');
+        cbUI.badge.setAttribute('aria-hidden', 'false');
+    }
+
+    function getConfigName () {
+        var lsKeyName = 'publii-gdpr-allowed-cookies';
+
+        if (cbConfig.revision) {
+            lsKeyName = lsKeyName + '-v' + parseInt(cbConfig.revision, 10);
+        }
+
+        return lsKeyName;
+    }
+
+    function storeConfiguration (allowedGroups) {
+        var lsKeyName = getConfigName();
+        var dataToStore = allowedGroups.join(',');
+        localStorage.setItem(lsKeyName, dataToStore);
+
+        if (cbConfig.configTTL === 0) {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', 0);
+
+            if (cbConfig.debugMode) {
+                console.log('🍪 Store never expiring configuration');
+            }
+        } else {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', +new Date());
+        }
+    }
+
+    function getInitialStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Initial state: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getCurrentStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 State to save: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getAllGroups () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        return groups;
+    }
+
+    function acceptAllCookies (source) {
+        var groupsToAccept = getAllGroups();
+        storeConfiguration(groupsToAccept);
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        if (cbUI.popup.element) {
+            var checkboxesToCheck = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+
+            for (var j = 0; j < checkboxesToCheck.length; j++) {
+                checkboxesToCheck[j].checked = true;
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Accept all cookies: ', groupsToAccept.join(', '));
+        }
+
+        if (source === 'popup') {
+            hideAdvancedPopup();
+        } else if (source === 'banner') {
+            hideBanner();
+        }
+    }
+
+    function rejectAllCookies () {
+        if (cbConfig.debugMode) {
+            console.log('🍪 Reject all cookies');
+        }
+
+        storeConfiguration([]);
+        setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
+
+    function saveConfiguration () {
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+
+        if (reloadIsNeeded(groupsToAccept)) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 100);
+            return;
+        }
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        hideAdvancedPopup();
+    }
+
+    function reloadIsNeeded (groupsToAccept) {
+        // check if user rejected consent for initial groups
+        var initialGroups = cbConfig.initialState;
+        var previouslyAcceptedGroups = cbConfig.previouslyAccepted;
+        var groupsToCheck = initialGroups.concat(previouslyAcceptedGroups);
+
+        for (var i = 0; i < groupsToCheck.length; i++) {
+            var groupToCheck = groupsToCheck[i];
+
+            if (groupToCheck !== '' && groupsToAccept.indexOf(groupToCheck) === -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Reload is needed due lack of: ', groupToCheck);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function unlockEmbeds (cookieGroup) {
+        var iframesToUnlock = document.querySelectorAll('.pec-wrapper[data-consent-group-id="' + cookieGroup + '"]');
+
+        for (var i = 0; i < iframesToUnlock.length; i++) {
+            var iframeWrapper = iframesToUnlock[i];
+            iframeWrapper.querySelector('.pec-overlay').classList.remove('is-active');
+            iframeWrapper.querySelector('.pec-overlay').setAttribute('aria-hidden', 'true');
+            var iframe = iframeWrapper.querySelector('iframe');
+            iframe.setAttribute('src', iframe.getAttribute('data-consent-src'));
+        }
+    }
+
+    win.publiiEmbedConsentGiven = function (cookieGroup) {
+        // it will unlock embeds
+        allowCookieGroup(cookieGroup);
+
+        var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + cookieGroup + '"]');
+
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+    }
+})(window);</script></body></html>

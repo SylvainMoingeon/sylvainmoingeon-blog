@@ -1,0 +1,666 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT - Sylvain Moingeon</title><meta name="description" content="Grace à ResizetizerNT, gérer ses images dans Xamarin.Forms n'est plus un enfer. Une simple image svg partagée suffit."><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/"><link rel="alternate" type="application/atom+xml" href="https://www.sylvainmoingeon.fr/feed.xml"><link rel="alternate" type="application/json" href="https://www.sylvainmoingeon.fr/feed.json"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@SylvainMoingeon"><meta name="twitter:title" content="Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT"><meta name="twitter:description" content="Grace à ResizetizerNT, gérer ses images dans Xamarin.Forms n'est plus un enfer. Une simple image svg partagée suffit."><meta name="twitter:image" content="https://www.sylvainmoingeon.fr/media/posts/19/resizetizernt-hero-2.jpg"><link href="https://www.sylvainmoingeon.fr/assets/fontawesome/css/all.css" rel="stylesheet"><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/prism.css"><link rel="shortcut icon" href="https://www.sylvainmoingeon.fr/media/website/favicon.png" type="image/png"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap&subset=latin-ext" rel="stylesheet"><style>:root{--body-font:'DM Sans',sans-serif;--heading-font:var(--body-font);--post-entry-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/style.css?v=2c8d1f0d0689c5a4f4ff50b8f1122140"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/"},"headline":"Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT","datePublished":"2020-07-14T17:00","dateModified":"2020-07-15T18:46","image":{"@type":"ImageObject","url":"https://www.sylvainmoingeon.fr/media/posts/19/resizetizernt-hero-2.jpg","height":4000,"width":6000},"description":"Grace à ResizetizerNT, gérer ses images dans Xamarin.Forms n'est plus un enfer. Une simple image svg partagée suffit.","author":{"@type":"Person","name":"Sylvain","url":"https://www.sylvainmoingeon.fr/auteurs/sylvain/"},"publisher":{"@type":"Organization","name":"Sylvain"}}</script><script>function addEmailAddresses(){     
+      document.querySelectorAll('.email').forEach(function(linkElement) {
+      
+        var domainname = window.atob("c3lsdmFpbm1vaW5nZW9uLmZy");
+        var username = window.atob(linkElement.getAttribute("id"));
+        var emailaddress = username + "@" + domainname;
+        var mailto = window.atob("bWFpbHRv");  // mailto:
+        //linkElement.innerHTML = emailaddress;
+        linkElement.setAttribute("href", mailto + ":" + emailaddress + "?subject=[Contact%20site%20web]");
+      });      
+    }</script></head><body onload="addEmailAddresses()" class="line-numbers"><div class="container"><header class="top" id="js-top"><div><a class="logo" href="https://www.sylvainmoingeon.fr/">Sylvain Moingeon</a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://www.sylvainmoingeon.fr/" target="_self">Accueil</a></li><li><a href="https://www.sylvainmoingeon.fr/contact/" target="_self">Contact</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="https://www.sylvainmoingeon.fr/search.html" class="search__form"><input class="search__input js-search-input" type="search" name="q" placeholder="chercher..." aria-label="Search input" autofocus="autofocus"></form><button class="search__close js-search-close" aria-label="Fermer">Fermer</button></div></div><button class="search__btn js-search-btn" aria-label="Search"><svg role="presentation" focusable="false" height="15px" width="15px"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#search"/></svg></button></div></div></header><main><article class="post wrapper"><div class="hero hero--narrow"><header><p><a href="https://www.sylvainmoingeon.fr/tags/xamarinforms/">Xamarin.Forms</a></p><h1>Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT</h1><address>par <a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" rel="author">Sylvain</a></address>publié le <time datetime="2020-07-14T17:00">mardi 14 juillet 2020</time></header><figure class="hero__image post__featured-image"><img src="https://www.sylvainmoingeon.fr/media/posts/19/resizetizernt-hero-2.jpg" srcset="https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-xs.jpg 300w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-sm.jpg 480w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-md.jpg 768w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-lg.jpg 1024w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-xl.jpg 1360w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/resizetizernt-hero-2-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" height="4000" width="6000" alt=""><figcaption>Image par Gerd Altmann de Pixabay</figcaption></figure></div><div class="post__entry"><p>Il y a peu, je vous montrais comment gagner en productivité en utilisant les <a href="https://www.sylvainmoingeon.fr/simplifiez-vous-les-fonts-sous-xamarinforms/">embedded fonts</a> pour intégrer des polices de caractère personnalisée dans Xamarin.Forms. Aujourd’hui encore, je vous propose de gagner énormément de temps en vous épargnant l’enfer de la gestion des images dans Xamarin.Forms.</p><h1 id="comment-a-t-on-pu-supporter-ça-si-longtemps-">Comment a-t-on pu supporter ça si longtemps ?</h1><p>Vous le savez, la force de Xamarin.Forms réside dans la mise-en-commun du code et des interfaces utilisateur entre toutes les plateformes. Cela fonctionne très bien dans 90% des cas mais il subsiste encore quelques situations qui nécessitent de travailler séparément dans chaque projet natif.</p><p>C’est le cas notamment de la gestion des images : il faut s’assurer d’avoir chaque image dans toutes les définitions nécessaires à chaque plateforme et de les distribuer au bon endroit.</p><p>Un véritable casse tête :</p><ul><li>iOS réclame 3 définitions différentes de chaque image, toutes stockées dans le même dossier mais avec des noms dépendant de leur densité. Par exemple : <code>image.png</code>, <code>image@2x.png</code>, <code>image@3x.png</code>.</li><li>Chez Android, c’est <em>légèrement</em> différent. L’image a le même nom quelque soit sa définition, mais chaque version est répartie dans le dossier correspondant à sa définition !</li><li>Sous UWP, c’est encore une nomenclature différente !</li></ul><p>Dans le meilleur des cas, vous disposez de tous les assets dans toutes les définitions, vous avez juste à bien les copier dans chaque dossier sans vous tromper. Et encore, chez moi Visual Studio fige plusieurs secondes à chaque fois que j’ajoute une image dans le projet Android. Juste un peu crispant.</p><p>La plupart du temps, vous avez juste une image de base et c’est à vous de vous débrouiller pour générer tous les assets. Alors bien entendu, il existe quelques outils qui automatisent tout ça, mais quand vous reçevez les assets au compte goutte et que vous devez recommencer 10 fois… 🤯</p><p>Et j’ai gardé le meilleur pour la fin. Quand on passera aux écrans 4K sur les téléphone et que tous les OS réclameront une ou deux versions supplémentaires de chacune de vos images ? Hein, vous y avez pensé ? Ça va être amusant de tout recommencer !</p><h1 id="jonathan-dick-mon-héros">Jonathan Dick, mon héros</h1><p>Alors figurez vous qu’il y a quelqu’un chez Xamarin que ça énervait autant que moi. Et pas n’importe qui : <a href="https://redth.codes/">Jonathan Dick</a>, l’un des principaux développeurs de l’équipe !</p><p>Il a donc créé une <a href="https://redth.codes/resizetizer-nt-shared-images-for-xamarin/">“petite chose”</a> comme il le dit lui-même qui génère automatiquement toutes les définitions d’images nécessaires et les distribue au bon endroit à partir d’une simple image vectorielle partagée dans le dossier Xamarin.Forms.</p><p>Cela s’appelle <a href="https://github.com/Redth/ResizetizerNT">ResizetizerNT</a>.</p><p>Pour ceux d’entre-vous qui comprennent l’anglais, je vous invite à consulter directement les articles originaux : <a href="https://redth.codes/resizetizer-nt-shared-images-for-xamarin/">Shared Images for Xamarin with Resizetizer NT</a> et <a href="https://channel9.msdn.com/Shows/XamarinShow/Cross-platform-Images-Simplified-with-ResizetizerNT--The-Xamarin-Show">La démonstration vidéo avec James Montemagno et Jonathan Dick</a></p><p>Sinon, continuez avec moi, je vous explique tout en français ! 😉</p><h1 id="installation-de-resizetizer">Installation de Resizetizer</h1><p>Partons d’une solution Xamarin.Forms “Blank” par défaut. Allez-y, je vous attends.</p><h2 id="1-installer-le-package-nuget">1. Installer le package nuget</h2><p>C’est bon, la solution est créée ? Ajoutons maintenant le package nuget <code>Resizertizer.NT</code> à tous les projets.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/19/install-nuget-package.png" alt="Image illustrant l'installation du package nuget Resizetizer.NT" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/19/responsive/install-nuget-package-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/install-nuget-package-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/install-nuget-package-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/install-nuget-package-lg.png 1024w"><figcaption>Installer le package nuget dans tous les projets</figcaption></figure><h2 id="2-ajouter-une-image-au-projet-xamarinforms">2. Ajouter une image au projet Xamarin.Forms</h2><p>Ajouter votre image au projet Xamarin.Forms, où bon vous semble mais en prenant bien garde que :</p><ul><li>L’image soit au format vectoriel <code>svg</code></li><li>Son <code>Build Action</code> soit <code>SharedImage</code></li></ul><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/19/shared-image-build-action.png" alt="Image illustrant la configuration du build action" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/19/responsive/shared-image-build-action-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/shared-image-build-action-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/shared-image-build-action-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/shared-image-build-action-lg.png 1024w"><figcaption>Affectez le build action sur SharedImage</figcaption></figure><h2 id="3-indiquer-la-taille-de-base-de-limage-dans-le-fichier-csproj">3. Indiquer la taille de base de l’image dans le fichier .csproj</h2><p>C’est la partie un peu délicate de la procédure : indiquer la taille finale de l’image dans le fichier .csproj.</p><p>Hé oui, le format <code>svg</code> étant vectoriel, il n’a pas de dimension à proprement parler, il est donc nécessaire d’indiquer à Xamarin.Forms la dimension de base sur laquelle s’appuyer pour générer les différentes versions des assets.</p><p>Après un clic-droit sur le projet Xamarin.Forms dans l’éditeur de solution, sélectionnez <code>Edit project file</code>.</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/19/edit-project-file.png" alt="Image illustrant l'édition du fichier .csproj" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/19/responsive/edit-project-file-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/edit-project-file-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/edit-project-file-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/edit-project-file-lg.png 1024w"><figcaption>Editez le fichier projet Xamarin.Forms</figcaption></figure><p>Vous devriez y trouver un <code>ItemGroup</code> contenant votre <code>SharedImage</code>, quelquechose comme ça :</p><pre><code class="language-xml">&lt;ItemGroup&gt;
+    &lt;SharedImage Include=&quot;xamarin.svg&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre><p>Il s’agit maintenant de lui attribuer sa taille de base avec l’attibut <code>BaseSize</code>, typiquement sa taille d’affichage dans le code <code>xaml</code> :</p><pre><code class="language-xml">&lt;ItemGroup&gt;
+    &lt;SharedImage Include=&quot;xamarin.svg&quot; BaseSize=&quot;60,60&quot; /&gt;
+&lt;/ItemGroup&gt;
+</code></pre><p>Sauvegardez votre fichier projet, fermez l’onglet, nous vous n’en avez plus besoin.</p><h2 id="3-utiliser-limage-dans-lapplication">3. Utiliser l’image dans l’application</h2><p>Allons au plus simple, rendez-vous dans la page <code>MainPage.xaml</code> du projet et remplacez le contenu du <code>StackLayout</code> déjà présent par votre image, <strong>avec une extension <code>png</code></strong> :</p><pre><code class="language-xml">&lt;Image Source=&quot;xamarin.png&quot; HeightRequest=&quot;60&quot;  WidthRequest=&quot;60&quot; VerticalOptions=&quot;Center&quot;/&gt;
+</code></pre><p>Et c’est bien ce dont il s’agit, car lors de la compilation du projet <code>Resizetizer</code> converti automagiquement votre fichier <code>svg</code> en <code>png</code> dans toutes les définitions nécessaires (en s’appuyant sur <a href="https://github.com/mono/SkiaSharp">SkiaSharp</a>), puis les distribue aux bons endroits.</p><p class="msg msg--info">Vous noterez que les valeurs des propriétés `HeightRequest` et `WidthRequest` correspondent au `BaseSize` défini plus tôt.</p><h2 id="4-la-preuve-par-limage">4. La preuve par l’image</h2><p>Illustration sous Android, affichage du logo Xamarin au centre de la page, à partir d’une image <code>svg</code> partagée dans le projet Xamarin.Forms :</p><figure class="post__image"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/19/Screenshot_1594402764.png" alt="Capture d&#39;écran sous Android" width="540" height="1110" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/19/responsive/Screenshot_1594402764-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/Screenshot_1594402764-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/Screenshot_1594402764-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/19/responsive/Screenshot_1594402764-lg.png 1024w"></figure><h1 id="quelques-infos-supplémentaires">Quelques infos supplémentaires</h1><p>Dans son <a href="https://redth.codes/resizetizer-nt-shared-images-for-xamarin/">blog</a>, J. Dick précise que tout cela fonctionne également avec un fichier source au format <code>png</code>, mais qu’il faut bien prendre soin de définir correctement le <code>BaseSize</code> sous peine d’obtenir un résultat bien moche lors de la conversion.</p><p>Les versions futurs de <a href="https://github.com/Redth/ResizetizerNT">ResizetizerNT</a> devraient connaître quelques améliorations, par exemple l’affectation d’une couleur aux images de la conversion à partir d’un fichier <code>svg</code>, ou la gestion des icones d’application.</p><p>Projet à surveiller, donc !</p><h1 id="le-code-source">Le code source</h1><p>Le code source du projet de démo est disponible dans mon <a href="https://github.com/SylvainMoingeon/ResizetizerNTDemo" title="Repository github vers le projet de démo">repository github</a>.</p><p class="msg msg--info">Ne soyez pas surpris, il ne contient vraiment pas grand chose, et c'est justement ça qui est important à retenir !</p></div><aside><p class="post__last-updated">Mis-à-jour le mercredi 15 juillet 2020</p><div class="post__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fintegrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt%2F" class="js-share facebook" title="Facebook" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/></svg> Facebook </a><a href="https://twitter.com/share?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fintegrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt%2F&amp;via=Sylvain%20Moingeon&amp;text=Int%C3%A9grez%20vos%20images%20sans%20douleur%20dans%20Xamarin.Forms%20avec%20ResizetizerNT" class="js-share twitter" title="Twitter" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/></svg> Twitter </a><a href="https://mix.com/add?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fintegrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt%2F" class="js-share mix" title="Mix" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#mix"/></svg> Mix </a><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fintegrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt%2F&amp;title=Int%C3%A9grez%20vos%20images%20sans%20douleur%20dans%20Xamarin.Forms%20avec%20ResizetizerNT" class="js-share linkedin" title="LinkedIn" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#linkedin"/></svg> LinkedIn </a><a href="https://api.whatsapp.com/send?text=Int%C3%A9grez%20vos%20images%20sans%20douleur%20dans%20Xamarin.Forms%20avec%20ResizetizerNT https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fintegrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt%2F" class="js-share whatsapp" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#whatsapp"/></svg> WhatsApp</a></div></aside><footer><div class="post__bio"><img src="https://www.gravatar.com/avatar/f0139f72232177b730a57cff5c38c0b2?s&#x3D;240" loading="lazy" alt="Sylvain"><h3><a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" class="inverse" title="Sylvain">Sylvain</a></h3><p>Un peu geek, diplômé en sciences (bac+5) et informatique (BTS IG), Sylvain confectionne logiciels et applications depuis 2007. C&#x27;est aussi un père de famille, instructeur de Yoseikan Budo, photographe éclairé et musicien amateur.</p></div><ul class="post__tag"><li><a href="https://www.sylvainmoingeon.fr/tags/productivite/">Productivité</a></li><li><a href="https://www.sylvainmoingeon.fr/tags/xamarinforms/">Xamarin.Forms</a></li></ul><nav class="post__nav"><div class="post__nav__prev">Article précédent<h3 class="h5"><a href="https://www.sylvainmoingeon.fr/declaration-simplifiee-des-grids-xamarinforms/" class="inverse" rel="prev">Déclaration simplifiée des grids Xamarin.Forms</a></h3></div><div class="post__nav__next">Article suivant<h3 class="h5"><a href="https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/" class="inverse" rel="next">Développez des applications sans crotte de nez !</a></h3></div></nav><div class="post__related"><h3>Cela vous intéressera peut-être</h3><div class="post__related__wrap"><figure><a href="https://www.sylvainmoingeon.fr/xamarinforms-50-en-approche/"><img src="https://www.sylvainmoingeon.fr/media/posts/38/responsive/xf-last-year-xs.png" loading="lazy" alt=""></a><figcaption><time datetime="2020-10-26T17:05">lundi 26 octobre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/xamarinforms-50-en-approche/" class="inverse">Xamarin.Forms 5.0 en approche !</a></h4></figcaption></figure><figure><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/"><img src="https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-xs.jpg" loading="lazy" alt=""></a><figcaption><time datetime="2020-11-10T18:22">mardi 10 novembre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/" class="inverse">Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2</a></h4></figcaption></figure><figure><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/"><img src="https://www.sylvainmoingeon.fr/media/posts/36/responsive/micro-assembly-xs.jpg" loading="lazy" alt=""></a><figcaption><time datetime="2020-10-22T12:13">jeudi 22 octobre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/" class="inverse">Créer un contrôle réutilisable 100% Xamarin.Forms, partie 1</a></h4></figcaption></figure></div></div></footer></article><div class="comments wrapper"><h3>Commentaires</h3><div id="disqus_thread"><p>Pour utiliser les commentaires, merci d'<a href="https://www.sylvainmoingeon.fr/#cookie-settings" title="configuration des cookies">accepter les cookies du groupe "Disqus"</a>.</p></div><script type="gdpr-blocker/disqus">var disqus_config = function () {
+                    this.page.url = 'https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/';
+            		this.page.identifier = '19';
+                    this.page.title = ' Intégrez vos images sans douleur dans Xamarin.Forms avec ResizetizerNT';
+                };
+            
+                var disqus_loaded = false;
+            
+                function publiiLoadDisqus() {
+                    if(disqus_loaded) {
+                        return false;
+                    }
+            
+                    var top = document.getElementById('disqus_thread').offsetTop;
+            
+                    if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
+                        disqus_loaded = true;
+            
+                        (function () {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://artisanlogiciel.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                }
+            
+                publiiLoadDisqus();
+            
+                window.onscroll = function() {
+                    publiiLoadDisqus();
+                };</script><noscript>Veuillez activer javascript pour voir les <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div></main></div><footer class="footer"><p><a href="https://www.planetxamarin.com/">Featured by<br><img src="https://www.planetxamarin.com/Content/img/planetxamarin-featured-badge.png" alt="Logo Planet Xamarin" width="180"></a></p><div class="footer__copyright"><p>Powered by <a href="https://getpublii.com" target="_blank" rel="nofollow noopener">Publii Static CMS</a> - <a href="https://icons8.com/icon/38641/xamarin">using  Xamarin icon by Icons8</a> </p><p><a href="../../../../../../../../../../mentions-legales" title="Mention légales">Mentions légales</a> - <a href="../../../../../../../../../../politique-des-commentaires" title="politique des commentaires">Politique des commentaires</a> - <a href="../../../../../../../../../../#cookie-settings" title="configuration des cookies">Configuration des cookies</a> - <a href="../../../../../../../../../../feed.xml">Abonnez vous au flux rss <i class="fas fa-rss"></i></a></p></div><div class="footer__social"><a href="https://www.facebook.com/smoingeon" aria-label="Facebook" class="facebook"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/></svg> </a><a href="https://twitter.com/SylvainMoingeon" aria-label="Twitter" class="twitter"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/></svg> </a><a href="https://www.instagram.com/yoseikanquetigny/" aria-label="Instagram" class="instagram"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#instagram"/></svg> </a><a href="https://dev.to/sylvainmoingeon" style="font-size: 1.2rem; margin:28.8px 7.2px 0px" class="linkedin"><i class="fab fa-dev" title="sylvainmoingeon's DEV Profile"></i></a></div><button class="footer__bttop js-footer__bttop" aria-label="On remonte tout en haut"><svg><title>On remonte tout en haut</title><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#toparrow"/></svg></button></footer><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/prism.js"></script><script>window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.top',
+   };</script><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/scripts.min.js?v=18410cbe84c2356f2fa9c4bf730b3bca"></script><script>var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><div class="pcb" data-behaviour="badge-link" data-behaviour-link="#cookie-settings" data-revision="1" data-config-ttl="90" data-debug-mode="false"><div role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-title" aria-describedby="pcb-txt" class="pcb__banner"><div class="pcb__inner"><div id="pcb-title" role="heading" aria-level="2" class="pcb__title">Ce site web mange des cookies</div><div id="pcb-txt" class="pcb__txt">Le système de commentaire (Disqus) utilisé sur ce site enregistre des cookies sur votre appareil. Et c'est tout.</div><div class="pcb__buttons"><button type="button" class="pcb__btn pcb__btn--link pcb__btn--configure" aria-haspopup="dialog">Manage preferences</button> <button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Enregistrer</button></div></div></div><div class="pcb__popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-popup-title"><div class="pcb__popup__wrapper"><div class="pcb__inner pcb__popup__inner"><div class="pcb__popup__heading"><div id="pcb-popup-title" role="heading" aria-level="2" class="pcb__title">Cookie settings</div><button class="pcb__popup__close" aria-label="Close"></button></div><div class="pcb__popup__content"><div class="pcb__txt pcb__popup__txt">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</div><ul class="pcb__groups"><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Obligatoire</summary></details><div class="pcb__popup__switch is-checked"><input type="checkbox" data-group-name="" id="pcb-group-0" checked="checked"> <label for="pcb-group-0">Obligatoire</label></div></li><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Disqus (système de commentaires)</summary></details><div class="pcb__popup__switch"><input type="checkbox" data-group-name="disqus" id="disqus-cookies"> <label for="disqus-cookies">Disqus (système de commentaires)</label></div></li></ul></div><div class="pcb__buttons pcb__popup__buttons"><button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button> <button type="button" class="pcb__btn pcb__btn--reject">Reject all</button> <button type="button" class="pcb__btn pcb__btn--save">Save settings</button></div></div></div></div><div class="pcb__overlay" aria-hidden="true"></div><button class="pcb__badge" aria-label="Cookies" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 23 23" fill="currentColor"><path d="M21.41 12.71c-.08-.01-.15 0-.22 0h-.03c-.03 0-.05 0-.08.01-.07 0-.13.01-.19.04-.52.21-1.44.19-2.02-.22-.44-.31-.65-.83-.62-1.53a.758.758 0 0 0-.27-.61.73.73 0 0 0-.65-.14c-1.98.51-3.49.23-4.26-.78-.82-1.08-.73-2.89.24-4.49.14-.23.14-.52 0-.75a.756.756 0 0 0-.67-.36c-.64.03-1.11-.1-1.31-.35-.19-.26-.13-.71-.01-1.29.04-.18.06-.38.03-.59-.05-.4-.4-.7-.81-.66C5.1 1.54 1 6.04 1 11.48 1 17.28 5.75 22 11.6 22c5.02 0 9.39-3.54 10.39-8.42.08-.4-.18-.78-.58-.87Zm-9.81 7.82c-5.03 0-9.12-4.06-9.12-9.06 0-4.34 3.05-8 7.25-8.86-.08.7.05 1.33.42 1.81.24.32.66.67 1.38.84-.76 1.86-.65 3.78.36 5.11.61.81 2.03 2 4.95 1.51.18.96.71 1.54 1.18 1.87.62.43 1.38.62 2.1.62.05 0 .09 0 .13-.01-1.23 3.64-4.7 6.18-8.64 6.18ZM13 17c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm5.29-12.3a.99.99 0 0 1-.29-.71c0-.55.45-.99 1-.99a1 1 0 0 1 .71.3c.19.19.29.44.29.71 0 .55-.45.99-1 .99a1 1 0 0 1-.71-.3ZM9 13.5c0 .83-.67 1.5-1.5 1.5S6 14.33 6 13.5 6.67 12 7.5 12s1.5.67 1.5 1.5Zm3.25.81a.744.744 0 0 1-.06-1.05c.28-.32.75-.34 1.05-.06.31.28.33.75.05 1.06-.15.16-.35.25-.56.25-.18 0-.36-.06-.5-.19ZM8.68 7.26c.41.37.44 1 .07 1.41-.2.22-.47.33-.75.33a.96.96 0 0 1-.67-.26c-.41-.37-.44-1-.07-1.41.37-.42 1-.45 1.41-.08Zm11.48 1.88c.18-.19.52-.19.7 0 .05.04.09.1.11.16.03.06.04.12.04.19 0 .13-.05.26-.15.35-.09.1-.22.15-.35.15s-.26-.05-.35-.15a.355.355 0 0 1-.11-.16.433.433 0 0 1-.04-.19c0-.13.05-.26.15-.35Zm-4.93-1.86a.75.75 0 1 1 1.059-1.06.75.75 0 0 1-1.059 1.06Z"/></svg></button></div><script>(function(win) {
+    if (!document.querySelector('.pcb')) {
+        return;
+    }
+
+    var cbConfig = {
+        behaviour: document.querySelector('.pcb').getAttribute('data-behaviour'),
+        behaviourLink: document.querySelector('.pcb').getAttribute('data-behaviour-link'),
+        revision: document.querySelector('.pcb').getAttribute('data-revision'),
+        configTTL: parseInt(document.querySelector('.pcb').getAttribute('data-config-ttl'), 10),
+        debugMode: document.querySelector('.pcb').getAttribute('data-debug-mode') === 'true',
+        initialState: null,
+        initialLsState: null,
+        previouslyAccepted: []
+    };
+
+    var cbUI = {
+        wrapper: document.querySelector('.pcb'),
+        banner: {
+            element: null,
+            btnAccept: null,
+            btnReject: null,
+            btnConfigure: null
+        },
+        popup: {
+            element: null,
+            btnClose: null,
+            btnSave: null,
+            btnAccept: null,
+            btnReject: null,
+            checkboxes: null,
+        },
+        overlay: null,
+        badge: null,
+        blockedScripts: document.querySelectorAll('script[type^="gdpr-blocker/"]'),
+        triggerLinks: cbConfig.behaviourLink ? document.querySelectorAll('a[href*="' + cbConfig.behaviourLink + '"]') : null
+    };
+
+    function initUI () {
+        // setup banner elements
+        cbUI.banner.element = cbUI.wrapper.querySelector('.pcb__banner');
+        cbUI.banner.btnAccept = cbUI.banner.element.querySelector('.pcb__btn--accept');
+        cbUI.banner.btnReject = cbUI.banner.element.querySelector('.pcb__btn--reject');
+        cbUI.banner.btnConfigure = cbUI.banner.element.querySelector('.pcb__btn--configure');
+
+        // setup popup elements
+        if (cbUI.wrapper.querySelector('.pcb__popup')) {
+            cbUI.popup.element = cbUI.wrapper.querySelector('.pcb__popup');
+            cbUI.popup.btnClose = cbUI.wrapper.querySelector('.pcb__popup__close');
+            cbUI.popup.btnSave = cbUI.popup.element.querySelector('.pcb__btn--save');
+            cbUI.popup.btnAccept = cbUI.popup.element.querySelector('.pcb__btn--accept');
+            cbUI.popup.btnReject = cbUI.popup.element.querySelector('.pcb__btn--reject');
+            cbUI.popup.checkboxes = cbUI.popup.element.querySelector('input[type="checkbox"]');
+            // setup overlay
+            cbUI.overlay = cbUI.wrapper.querySelector('.pcb__overlay');
+        }
+
+        cbUI.badge = cbUI.wrapper.querySelector('.pcb__badge');
+
+        if (cbConfig.behaviour.indexOf('link') > -1) {
+            for (var i = 0; i < cbUI.triggerLinks.length; i++) {
+                cbUI.triggerLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBannerOrPopup();
+                });
+            }
+        }
+    }
+
+    function initState () {
+        var lsKeyName = getConfigName();
+        var currentConfig = localStorage.getItem(lsKeyName);
+        var configIsFresh = checkIfConfigIsFresh();
+
+        if (!configIsFresh || currentConfig === null) {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config not found, or configuration expired');
+            }
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                    'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                    'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                    'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                    'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                    'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                    'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                });  
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                        'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                        'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                        'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                        'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                        'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                        'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                    }));
+                }
+            }
+
+            showBanner();
+        } else if (typeof currentConfig === 'string') {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config founded');
+            }
+
+            cbConfig.initialLsState = currentConfig.split(',');
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                    'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                    'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                    'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                    'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                    'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                    'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                });
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                        'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                        'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                        'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                        'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                        'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                        'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                    }));
+                }
+            }
+
+            showBadge();
+
+            if (cbUI.popup.element) {
+                var allowedGroups = currentConfig.split(',');
+                var checkedCheckboxes = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+
+                for (var j = 0; j < checkedCheckboxes.length; j++) {
+                    var name = checkedCheckboxes[j].getAttribute('data-group-name');
+
+                    if (name && name !== '-' && allowedGroups.indexOf(name) === -1) {
+                        checkedCheckboxes[j].checked = false;
+                    }
+                }
+
+                for (var i = 0; i < allowedGroups.length; i++) {
+                    var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + allowedGroups[i] + '"]');
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+
+                    allowCookieGroup(allowedGroups[i]);
+                }
+            }
+        }
+
+        setTimeout(function () {
+            cbConfig.initialState = getInitialStateOfConsents();
+        }, 0);
+    }
+
+    function checkIfConfigIsFresh () {
+        var lastConfigSave = localStorage.getItem('publii-gdpr-cookies-config-save-date');
+
+        if (lastConfigSave === null) {
+            return false;
+        }
+
+        lastConfigSave = parseInt(lastConfigSave, 10);
+
+        if (lastConfigSave === 0) {
+            return true;
+        }
+
+        if (+new Date() - lastConfigSave < cbConfig.configTTL * 24 * 60 * 60 * 1000) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getDefaultConsentState (currentConfig, consentGroup) {
+        let configGroups = currentConfig.split(',');
+
+        for (let i = 0; i < configGroups.length; i++) {
+            let groupName = configGroups[i];
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === groupName);
+
+            if (group && group[consentGroup]) {
+                return 'granted';
+            }
+        }  
+        
+        if (window.publiiCBGCM.defaultState[consentGroup]) {
+            return 'granted'; 
+        }
+        
+        return 'denied';
+    }
+
+    function initBannerEvents () {
+        cbUI.banner.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('banner');
+            showBadge();
+        }, false);
+
+        if (cbUI.banner.btnReject) {
+            cbUI.banner.btnReject.addEventListener('click', function (e) {
+                e.preventDefault();
+                rejectAllCookies();
+                showBadge();
+            }, false);
+        }
+
+        if (cbUI.banner.btnConfigure) {
+            cbUI.banner.btnConfigure.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideBanner();
+                showAdvancedPopup();
+                showBadge();
+            }, false);
+        }
+    }
+
+    function initPopupEvents () {
+        if (!cbUI.popup.element) {
+            return;
+        }
+
+        cbUI.overlay.addEventListener('click', function (e) {
+            hideAdvancedPopup();
+        }, false);
+
+        cbUI.popup.element.addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+
+        cbUI.popup.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('popup');
+        }, false);
+
+        cbUI.popup.btnReject.addEventListener('click', function (e) {
+            e.preventDefault();
+            rejectAllCookies();
+        }, false);
+
+        cbUI.popup.btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            saveConfiguration();
+        }, false);
+
+        cbUI.popup.btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideAdvancedPopup();
+        }, false);
+    }
+
+    function initBadgeEvents () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.addEventListener('click', function (e) {
+            showBannerOrPopup();
+        }, false);
+    }
+
+    initUI();
+    initState();
+    initBannerEvents();
+    initPopupEvents();
+    initBadgeEvents();
+
+    /**
+     * API
+     */
+    function addScript (src, inline) {
+        var newScript = document.createElement('script');
+
+        if (src) {
+            newScript.setAttribute('src', src);
+        }
+
+        if (inline) {
+            newScript.text = inline;
+        }
+
+        document.body.appendChild(newScript);
+    }
+
+    function allowCookieGroup (allowedGroup) {
+        var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+        cbConfig.previouslyAccepted.push(allowedGroup);
+    
+        for (var j = 0; j < scripts.length; j++) {
+            addScript(scripts[j].src, scripts[j].text);
+        }
+
+        var groupEvent = new Event('publii-cookie-banner-unblock-' + allowedGroup);
+        document.body.dispatchEvent(groupEvent);
+        unlockEmbeds(allowedGroup);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Allowed group: ' + allowedGroup);
+        }
+
+        if (window.publiiCBGCM && cbConfig.initialLsState.indexOf(allowedGroup) === -1) {
+            let consentResult = {};
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
+
+            if (group) {
+                let foundSomeConsents = false;
+
+                Object.keys(group).forEach(key => {
+                    if (key !== 'cookieGroup' && group[key] === true) {
+                        consentResult[key] = 'granted';
+                        foundSomeConsents = true;
+                    }
+                });
+
+                if (foundSomeConsents) {
+                    gtag('consent', 'update', consentResult);   
+
+                    if (cbConfig.debugMode) {
+                        console.log('🍪 GCMv2 UPDATE: ' + JSON.stringify(consentResult));
+                    }
+                }
+            }
+        }
+    }
+
+    function showBannerOrPopup () {
+        if (cbUI.popup.element) {
+            showAdvancedPopup();
+        } else {
+            showBanner();
+        }
+    }
+
+    function showAdvancedPopup () {
+        cbUI.popup.element.classList.add('is-visible');
+        cbUI.overlay.classList.add('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'false');
+        cbUI.overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideAdvancedPopup () {
+        cbUI.popup.element.classList.remove('is-visible');
+        cbUI.overlay.classList.remove('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'true');
+        cbUI.overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBanner () {
+        cbUI.banner.element.classList.add('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner () {
+        cbUI.banner.element.classList.remove('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBadge () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.classList.add('is-visible');
+        cbUI.badge.setAttribute('aria-hidden', 'false');
+    }
+
+    function getConfigName () {
+        var lsKeyName = 'publii-gdpr-allowed-cookies';
+
+        if (cbConfig.revision) {
+            lsKeyName = lsKeyName + '-v' + parseInt(cbConfig.revision, 10);
+        }
+
+        return lsKeyName;
+    }
+
+    function storeConfiguration (allowedGroups) {
+        var lsKeyName = getConfigName();
+        var dataToStore = allowedGroups.join(',');
+        localStorage.setItem(lsKeyName, dataToStore);
+
+        if (cbConfig.configTTL === 0) {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', 0);
+
+            if (cbConfig.debugMode) {
+                console.log('🍪 Store never expiring configuration');
+            }
+        } else {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', +new Date());
+        }
+    }
+
+    function getInitialStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Initial state: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getCurrentStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 State to save: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getAllGroups () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        return groups;
+    }
+
+    function acceptAllCookies (source) {
+        var groupsToAccept = getAllGroups();
+        storeConfiguration(groupsToAccept);
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        if (cbUI.popup.element) {
+            var checkboxesToCheck = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+
+            for (var j = 0; j < checkboxesToCheck.length; j++) {
+                checkboxesToCheck[j].checked = true;
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Accept all cookies: ', groupsToAccept.join(', '));
+        }
+
+        if (source === 'popup') {
+            hideAdvancedPopup();
+        } else if (source === 'banner') {
+            hideBanner();
+        }
+    }
+
+    function rejectAllCookies () {
+        if (cbConfig.debugMode) {
+            console.log('🍪 Reject all cookies');
+        }
+
+        storeConfiguration([]);
+        setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
+
+    function saveConfiguration () {
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+
+        if (reloadIsNeeded(groupsToAccept)) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 100);
+            return;
+        }
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        hideAdvancedPopup();
+    }
+
+    function reloadIsNeeded (groupsToAccept) {
+        // check if user rejected consent for initial groups
+        var initialGroups = cbConfig.initialState;
+        var previouslyAcceptedGroups = cbConfig.previouslyAccepted;
+        var groupsToCheck = initialGroups.concat(previouslyAcceptedGroups);
+
+        for (var i = 0; i < groupsToCheck.length; i++) {
+            var groupToCheck = groupsToCheck[i];
+
+            if (groupToCheck !== '' && groupsToAccept.indexOf(groupToCheck) === -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Reload is needed due lack of: ', groupToCheck);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function unlockEmbeds (cookieGroup) {
+        var iframesToUnlock = document.querySelectorAll('.pec-wrapper[data-consent-group-id="' + cookieGroup + '"]');
+
+        for (var i = 0; i < iframesToUnlock.length; i++) {
+            var iframeWrapper = iframesToUnlock[i];
+            iframeWrapper.querySelector('.pec-overlay').classList.remove('is-active');
+            iframeWrapper.querySelector('.pec-overlay').setAttribute('aria-hidden', 'true');
+            var iframe = iframeWrapper.querySelector('iframe');
+            iframe.setAttribute('src', iframe.getAttribute('data-consent-src'));
+        }
+    }
+
+    win.publiiEmbedConsentGiven = function (cookieGroup) {
+        // it will unlock embeds
+        allowCookieGroup(cookieGroup);
+
+        var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + cookieGroup + '"]');
+
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+    }
+})(window);</script></body></html>

@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="https://www.sylvainmoingeon.fr/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<url>
+<loc>https://www.sylvainmoingeon.fr/</loc>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/authentification-azure-directory-b2c-dans-une-application-xamarinforms/</loc>
+<lastmod>2021-03-23T11:42:14+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/6ce4a4c4b1004751bddf92e7f88a9f98.png</image:loc>
+<image:title><![CDATA[Configuration du portail en anglais]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/eae4e6e303ba45cfaf377ae3ab2f522e.png</image:loc>
+<image:title><![CDATA[Message d'erreur concernant Microsoft.AzureActiveDirectory]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/d821b9e2f1a84d46b574a439df9c1fc9.png</image:loc>
+<image:title><![CDATA[Navigation vers les subscriptions]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/13427f5008fb459db2ea5276dd729262.png</image:loc>
+<image:title><![CDATA[Sélection de la subscription]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/979a2d1abb4a48b59a7bf9ad8486880f.png</image:loc>
+<image:title><![CDATA[Navigation vers les resource providers]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/8fa48e6076574a9eb090837d9231fd87.png</image:loc>
+<image:title><![CDATA[Recherche de Microsoft.AzureActiveDirectory]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/941ed15f975649aca20eeb624c4192fd.png</image:loc>
+<image:title><![CDATA[Microsoft.AzureActiveDirectory est enregistré]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/26cd2d69e0cf4e2c9533a45c7ef1e726.png</image:loc>
+<image:title><![CDATA[Créer une ressources]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/3734c6c0c609497b8523c2ac5ee56045.png</image:loc>
+<image:title><![CDATA[Sélectionner Active Directory B2C]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/8fb8757ce94343aea6ddb6b375e139ac.png</image:loc>
+<image:title><![CDATA[Cliquer sur Create]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/0f44978924974827b83e5498624e1827.png</image:loc>
+<image:title><![CDATA[Create a New Azure AD B2C tenant]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/bfa01cbf52b14c7b9969c162f08e83ba.png</image:loc>
+<image:title><![CDATA[Renseigner les informations du tenant]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/eeac2be3682d457dae69874ee0e04525.png</image:loc>
+<image:title><![CDATA[Valider les informations]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/2fdbea7151f948278ae450c27839495d.png</image:loc>
+<image:title><![CDATA[Indicateur d'activité dans la toolbar]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/000cf65ea90e48b0b774d8405119b298.png</image:loc>
+<image:title><![CDATA[Lien menant vers votre tenant Active Directory B2C]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/0dc10f53aef94e8cb578f3eb0351b5bc.png</image:loc>
+<image:title><![CDATA[Buton de sélection des directories]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/619e486c4a054f2cb3ee928a143a1963.png</image:loc>
+<image:title><![CDATA[Page d'accueil du Directory]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/636efe75e666412e9c7584f700c45f51.png</image:loc>
+<image:title><![CDATA[Recherche du tenant B2C]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/1c9cbee5394f46a397a8efbdcf1dc132.png</image:loc>
+<image:title><![CDATA[Navigation vers l'enregistrement d'applications]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/5f5448c2423e48b4bdbc92b536d2453d.png</image:loc>
+<image:title><![CDATA[Nouvel enregistrement]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/ebba5c97abd241ac81af607acb811a19.png</image:loc>
+<image:title><![CDATA[Nom et type de compte]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/f551892b4b9f48a8973694ff7473b391.png</image:loc>
+<image:title><![CDATA[Redirect URi]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/f6990694e50e4f59bbf304ab240ed75f.png</image:loc>
+<image:title><![CDATA[Permisssions]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/21fa88ac0c1e4b8d97cba7c22496698f.png</image:loc>
+<image:title><![CDATA[Application enregistrée]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/cde6cd6048fa407e81ed0c4ba8559687.png</image:loc>
+<image:title><![CDATA[Cocher les Uri d'authentification]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/ff407a8e293349ff8cc82e83e5a3e4c7.png</image:loc>
+<image:title><![CDATA[New User Flow]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/436019a0fe0643ebbcb99156b00edbbe.png</image:loc>
+<image:title><![CDATA[Signin User Flow]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/67382c4d40224b36a0f04c9054364cae.png</image:loc>
+<image:title><![CDATA[Nom de la police]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/f65a66c9662f40dc9aaf15676ed7bd5a.png</image:loc>
+<image:title><![CDATA[Claims]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/ce85fccb56374fcab27e51b008093cde.png</image:loc>
+<image:title><![CDATA[Création des utilisateurs]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/bf2ed89bfb2644a79b5f1cd0c9857761.png</image:loc>
+<image:title><![CDATA[Package nuget Microsoft.Identity.Client]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/99664b9fc9504d75b03489fffe708bfe.png</image:loc>
+<image:title><![CDATA[ClientId dans l'overview de l'application]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/e69e5ca4a86d40aaba291deee5c60caf.png</image:loc>
+<image:title><![CDATA[Redirect Uri dans Info.plist]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/ed660e0f6cf54409b5237432c27a3909.png</image:loc>
+<image:title><![CDATA[Keychain dans Entitlements.plist]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/bd0f850cd2e8445688885dbc6c689b59.png</image:loc>
+<image:title><![CDATA[Custom Entitlements]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/c2336499611b40d4a380610ef52dabe7.png</image:loc>
+<image:title><![CDATA[Login Page]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/bab1879b2fd647caabcab68ccfaa7a27.png</image:loc>
+<image:title><![CDATA[Package nuget JWT]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/85c24b29abca478a83d2c41aa5f504b3.png</image:loc>
+<image:title><![CDATA[Structure des données de Claim]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/1050e4916bdf4788b637930fa9fad470.png</image:loc>
+<image:title><![CDATA[Page de Logout]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/cd085170ebd9443da4c69f613d06d631.png</image:loc>
+<image:title><![CDATA[Page de Signin]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/42/ff9ca60e682d4f16acd619ee2d0aa7c6.png</image:loc>
+<image:title><![CDATA[Page de réinitialisation de mot de passe]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/contact/</loc>
+<lastmod>2021-12-22T11:19:02+01:00</lastmod>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/</loc>
+<lastmod>2020-11-10T11:08:18+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/36/micro-assembly.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/36/demo-circleimage-3.gif</image:loc>
+<image:title><![CDATA[Démonstration de l'image circulaire avec ses différentes options]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/36/activityIndicator-3.gif</image:loc>
+<image:title><![CDATA[ActivityIndicator au centre d'une image]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/36/circle-with-border.png</image:loc>
+<image:title><![CDATA[Une image circulaire bordée de jaune]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/</loc>
+<lastmod>2020-11-10T18:22:43+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/micro-assembly.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/gallery/demo-circleimage.gif</image:loc>
+<image:title><![CDATA[Screenshot animé sous Android]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/gallery/circleimage-ios-screenshot.png</image:loc>
+<image:title><![CDATA[Screenshot sous iOS]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/add-content-view.png</image:loc>
+<image:title><![CDATA[Copie d'écran pour illustrer l'ajout d'un ContentView dans Xamarin.Forms]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/demo-circleimage-2.gif</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/no-safe-area-2.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/safe-area.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/designtime-not-visible.png</image:loc>
+<image:title><![CDATA[Copie d'écran présentant le previewer Xamarin.Forms, le contrôle personnalisé n'est pas affiché]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/37/designtime-visible.png</image:loc>
+<image:title><![CDATA[Illustration du previewer avec l'attribut DesignTimeVisible]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/declaration-simplifiee-des-grids-xamarinforms/</loc>
+<lastmod>2020-07-10T16:30:04+02:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/18/grids.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/18/layouts-large.png</image:loc>
+<image:title><![CDATA[Mise-en-page Grid]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/</loc>
+<lastmod>2020-08-26T16:22:07+02:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg</image:loc>
+<image:title><![CDATA[Un boulanger pétrit sa pâte sans crotte de nez]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/30/croissants.jpg</image:loc>
+<image:title><![CDATA[Croissants dans un panier - Image par Pexels de Pixabay]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/30/the-pragmatic-programmer.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/30/atchoum-2.jpg</image:loc>
+<image:title><![CDATA[Femme sur le point d'éternuer]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/30/atchoum.jpg</image:loc>
+<image:title><![CDATA[Image description]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/</loc>
+<lastmod>2020-07-15T18:46:49+02:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/19/resizetizernt-hero-2.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/19/install-nuget-package.png</image:loc>
+<image:title><![CDATA[Image illustrant l'installation du package nuget Resizetizer.NT]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/19/shared-image-build-action.png</image:loc>
+<image:title><![CDATA[Image illustrant la configuration du build action]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/19/edit-project-file.png</image:loc>
+<image:title><![CDATA[Image illustrant l'édition du fichier .csproj]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/19/Screenshot_1594402764.png</image:loc>
+<image:title><![CDATA[Capture d'écran sous Android]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/le-xamarin-community-toolkit/</loc>
+<lastmod>2021-01-27T17:58:25+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/41/whatsnewintoolkit.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/41/communitytoolkit.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/mentions-legales/</loc>
+<lastmod>2021-12-22T11:39:23+01:00</lastmod>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/planet-xamarin/</loc>
+<lastmod>2021-01-26T18:09:54+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/40/planetxamarin-featured-badge.png</image:loc>
+<image:title><![CDATA[Logo Planet Xamarin]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/40/planetxamarin-featured-badge-2.png</image:loc>
+<image:title><![CDATA[Logo de Planet Xamarin]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/politique-des-commentaires/</loc>
+<lastmod>2020-07-01T11:53:35+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/simplifiez-vous-les-fonts-sous-xamarinforms/</loc>
+<lastmod>2020-07-09T16:53:32+02:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/woodtype.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/maxresdefault.jpg</image:loc>
+<image:title><![CDATA[Illustration détournée de la police de caractère Samantha]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/buildaction.png</image:loc>
+<image:title><![CDATA[Image illustrant l'affectation du buildaction sur Embedded resource]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/attribut-exportfont.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/font-as-staticresource.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/gallery/screen-android-2.png</image:loc>
+<image:title><![CDATA[Copie d'écran d'une font embarquée sous Android]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/6/gallery/screen-ios-2.png</image:loc>
+<image:title><![CDATA[Copie d'écran d'une font embarquée sous iOS]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/utiliser-des-images-vectorielles-svg-dans-xamarinforms/</loc>
+<lastmod>2020-11-18T11:51:12+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/39/cover_svg.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/39/airport.svg</image:loc>
+<image:title><![CDATA[Une image vectorielle simple]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/39/screenshot-svg-simple-2.png</image:loc>
+<image:title><![CDATA[Une image vectorielle, affichée et manipulée dans Xamarin.Forms]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/39/car.svg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/39/screenshot-svg-complexe.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/39/screenshot-svg.png</image:loc>
+<image:title><![CDATA[Un florilège d'images vectorielles dans Xamarin.Forms]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/xamarinforms-50-en-approche/</loc>
+<lastmod>2020-10-26T17:27:10+01:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/38/xf-last-year.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/38/shapes-sxs.png</image:loc>
+<image:title><![CDATA[Illustration d'interface utilisateur utilisant les brushes, shapes et paths]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/38/radios-sxs.png</image:loc>
+<image:title><![CDATA[Illustration du templating sur un radioButton]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/38/favfighters.gif</image:loc>
+<image:title><![CDATA[Illustration animée du SwipeView Xamarin.Forms]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/</loc>
+<lastmod>2020-09-07T14:26:07+02:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/33/question-mark.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/33/dans-le-meme-bateau.jpg</image:loc>
+<image:title><![CDATA[Les candidats de Koh Lanta sautent du bateau]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/33/MVVMPattern.png</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/33/guizmo.jpg</image:loc>
+<image:title><![CDATA[Guizmo]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/33/spaghetti.jpg</image:loc>
+<image:title><![CDATA[Un beau plat de spaghetti]]></image:title>
+</image:image>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/33/Gremlins.jpg</image:loc>
+<image:title><![CDATA[Le chef des Gremlins revisite massacre à la tronçonneuse]]></image:title>
+</image:image>
+</url>
+<url>
+<loc>https://www.sylvainmoingeon.fr/xamarinforms-inversion-de-dependance-facile-et-pas-chere/</loc>
+<lastmod>2020-09-30T12:18:08+02:00</lastmod>
+<image:image>
+<image:loc>https://www.sylvainmoingeon.fr/media/posts/34/ioc-cover.jpg</image:loc>
+<image:title><![CDATA[]]></image:title>
+</image:image>
+</url>
+</urlset>

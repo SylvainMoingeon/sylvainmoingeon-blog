@@ -1,0 +1,909 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2 - Sylvain Moingeon</title><meta name="description" content="Comment créer un contrôle réutilisable sous Xamarin.Forms, une image circulaire avec placeholder, bordure et indicateur d'activité"><meta name="generator" content="Publii Open-Source CMS for Static Site"><link rel="canonical" href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/"><link rel="alternate" type="application/atom+xml" href="https://www.sylvainmoingeon.fr/feed.xml"><link rel="alternate" type="application/json" href="https://www.sylvainmoingeon.fr/feed.json"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@SylvainMoingeon"><meta name="twitter:title" content="Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2"><meta name="twitter:description" content="Comment créer un contrôle réutilisable sous Xamarin.Forms, une image circulaire avec placeholder, bordure et indicateur d'activité"><meta name="twitter:image" content="https://www.sylvainmoingeon.fr/media/posts/37/micro-assembly.jpg"><link href="https://www.sylvainmoingeon.fr/assets/fontawesome/css/all.css" rel="stylesheet"><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/prism.css"><link rel="shortcut icon" href="https://www.sylvainmoingeon.fr/media/website/favicon.png" type="image/png"><link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap&subset=latin-ext" rel="stylesheet"><style>:root{--body-font:'DM Sans',sans-serif;--heading-font:var(--body-font);--post-entry-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/style.css?v=2c8d1f0d0689c5a4f4ff50b8f1122140"><link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/photoswipe.css?v=ffb247881cd6f611d007fd4a96b7b16a"><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/"},"headline":"Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2","datePublished":"2020-11-10T18:22","dateModified":"2020-11-10T18:22","image":{"@type":"ImageObject","url":"https://www.sylvainmoingeon.fr/media/posts/37/micro-assembly.jpg","height":1334,"width":2547},"description":"Comment créer un contrôle réutilisable sous Xamarin.Forms, une image circulaire avec placeholder, bordure et indicateur d'activité","author":{"@type":"Person","name":"Sylvain","url":"https://www.sylvainmoingeon.fr/auteurs/sylvain/"},"publisher":{"@type":"Organization","name":"Sylvain"}}</script><style>.pswp--svg .pswp__button,
+				          .pswp--svg .pswp__button--arrow--left:before,
+				          .pswp--svg .pswp__button--arrow--right:before {
+					          background-image: url(https://www.sylvainmoingeon.fr/assets/svg/gallery-icons-light.svg);
+			              }</style><script>function addEmailAddresses(){     
+      document.querySelectorAll('.email').forEach(function(linkElement) {
+      
+        var domainname = window.atob("c3lsdmFpbm1vaW5nZW9uLmZy");
+        var username = window.atob(linkElement.getAttribute("id"));
+        var emailaddress = username + "@" + domainname;
+        var mailto = window.atob("bWFpbHRv");  // mailto:
+        //linkElement.innerHTML = emailaddress;
+        linkElement.setAttribute("href", mailto + ":" + emailaddress + "?subject=[Contact%20site%20web]");
+      });      
+    }</script></head><body onload="addEmailAddresses()" class="line-numbers"><div class="container"><header class="top" id="js-top"><div><a class="logo" href="https://www.sylvainmoingeon.fr/">Sylvain Moingeon</a><nav class="navbar"><button class="navbar__toggle" aria-label="Menu" aria-haspopup="true" aria-expanded="false"><span class="navbar__toggle-box"><span class="navbar__toggle-inner">Menu</span></span></button><ul class="navbar__menu"><li><a href="https://www.sylvainmoingeon.fr/" target="_self">Accueil</a></li><li><a href="https://www.sylvainmoingeon.fr/contact/" target="_self">Contact</a></li></ul></nav><div class="search"><div class="search__overlay js-search-overlay"><div class="search__overlay-inner"><form action="https://www.sylvainmoingeon.fr/search.html" class="search__form"><input class="search__input js-search-input" type="search" name="q" placeholder="chercher..." aria-label="Search input" autofocus="autofocus"></form><button class="search__close js-search-close" aria-label="Fermer">Fermer</button></div></div><button class="search__btn js-search-btn" aria-label="Search"><svg role="presentation" focusable="false" height="15px" width="15px"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#search"/></svg></button></div></div></header><main><article class="post wrapper"><div class="hero hero--narrow"><header><p><a href="https://www.sylvainmoingeon.fr/tags/xamarinforms/">Xamarin.Forms</a></p><h1>Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2</h1><address>par <a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" rel="author">Sylvain</a></address>publié le <time datetime="2020-11-10T18:22">mardi 10 novembre 2020</time></header><figure class="hero__image post__featured-image"><img src="https://www.sylvainmoingeon.fr/media/posts/37/micro-assembly.jpg" srcset="https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-xs.jpg 300w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-sm.jpg 480w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-md.jpg 768w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-lg.jpg 1024w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-xl.jpg 1360w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/micro-assembly-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px" loading="eager" height="1334" width="2547" alt=""><figcaption>Image par PIRO4D de Pixabay</figcaption></figure></div><div class="post__entry"><p></p><p>Vous apprendrez notamment à créer des propriétés bindables (<code><a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/bindable-properties" target="_blank">BindableProperty</a></code>) et à utiliser les <code><a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/data-binding/converters" target="_blank" data-link-popup-id="1604422655301">Converters</a></code>.&nbsp;</p><p>Si ce n'est pas déjà fait, je vous invite à d'abord consulter la <a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/">première partie de cette article</a>&nbsp;dans laquelle nous avons construit les bases d'une image circulaires avec quelques options (placeholder, bordure...).</p><hr class="separator separator--dots"><h2 id="mais-o-vaton-">Mais où va-t-on ?</h2><p>Commençons par un petit rappel, voici une démonstration animée de l'image circulaire en situation.</p><p class="msg msg--highlight">Comme je suis un gars vraiment sympa, pour le même prix je vous ajoute une copie d'écran iOS. La base de code est 100% commune, <strong>un seul code pour générer deux applications natives</strong>. C'est la beauté de Xamarin.Forms.</p><p>&nbsp;On y voit :&nbsp;</p><ul><li>Des images circulaires</li><li>Une bordure s'afficher si le contact est placé dans les favoris</li><li>Un indicateur de chargement tourbillonner brièvement sur les deux dernières images</li><li>Des images de substitution par défaut s'il n'existe pas d'image valide (image non renseignée, url invalide ou inaccessible...)</li></ul><div class="gallery-wrapper"><div class="gallery" data-columns="3"><figure class="gallery__item"><a href="https://www.sylvainmoingeon.fr/media/posts/37/gallery/demo-circleimage.gif" data-size="350x726"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/gallery/demo-circleimage.gif" height="726" width="350" alt="Screenshot animé sous Android"></a><figcaption>L'image circulaire en situation sous Android</figcaption></figure><figure class="gallery__item"><a href="https://www.sylvainmoingeon.fr/media/posts/37/gallery/circleimage-ios-screenshot.png" data-size="1125x2436"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/gallery/circleimage-ios-screenshot-thumbnail.png" height="1663" width="768" alt="Screenshot sous iOS"></a><figcaption>Copie d'écran sous iOS</figcaption></figure></div></div><p>La mise-en-page est très simple, un titre, un sous-titre indiquant le nombre de favoris et une liste de contacts.</p><p>Par contre, hors de question de reprendre tel quel le XAML de l'image circulaire créée dans l'article précédent et de le coller comme ça, l'air de rien. Hé ! Oh ! On est des vrais professionnels n'est-ce pas ? Nous allons donc en faire un contrôle découplé du reste du code et réutilisable au besoin partout dans le projet.</p><h2 id="cration-du-contrle">Création du contrôle</h2><h3 id="composons">Composons</h3><p>Souvenez-vous, dans la première partie de l'article nous avions créé une <a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/">image circulaire</a> à l'aide de la propriété <code>Clip</code> et d'une <code>EllipseGemotry</code>. Puis nous l'avions agrémentée de quelques options en y superposant d'autres contrôles dans une <code>Grid</code>.</p><p>Nous avons donc une base avec une image circulaire simple :&nbsp;</p><pre class="line-numbers language-html"><code>&lt;Image Source="monimage.png" WidthRequest="128" HeightRequest="128"&gt;
+    &lt;Image.Clip&gt;
+        &lt;EllipseGeometry RadiusX="64"
+                         RadiusY="64"
+                         Center="64,64" /&gt;
+    &lt;/Image.Clip&gt;
+&lt;/Image&gt;</code></pre><p>Et une image circulaire avancée, composée à partir de la précédente :</p><pre class="line-numbers language-html"><code>&lt;Grid&gt;
+    &lt;Image Source="monPlaceholder.png" WidthRequest="128" HeightRequest="128"&gt;
+        &lt;Image.Clip&gt;
+            &lt;EllipseGeometry RadiusX="64"
+                         RadiusY="64"
+                         Center="64,64" /&gt;
+        &lt;/Image.Clip&gt;
+    &lt;/Image&gt;
+
+    &lt;Image Source="monimage.png" WidthRequest="128" HeightRequest="128"&gt;
+        &lt;Image.Clip&gt;
+            &lt;EllipseGeometry RadiusX="64"
+                         RadiusY="64"
+                         Center="64,64" /&gt;
+        &lt;/Image.Clip&gt;
+    &lt;/Image&gt;
+
+    &lt;Ellipse Margin="0"
+             HorizontalOptions="Center"
+             VerticalOptions="Center"
+             Stroke="Yellow"
+             StrokeThickness="2"
+             HeightRequest="128"
+             WidthRequest="128"
+             /&gt;
+
+     &lt;ActivityIndicator IsRunning="{Binding Source={x:Reference monImage}, Path=IsLoading}"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        /&gt;
+&lt;/Grid&gt;</code></pre><p>Nous avons le squelette de notre contrôle mais quelque chose me chiffonne. Ce n'est tout de même pas bien beau cette duplication de code. Et si, au lieu de copier-coller le code de l'image "clippée" avec l'ellipse, on en faisait un contrôle d'image circulaire tout simple mais réutilisable ?</p><p>Notre image étant inscrite dans un cercle, cela me gêne de définir <code>HeightRequest</code> et <code>WidthRequest</code>. Les deux propriétés auront toujours la même valeur, autant définir une nouvelle propriété <code>ImageSize</code>.</p><p>Quelque chose comme ça :</p><pre class="line-numbers language-html"><code>&lt;Grid&gt;
+    &lt;local:CircleImage x:Name="monPlaceholder"
+                         Source="monPlaceholder.png"
+                         ImageSize="128" /&gt;
+                         
+    &lt;local:CircleImage x:Name="monImage"
+                         Source="monImage.png"
+                         ImageSize="128" /&gt;
+
+    [...] Le reste du contrôle avec la bordure et l'activityIndicator
+&lt;/Grid&gt;</code></pre><p>Nous allons donc commencer par créer un contrôle <code>CircleImage</code> qui hérite du contrôle Image de base, en y ajoutant une propriété <code>ImageSize</code> et un "clipping" circulaire.</p><p>Et comme affecter des valeurs en dur ça n'a pas beaucoup d'intérêt dans un vrai projet, nous rendrons la propriété <code>ImageSize</code> bindable de façon à pouvoir écrire quelque chose comme :</p><pre class="line-numbers language-csharp"><code>&lt;local:CircleImage x:Name="monPlaceholder"
+                     Source="{Binding MonImage}"
+                     ImageSize="{Binding MyImageSize}" /&gt;</code></pre><p>La propriété <code>Source</code> héritant du contrôle Image de base, elle est déjà bindable.</p><p>Si ceci vous parait obscur, relisez mon article sur l'<a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/">architecture MVVM</a> !</p><h3 id="crer-un-nouveau-contrle">Créer un nouveau contrôle</h3><p>Pour faire les choses proprement, créez un dossier <i>CircleImage</i> à la base de votre projet Xamarin.Forms et ajoutez-y un <code>ContentView</code> nommé CircleImage. Il n'y a pas de mal à être pragmatique sur le nommage. 😁</p><figure class="post__image post__image--center"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/add-content-view.png" height="778" width="956" alt="Copie d'écran pour illustrer l'ajout d'un ContentView dans Xamarin.Forms" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/37/responsive/add-content-view-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/add-content-view-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/add-content-view-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/add-content-view-lg.png 1024w"><figcaption>Ajoutez un ContentView nommé CircleImage</figcaption></figure><p>Par défaut, votre <code>ContentView</code> est de type... <code>ContentView</code>. Ça va de soi mais je le précise pour les deux qui dorment au fond vers le radiateur.</p><p>Nous pourrions ajouter notre <code>Image</code> comme contenu du <code>ContentView</code>, mais pourquoi alourdir le code et l'affichage natif en imbriquant des contrôles alors que nous avons uniquement besoin d'une image ? Nous allons donc remplacer le type <code>ContentView</code> par le type <code>Image</code>.</p><p>Attention ! Pensez bien à le faire à la fois dans le XAML...<br></p><pre class="line-numbers language-csharp"><code>&lt;!-- Remplacer --&gt;
+&lt;ContentView x:Class="CircleImageDemo.CircleImage.CircleImage"
+&lt;-- Par --&gt;
+&lt;Image x:Class="CircleImageDemo.CircleImage.CircleImage"</code></pre><p>...et dans le code-behind C# !</p><pre class="line-numbers language-csharp"><code>// Remplacer
+public partial class CircleImage : ContentView { }
+// Par
+public partial class CircleImage : Image { }</code></pre><p>Nous avons presque tout ce qu'il nous faut, il s'agit juste de créer le découpage circulaire dans le XAML et d'ajouter la propriété bindable&nbsp;<code>ImageSize</code>. Commençons par ceci.</p><h3 id="exposer-des-proprits-bindables-depuis-lextrieur">Exposer des propriétés bindables depuis l'extérieur</h3><p>Je suis en train de créer un contrôle visuel et je souhaite exposer une propriété qui soit bindable depuis et/ou vers l'extérieur.&nbsp;Il s'agit principalement de définir une propriété qui encapsule une <code>BindableProperty</code> au lieu d'un champs privé comme cela se fait habituellement.</p><p>Je vous vois froncer les sourcils, alors un exemple :&nbsp;</p><pre class="line-numbers language-csharp"><code>#region ImageSize Bindable property
+// Bindable property
+public static readonly BindableProperty ImageSizeProperty =
+  BindableProperty.Create(
+     propertyName: nameof(ImageSize),
+     declaringType: typeof(CircleImage),
+     returnType: typeof(double),
+     defaultValue: 0.0,
+     defaultBindingMode: BindingMode.OneWay,
+     propertyChanged: (bindable, oldValue, newValue) =&gt;
+     { });
+
+// Gets or sets value of this BindableProperty
+public double ImageSize
+{
+    get =&gt; (double)GetValue(ImageSizeProperty);
+    set =&gt; SetValue(ImageSizeProperty, value);
+}
+#endregion
+</code></pre><p>Nous avons la propriété <code>ImageSize</code> qui sera exposée et sur laquelle on viendra "binder" dans le XAML.</p><p>La gestion du binding proprement dit est laissée à la <code>BindableProperty</code> <code>ImageSizeProperty</code>&nbsp;instanciée par la méthode statique&nbsp; <code>BindableProperty.Create</code> avec les arguments suivants :&nbsp;</p><ul><li><b>propertyName</b> : nom de la propriété exposée, celle qui recevra les valeurs via Binding</li><li><b>declaringType</b> : type de la classe portant la propriété, ici CircleImage</li><li><b>returnType</b> : type retourné par la propriété</li><li>defaultValue : valeur par défaut</li><li>defaultBindingMode : définit le sens du binding par défaut</li><li>coerceValue : permet de réévaluer la valeur d'une BindableProperty quand la valeur d'une autre BindableProperty change. Pas évident de l'expliquer en une seule phrase, je vous recommande de <a href="https://docs.microsoft.com/fr-fr/xamarin/xamarin-forms/xaml/bindable-properties#coerce-value-callbacks" target="_blank">lire la documentation</a> !</li><li>propertyChanged : callback appelé quand la valeur du binding vient de changer</li><li>propertyChanging : idem quand la valeur est en train de changer</li><li>defaultValueCreator : permet de définir une valeur par défaut à partir d'une <code>Func</code>&nbsp;<br></li></ul><p>Seuls les trois premiers arguments sont obligatoires.</p><p>Tout ceci se place bien entendu dans le code-behind de la <code>View</code>.</p><p>Nous avons désormais une propriété <code>ImageSize</code> mais comment allons-nous l'utiliser en interne dans notre <code>CircleImage</code> ?</p><p>Il y a plusieurs façons de voir les choses. Dans des cas simples qui touchent directement l'aspect visuel, on peut le faire directement dans le XAML. Parfois, c'est plus pertinent d'agir via les callbacks&nbsp;<code>propertyChanged</code> ou&nbsp;<code>propertyChanging</code> de la BindableProperty qui offrent plus de souplesse et de liberté que XAML.</p><p>Je vais vous présenter les deux mais, bien entendu, dans le <a href="https://github.com/SylvainMoingeon/CircleImageDemo" target="_blank">projet GitHub</a> je n'ai pu en laisser qu'un !</p><h3 id="lier-les-proprits-bindables-au-xaml-du-contrle">Lier les propriétés bindables au XAML du contrôle</h3><p>Partons de notre <code>CircleImage</code> de base.&nbsp;</p><pre class="line-numbers language-html"><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;Image x:Class="CircleImageDemo.CircleImage.CircleImage"
+       xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       HeightRequest="128"
+       WidthRequest="128"&gt;
+    &lt;Image.Clip&gt;
+        &lt;EllipseGeometry RadiusX="64"
+                         RadiusY="64"
+                         Center="64,64"
+                         /&gt;
+    &lt;/Image.Clip&gt;
+&lt;/Image&gt;</code></pre><p>L'enjeu est de réussir à lier la propriété <code>ImageSize</code> aux propriétés&nbsp;<code>HeightRequest</code> et&nbsp;<code>WidthRequest</code> de l'image, ainsi qu'aux&nbsp;<code>RadiusX</code>,&nbsp;<code>RadiusY</code> et <code>Center</code> de l'ellipse dont les valeurs sont la moitié de&nbsp;<code>ImageSize</code>.</p><p>Pour cela, nous allons utiliser un Binding. Cela peut paraître un peu confus, il faut suivre un peu : on va binder en interne une valeur qui provient d'un Binding externe. Une fois qu'on a compris ça, on a tout compris.</p><p>Sauf que là, comme ça, ça ne fonctionnera pas. Il est nécessaire de préciser à notre <code>View</code> que son contexte de binding est... elle-même !</p><p>Une méthode simple est de donner un nom à notre contrôle, "this" par exemple pour mimer le mot clé "this" du C# et de donner "this" comme source du contexte de binding :</p><pre class="line-numbers language-html"><code>&lt;Image x:Name="this" BindingContext="{x:Reference this}" ...&gt;
+</code></pre><p>On peut désormais binder <code>ImageSize</code> aux propriétés de l'<code>Image</code> :<br><br></p><pre class="line-numbers language-html"><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;Image x:Name="this"
+       [...]
+       BindingContext="{x:Reference this}"
+       HeightRequest="{Binding ImageSize}"
+       WidthRequest="{Binding ImageSize}"
+       &gt;
+    [...]
+&lt;/Image&gt;</code></pre><p>Ça y est, nous avons une image carrée de côté <code>ImageSize</code>.&nbsp;</p><p>Vous la voulez circulaire ? Fastoche, il suffirait de binder&nbsp;(ImageSize / 2) sur les propriétés de l'ellipse... si seulement c'était possible !</p><p>Il nous faut trouver un moyen de modifier la valeur du binding à la volée... Ça tombe bien, Xamarin.Forms nous propose un outil pour cela : le <code>Converter</code>.</p><p>Je n'entre pas dans les détails car j'ai un article en cours de rédaction sur le sujet, sachez simplement que le principe est simple : il s'agit d'une classe implémentant l'interface <code>IValueConverter</code>, dont la principale méthode reçoit une valeur en entrée et en retourne une autre en sortie. Exactement ce qu'il nous faut. Nous allons créer un <code>DividerConverter</code> !</p><p>Pour rendre le converter plus versatile, celui-ci expose une propriété <code>Divider</code> définissant la quantité par laquelle nous souhaitons diviser. Nous aurions pu simplement diviser par deux, en dur dans le code, mais ça limiterait la réutilisation du converter.</p><p>La méthode <code>Convert()</code> divise la valeur reçue de l'extérieur, la méthode <code>ConvertBack()</code> fait l'inverse dans le cas d'un binding à double sens (si on modifie la valeur au niveau de l'interface utilisateur, elle sera répercutée dans le code, mais bien entendue avec l'opération arithmétique inverse !)</p><pre class="line-numbers language-csharp"><code>public class DoubleDividerConverter : IValueConverter
+{      
+    public int Divider { get; set; } = 1;
+
+    // Divise la valeur reçue par Divider
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is double doubleToDivide)
+        {
+            return doubleToDivide / Divider;
+        }
+
+        throw new ArgumentException($"{nameof(value)} should be of type double");
+    }
+
+    // Multiplie la valeur renvoyée par Divider
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is double doubleToMultiply)
+        {
+            return doubleToMultiply * Divider;
+        }
+
+        throw new ArgumentException($"{nameof(value)} should be of type double");
+    }
+}
+</code></pre><p>Reste à utiliser le Converter dans le XAML :</p><ul><li>Le déclarer comme ressource statique dans la <code>View</code></li><li>L'ajouter aux Bindings</li><li>Préciser à l'<code>EllipseGeometry</code> son contexte de Binding.</li></ul><pre class="line-numbers language-csharp"><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;Image x:Name="this"
+         [...]
+       &gt;
+    &lt;Image.Resources&gt;
+        &lt;ResourceDictionary&gt;
+            &lt;local:DoubleDividerConverter 
+                    x:Key="DoubleDividerConverter" 
+                    Divider="2" /&gt;
+        &lt;/ResourceDictionary&gt;
+    &lt;/Image.Resources&gt;
+
+    &lt;Image.Clip&gt;
+        &lt;EllipseGeometry BindingContext="{x:Reference this}"
+                         RadiusX="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                         RadiusY="{Binding ImageSize, Converter={StaticResource DoubleDividerConverter}}"
+                         Center="??? Center attend un type Point, je vous laisse réfléchir quelques instants"
+                         /&gt;
+    &lt;/Image.Clip&gt;
+&lt;/Image&gt;</code></pre><p>C'est bon pour la forme de l'ellipse, nous venons d'en faire un cercle de rayon (Imagesize / 2).</p><p>Reste à la positionner via la propriété <code>Center</code>. Celle-ci attend une valeur de type <code>Point</code>. Nous allons là encore utiliser un converter. Il recevra la taille de l'image en entrée et retournera un point dont les coordonnées sont au centre de l'image.</p><p>Vous trouverez tout le code dans le <a href="https://github.com/SylvainMoingeon/CircleImageDemo" target="_blank">dépôt GitHub</a>.&nbsp;</p><h3 id="grer-la-proprit-bindable-dans-le-code-behind">Gérer la propriété bindable dans le code behind</h3><p>Si la beauté du XAML vous laisse de marbre, il est possible d'effectuer la même chose directement dans le code-behind de la View.</p><p>Il suffit de placer notre code dans l'événement <code>propertyChanged</code> de la <code>BindableProperty</code>&nbsp;: nous y définirons le rayon du cercle, la taille de l'image et nous appliquerons l'ellipse à l'image après avoir créé celle-ci.</p><p>Et c'est tout !</p><pre class="line-numbers language-csharp"><code>public static readonly BindableProperty ImageSizeProperty =
+  BindableProperty.Create(
+     propertyName: nameof(ImageSize),
+     declaringType: typeof(CircleImage),
+     returnType: typeof(double),
+     defaultValue: 0.0,
+     defaultBindingMode: BindingMode.OneWay,
+     propertyChanged: (bindable, oldValue, newValue) =&gt;
+     {
+         if (bindable is CircleImage circleImage && newValue is double imageSize)
+         {
+             double radius = imageSize / 2;
+             EllipseGeometry ellipseGeometry = new EllipseGeometry()
+             {
+                 Center = new Point(radius, radius),
+                 RadiusX = radius,
+                 RadiusY = radius
+             };
+
+             circleImage.HeightRequest = imageSize;
+             circleImage.WidthRequest = imageSize;
+             circleImage.Clip = ellipseGeometry;
+         }
+     });
+</code></pre><p>Vous allez me dire, ça valait bien la peine de s'embêter en XAML avec des converters ! Ce n'est pas complètement faux. Mais pas totalement vrai.</p><p>La qualité d'un code ne se limite pas à sa simplicité mais aussi à sa clarté. Ici, un développeur ne connaissant pas le code devra chercher à l'aveuglette dans le code-behind pour comprendre comment l'image est dimensionnée et devient circulaire. Tant que ça reste simple, ça passe. Dans un code plus touffu, cela peut vite devenir un véritable casse-tête !</p><p>Il y a également un risque accru de <a href="https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/">monstre spaghetti et de crotte de nez dans le code</a>. Un développeur débutant ou peu consciencieux, aura vite fait de mélanger tout et n'importe quoi dans <code>propertyChanged</code>. Au minimum, il aurait fallu que j'extrais le code dans une méthode à part. Et pour être parfaitement propre, séparer le dimensionnement de l'image du découpage circulaire dans deux méthodes distinctes. Et tant qu'on y est, placer la conversion entre la taille de l'image et l'ellipse dans une classe à part pour que ce soit réutilisable. Une sorte de <code>Converter</code> qui cacherait son nom, en quelque sorte... Bref, le code-behind est plus simple surtout parce qu'on peut librement y coder comme un sale.</p><p class="msg msg--highlight">L'avantage de la méthode "XAML", c'est que 100% du code concernant l'aspect visuel est au même endroit, directement là où on irait le chercher spontanément. Tout y est explicite, on sait d'emblée où chercher l'information. Et ça, en débogage, ça n'a pas de prix !</p><h2 id="appliquons-le-mme-principe-pour-crer-un-contrle-avanc">Appliquons le même principe pour créer un contrôle avancé</h2><p>Nous avons désormais une image circulaire simple et réutilisable. Nous allons de même créer une image circulaire encapsulant la précédente pour lui ajouter quelques options.</p><p>Pour commencer, nous allons créer comme précédemment un <code>ContentView</code> que nous nommerons <code>AdvancedCircleImage</code> et qui héritera de <code>Grid</code> puisque c'est le <code>Layout</code> de base de notre contrôle.</p><p>Je vous laisse faire, c'est exactement comme tout à l'heure, avec une <code>Grid</code> à la place de l'<code>Image</code>.</p><p>A l'intérieur de notre Grid, nous aurons donc :&nbsp;</p><ul><li>Deux itérations de notre <code>CircleImage</code>, l'une pour l'image, l'autre pour l'image de substitution</li><li>Une <code>Ellipse</code> pour la bordure</li><li>Un <code>ActivityIndicator</code> pour l'indicateur de chargement</li></ul><p>Dans le code-behind, nous définirons quelques <code>BindablePropertie</code> :</p><ul><li>MainImageSource : source de l'image principale</li><li>PlaceholderImageSource : source du placeholder</li><li>ImageSize : taille de l'image</li><li>IsBorderVisible : la bordure est-elle visible ?</li><li>BorderColor : couleur de la bordure</li><li>BorderThickness : épaisseur de la bordure</li><li>IsLoaderEnabled : l'indicateur de chargement est-il actif (si faux on ne le verra jamais, si vrai on le verra quand l'image est en train de charger)<br></li></ul><p>Nous allons appliquer la même recette que précédemment, voici une version simplifiée du XAML de laquelle j'ai retiré ce qui n'est pas nécessaire à la compréhension :</p><pre class="line-numbers language-csharp"><code>&lt;Grid x:Name="this"&gt;
+    &lt;Grid.Resources&gt;
+        &lt;DoubleDividerConverter x:Key="DoubleDividerConverter" Divider="2" /&gt;
+        &lt;ImageSizeToCenterConverter x:Key="ImageSizeToCenterConverter" /&gt;
+        &lt;ColorToBrushConverter x:Key="ColorToBrushConverter" /&gt;
+    &lt;/Grid.Resources&gt;
+
+    &lt;local:CircleImage BindingContext="{x:Reference this}"
+                       ImageSize="{Binding ImageSize}"
+                       Source="{Binding PlaceholderImageSource}"/&gt;
+
+    &lt;local:CircleImage x:Name="Image"
+					 BindingContext="{x:Reference this}"
+                     ImageSize="{Binding ImageSize}"
+                     Source="{Binding MainImageSource}" /&gt;
+
+    &lt;Ellipse BindingContext="{x:Reference this}"
+             Stroke="{Binding BorderColor, Converter={StaticResource ColorToBrushConverter}}"
+             StrokeThickness="{Binding BorderThickness}"
+             HeightRequest="{Binding ImageSize}"
+             WidthRequest="{Binding ImageSize}"
+             IsVisible="{Binding IsBorderVisible}"/&gt;
+
+    &lt;ActivityIndicator IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
+                       BindingContext="{x:Reference this}"
+                       IsVisible="{Binding IsLoaderEnabled}"
+                       Color="{Binding BorderColor}"/&gt;
+&lt;/Grid&gt;</code></pre><p>Vous noterez juste l'apparition d'un nouveau <code>Converter</code> : notre propriété <code>BorderColor</code> transmet un type <code>Color</code> alors que la propriété <code>Stroke</code> de l'Ellipse attend une <code>Brush</code>.</p><p>Pour le reste, ce n'est que du <code>Binding</code> vers les <code>BindableProperty</code> et des astuces que nous avons déjà vu dans la <a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/">première partie de l'article</a>.</p><p>Nous avons désormais une image circulaire avancée parfaitement réutilisable dans notre projet ! Chouette !</p><p>Nous en avons même deux : <code>CircleImage</code> et <code>AdvancedCircleImage</code>&nbsp;!</p><h2 id="utiliser-le-contrle-dans-le-code">Utiliser le contrôle dans le code</h2><p>En réalité, vous savez déjà comment utiliser votre contrôle personnalisé puisque vous l'avez déjà fait en incorporant <code>CircleImage</code> dans le XAML de <code>AdvancedCircleImage</code>.&nbsp;</p><p>Il suffit de :</p><ol><li>Déclarer le namespace auquel appartient votre contrôle dans votre <code>ContentPage</code></li><li>Utiliser le contrôle dans le XAML</li></ol><p>Voici un exemple très simplifié :</p><pre class="line-numbers language-csharp"><code>&lt;ContentPage x:Class="CircleImageDemo.MainPage"
+            xmlns:ci="clr-namespace:CircleImageDemo.CircleImage"
+            [...]&gt;            
+    &lt;ci:AdvancedCircleImage ImageSize="64"
+                            MainImageSource="{Binding PhotoUrl}"
+                            PlaceholderImageSource="{Binding PlaceholderImage}"
+                            BorderColor="Yellow"
+                            BorderThickness="4"
+                            IsBorderVisible="{Binding IsBookmarked}"
+                            IsLoaderEnabled="True" /&gt;
+&lt;/ContentPage&gt;
+</code></pre><p>Dans le <a href="https://github.com/SylvainMoingeon/CircleImageDemo" target="_blank">projet de démonstration</a>, j'utilise l'<code>AdvancedCircleImage</code> dans une liste (en fait un <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/layouts/bindable-layouts" target="_blank">BindableLayout</a> mais ce n'est pas le sujet).</p><h2 id="le-projet-de-dmonstration">Le projet de démonstration</h2><p>Je vous redonne le lien vers le dépôt GitHub du projet :&nbsp;<a href="https://github.com/SylvainMoingeon/CircleImageDemo" target="_blank">https://github.com/SylvainMoingeon/CircleImageDemo</a>&nbsp;ainsi que la petite animation :</p><figure class="post__image post__image--center"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/demo-circleimage-2.gif" height="726" width="350" alt=""></figure><p>Celle-ci simule une page de contacts qui existe avant tout pour illustrer le contrôle personnalisé que nous venons de créer.</p><p>L'<code>AdvancedCircleImage</code> est utilisée pour afficher les photos de contacts. Si l'image n'est pas renseignée ou indisponible (url invalide par exemple), le contrôle affiche une image de substitution par défaut à la place.</p><p>Au clic sur une fiche contact, celui-ci bascule de l'état "mis en favori" à l'état "pas mis en favori", ce qui affiche ou non la bordure.</p><p>L'indicateur de chargement est fugace mais visible dans les deux dernières fiches puisqu'une image est définie dans chacune d'elle mais inaccessible (erreur 404 et url non joignable).</p><h3 id="jetezy-un-il-">Jetez-y un œil !</h3><p>C'est tout en ce qui concerne l'image circulaire, mais il y a deux ou trois petites choses dans le code qui pourraient vous intéresser si vous n'êtes pas familier avec XAML et <a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/">MVVM</a>. Et si vous êtes arrivé jusqu'à la fin de cet article, c'est sans doute le cas !</p><h4 id="stringformat">StringFormat</h4><p>Pour illustrer l'usage de <a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/">MVVM</a>, j'ai ajouté un <code>Label</code> qui indique le nombre de contacts en favori. Celui-ci utilise <code><a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/data-binding/string-formatting" target="_blank">StringFormat</a></code> pour afficher une phrase complète intégrant la valeur obtenue via le <code>Binding</code>. <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/data-binding/string-formatting" target="_blank"><code>StringFormat</code></a> est un outil très puissant et malheureusement souvent négligé par les développeurs. Il vous évitera pas mal de <a href="https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/">mauvaises bidouilles et de crottes dans le code</a>.</p><h4 id="code--xaml-spcifique--la-plateforme">Code / XAML spécifique à la plateforme</h4><p>Il y a quelques cas à la marge mais suffisamment fréquents où malheureusement un code 100% commun n'est plus suffisant. Cela tient surtout à des différences fonctionnelles entre les plateformes.&nbsp;</p><p>Par exemple, l'encoche et le bouton virtuel apparus sur iOS à partir de l'iPhone X (il me semble).&nbsp;Lorsque vous définissez votre mise-en-page, vous risquez fort d'obtenir quelque chose comme ceci :</p><figure class="post__image post__image--center"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/no-safe-area-2.png" height="915" width="422" alt="" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/37/responsive/no-safe-area-2-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/no-safe-area-2-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/no-safe-area-2-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/no-safe-area-2-lg.png 1024w"></figure><p>Il existe quelques fonctionnalités spécifiques aux plateformes directement accessibles dans le code commun, notamment pour <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/platform/ios/" target="_blank">iOS</a> et <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/platform/android/" target="_blank">Android</a>. Ici, nous allons nous intéresser au <code>SafeArea</code> d'iOS.</p><p>Dans le XAML :</p><pre class="line-numbers language-html"><code>&lt;ContentPage 
+xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+ios:Page.UseSafeArea="True"
+[...]&gt;
+    [...]
+&lt;/ContentPage&gt;</code></pre><p>Ce qui corrigera le problème en protégeant les zones de l'encoche et du bouton virtuel pour éviter ces affreux chevauchements :</p><figure class="post__image post__image--center"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/safe-area.png" height="915" width="422" alt="" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/37/responsive/safe-area-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/safe-area-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/safe-area-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/safe-area-lg.png 1024w"></figure><p class="msg msg--highlight">Fouillez dans la documentation, il y en a d'autres qui vous éviterons prises de tête et tentatives de corriger ces choses là vous même en codant dans les projets natifs.</p><h4 id="designtimevisible">DesignTimeVisible</h4><p>Si vous utilisez le <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/xaml-previewer/?pivots=windows" target="_blank">Previewer Xamarin.Forms</a>, vous constaterez que vos contrôles personnalisés n'apparaissent pas dedans, ce qui peut être gênant lorsque vous êtes en train de dessiner vos interfaces.</p><figure class="post__image post__image--center"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/designtime-not-visible.png" height="811" width="981" alt="Copie d'écran présentant le previewer Xamarin.Forms, le contrôle personnalisé n'est pas affiché" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-not-visible-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-not-visible-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-not-visible-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-not-visible-lg.png 1024w"><figcaption>L'image circulaire n'est pas affichée pas dans le previewer, quel malheur !</figcaption></figure><p>La plupart du temps, ça ne tient qu'à une ligne de code ! Un simple attribut à ajouter à votre classe : <code>[DesignTimeVisible(true)]</code></p><p>Comme son nom l'indique de façon assez explicite, cet attribut indique si la classe doit être traitée ou non par le previewer.</p><pre class="line-numbers language-csharp"><code>[XamlCompilation(XamlCompilationOptions.Compile)]
+[DesignTimeVisible(true)]
+public partial class AdvancedCircleImage : Grid
+{
+[...]
+}</code></pre><p>Pensez bien à l'ajouter à chacun de vos contrôles personnalisés ! Ici au CircleImage et à l'AdvancedCircleImage. Voici le résultat, une fois l'attribut ajouté à chacune des classes :&nbsp;</p><figure class="post__image post__image--center"><img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/37/designtime-visible.png" height="758" width="949" alt="Illustration du previewer avec l'attribut DesignTimeVisible" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-visible-xs.png 300w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-visible-sm.png 480w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-visible-md.png 768w, https://www.sylvainmoingeon.fr/media/posts/37/responsive/designtime-visible-lg.png 1024w"><figcaption>L'image circulaire est bien affichée grâce à l'attribut DesignTimeVisible(true)</figcaption></figure><h2 id="conclusion">Conclusion</h2><p>Pour allez plus loin, il faudrait totalement sortir le contrôle personnalisé du projet et pourquoi pas en faire un package nugget. Peut-être une idée pour un prochain article !</p><p>Si vous avez des questions, des astuces ou même des remontrances concernant le sujet, je vous invite à laisser des commentaires. Juste là dessous. ⬇</p></div><aside><p class="post__last-updated">Mis-à-jour le mardi 10 novembre 2020</p><div class="post__share"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fcreer-un-controle-reutilisable-100-xamarinforms-partie-2%2F" class="js-share facebook" title="Facebook" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/></svg> Facebook </a><a href="https://twitter.com/share?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fcreer-un-controle-reutilisable-100-xamarinforms-partie-2%2F&amp;via=Sylvain%20Moingeon&amp;text=Cr%C3%A9er%20un%20contr%C3%B4le%20r%C3%A9utilisable%20100%25%20Xamarin.Forms%2C%20partie%202" class="js-share twitter" title="Twitter" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/></svg> Twitter </a><a href="https://mix.com/add?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fcreer-un-controle-reutilisable-100-xamarinforms-partie-2%2F" class="js-share mix" title="Mix" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#mix"/></svg> Mix </a><a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fcreer-un-controle-reutilisable-100-xamarinforms-partie-2%2F&amp;title=Cr%C3%A9er%20un%20contr%C3%B4le%20r%C3%A9utilisable%20100%25%20Xamarin.Forms%2C%20partie%202" class="js-share linkedin" title="LinkedIn" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#linkedin"/></svg> LinkedIn </a><a href="https://api.whatsapp.com/send?text=Cr%C3%A9er%20un%20contr%C3%B4le%20r%C3%A9utilisable%20100%25%20Xamarin.Forms%2C%20partie%202 https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fcreer-un-controle-reutilisable-100-xamarinforms-partie-2%2F" class="js-share whatsapp" rel="nofollow noopener noreferrer"><svg aria-hidden="true" focusable="false" viewBox="0 0 32 32"><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#whatsapp"/></svg> WhatsApp</a></div></aside><footer><div class="post__bio"><img src="https://www.gravatar.com/avatar/f0139f72232177b730a57cff5c38c0b2?s&#x3D;240" loading="lazy" alt="Sylvain"><h3><a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" class="inverse" title="Sylvain">Sylvain</a></h3><p>Un peu geek, diplômé en sciences (bac+5) et informatique (BTS IG), Sylvain confectionne logiciels et applications depuis 2007. C&#x27;est aussi un père de famille, instructeur de Yoseikan Budo, photographe éclairé et musicien amateur.</p></div><ul class="post__tag"><li><a href="https://www.sylvainmoingeon.fr/tags/from-scratch/">From scratch</a></li><li><a href="https://www.sylvainmoingeon.fr/tags/mvvm/">MVVM</a></li><li><a href="https://www.sylvainmoingeon.fr/tags/xamarinforms/">Xamarin.Forms</a></li><li><a href="https://www.sylvainmoingeon.fr/tags/xaml/">XAML</a></li></ul><nav class="post__nav"><div class="post__nav__prev">Article précédent<h3 class="h5"><a href="https://www.sylvainmoingeon.fr/xamarinforms-50-en-approche/" class="inverse" rel="prev">Xamarin.Forms 5.0 en approche !</a></h3></div><div class="post__nav__next">Article suivant<h3 class="h5"><a href="https://www.sylvainmoingeon.fr/utiliser-des-images-vectorielles-svg-dans-xamarinforms/" class="inverse" rel="next">Utiliser des images vectorielles SVG dans Xamarin.Forms</a></h3></div></nav><div class="post__related"><h3>Cela vous intéressera peut-être</h3><div class="post__related__wrap"><figure><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/"><img src="https://www.sylvainmoingeon.fr/media/posts/36/responsive/micro-assembly-xs.jpg" loading="lazy" alt=""></a><figcaption><time datetime="2020-10-22T12:13">jeudi 22 octobre 2020</time><h4><a href="https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-1/" class="inverse">Créer un contrôle réutilisable 100% Xamarin.Forms, partie 1</a></h4></figcaption></figure></div></div></footer></article><div class="comments wrapper"><h3>Commentaires</h3><div id="disqus_thread"><p>Pour utiliser les commentaires, merci d'<a href="https://www.sylvainmoingeon.fr/#cookie-settings" title="configuration des cookies">accepter les cookies du groupe "Disqus"</a>.</p></div><script type="gdpr-blocker/disqus">var disqus_config = function () {
+                    this.page.url = 'https://www.sylvainmoingeon.fr/creer-un-controle-reutilisable-100-xamarinforms-partie-2/';
+            		this.page.identifier = '37';
+                    this.page.title = ' Créer un contrôle réutilisable 100% Xamarin.Forms, partie 2';
+                };
+            
+                var disqus_loaded = false;
+            
+                function publiiLoadDisqus() {
+                    if(disqus_loaded) {
+                        return false;
+                    }
+            
+                    var top = document.getElementById('disqus_thread').offsetTop;
+            
+                    if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
+                        disqus_loaded = true;
+            
+                        (function () {
+                            var d = document, s = d.createElement('script');
+                            s.src = 'https://artisanlogiciel.disqus.com/embed.js';
+                            s.setAttribute('data-timestamp', +new Date());
+                            (d.head || d.body).appendChild(s);
+                        })();
+                    }
+                }
+            
+                publiiLoadDisqus();
+            
+                window.onscroll = function() {
+                    publiiLoadDisqus();
+                };</script><noscript>Veuillez activer javascript pour voir les <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript></div></main></div><footer class="footer"><p><a href="https://www.planetxamarin.com/">Featured by<br><img src="https://www.planetxamarin.com/Content/img/planetxamarin-featured-badge.png" alt="Logo Planet Xamarin" width="180"></a></p><div class="footer__copyright"><p>Powered by <a href="https://getpublii.com" target="_blank" rel="nofollow noopener">Publii Static CMS</a> - <a href="https://icons8.com/icon/38641/xamarin">using  Xamarin icon by Icons8</a> </p><p><a href="../../../../../../../../../../mentions-legales" title="Mention légales">Mentions légales</a> - <a href="../../../../../../../../../../politique-des-commentaires" title="politique des commentaires">Politique des commentaires</a> - <a href="../../../../../../../../../../#cookie-settings" title="configuration des cookies">Configuration des cookies</a> - <a href="../../../../../../../../../../feed.xml">Abonnez vous au flux rss <i class="fas fa-rss"></i></a></p></div><div class="footer__social"><a href="https://www.facebook.com/smoingeon" aria-label="Facebook" class="facebook"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook"/></svg> </a><a href="https://twitter.com/SylvainMoingeon" aria-label="Twitter" class="twitter"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter"/></svg> </a><a href="https://www.instagram.com/yoseikanquetigny/" aria-label="Instagram" class="instagram"><svg><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#instagram"/></svg> </a><a href="https://dev.to/sylvainmoingeon" style="font-size: 1.2rem; margin:28.8px 7.2px 0px" class="linkedin"><i class="fab fa-dev" title="sylvainmoingeon's DEV Profile"></i></a></div><button class="footer__bttop js-footer__bttop" aria-label="On remonte tout en haut"><svg><title>On remonte tout en haut</title><use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#toparrow"/></svg></button></footer><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/prism.js"></script><script>window.publiiThemeMenuConfig = {    
+        mobileMenuMode: 'sidebar',
+        animationSpeed: 300,
+        submenuWidth: 'auto',
+        doubleClickTime: 500,
+        mobileMenuExpandableSubmenus: true, 
+        relatedContainerForOverlayMenuSelector: '.top',
+   };</script><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/scripts.min.js?v=18410cbe84c2356f2fa9c4bf730b3bca"></script><script>var images = document.querySelectorAll('img[loading]');
+
+        for (var i = 0; i < images.length; i++) {
+            if (images[i].complete) {
+                images[i].classList.add('is-loaded');
+            } else {
+                images[i].addEventListener('load', function () {
+                    this.classList.add('is-loaded');
+                }, false);
+            }
+        }</script><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/photoswipe.min.js?v=017385b552f7e0d979e2e2fe6f324015"></script><script defer="defer" src="https://www.sylvainmoingeon.fr/assets/js/photoswipe-ui-default.min.js?v=d067f0883540b1ddda0e2c9ad1b14260"></script><script>var initPhotoSwipeFromDOM=function(gallerySelector){var parseThumbnailElements=function(el){var thumbElements=el.childNodes,numNodes=thumbElements.length,items=[],figureEl,linkEl,size,item;for(var i=0;i<numNodes;i++){figureEl=thumbElements[i];if(figureEl.nodeType!==1){continue;}
+          linkEl=figureEl.children[0];size=linkEl.getAttribute('data-size').split('x');item={src:linkEl.getAttribute('href'),w:parseInt(size[0],10),h:parseInt(size[1],10)};if(figureEl.children.length>1){item.title=figureEl.children[1].innerHTML;}
+          if(linkEl.children.length>0){item.msrc=linkEl.children[0].getAttribute('src');}
+          item.el=figureEl;items.push(item);}
+          return items;};var closest=function closest(el,fn){return el&&(fn(el)?el:closest(el.parentNode,fn));};var onThumbnailsClick=function(e){e=e||window.event;e.preventDefault?e.preventDefault():e.returnValue=false;var eTarget=e.target||e.srcElement;var clickedListItem=closest(eTarget,function(el){return(el.tagName&&el.tagName.toUpperCase()==='FIGURE');});if(!clickedListItem){return;}
+          var clickedGallery=clickedListItem.parentNode,childNodes=clickedListItem.parentNode.childNodes,numChildNodes=childNodes.length,nodeIndex=0,index;for(var i=0;i<numChildNodes;i++){if(childNodes[i].nodeType!==1){continue;}
+          if(childNodes[i]===clickedListItem){index=nodeIndex;break;}
+          nodeIndex++;}
+          if(index>=0){openPhotoSwipe(index,clickedGallery);}
+          return false;};var photoswipeParseHash=function(){var hash=window.location.hash.substring(1),params={};if(hash.length<5){return params;}
+          var vars=hash.split('&');for(var i=0;i<vars.length;i++){if(!vars[i]){continue;}
+          var pair=vars[i].split('=');if(pair.length<2){continue;}
+          params[pair[0]]=pair[1];}
+          if(params.gid){params.gid=parseInt(params.gid,10);}
+          return params;};var openPhotoSwipe=function(index,galleryElement,disableAnimation,fromURL){var pswpElement=document.querySelectorAll('.pswp')[0],gallery,options,items;items=parseThumbnailElements(galleryElement);options={galleryUID:galleryElement.getAttribute('data-pswp-uid'),getThumbBoundsFn:function(index){var thumbnail=items[index].el.getElementsByTagName('img')[0],pageYScroll=window.pageYOffset||document.documentElement.scrollTop,rect=thumbnail.getBoundingClientRect();return{x:rect.left,y:rect.top+pageYScroll,w:rect.width};},
+          mainClass:'pswp--dark',
+          preload: [1,2],
+          hideAnimationDuration:200,
+          showAnimationDuration:0,
+          bgOpacity: 0.7,
+          showHideOpacity:true,
+          closeOnScroll: true,
+          arrowKeys: true,
+          closeEl: true,
+          captionEl: true,
+          fullscreenEl: true,
+          zoomEl: true,
+          shareEl: true,
+          counterEl: true,
+          arrowEl: true,
+          preloaderEl: true
+          };if(fromURL){if(options.galleryPIDs){for(var j=0;j<items.length;j++){if(items[j].pid==index){options.index=j;break;}}}else{options.index=parseInt(index,10)-1;}}else{options.index=parseInt(index,10);}
+          if(isNaN(options.index)){return;}
+          if(disableAnimation){options.showAnimationDuration=0;}
+          gallery=new PhotoSwipe(pswpElement,PhotoSwipeUI_Default,items,options);gallery.init();gallery.options.escKey=true;};var galleryElements=document.querySelectorAll(gallerySelector);for(var i=0,l=galleryElements.length;i<l;i++){galleryElements[i].setAttribute('data-pswp-uid',i+1);galleryElements[i].onclick=onThumbnailsClick;}
+          var hashData=photoswipeParseHash();if(hashData.pid&&hashData.gid){openPhotoSwipe(hashData.pid,galleryElements[hashData.gid-1],true,true);}};initPhotoSwipeFromDOM('.gallery');</script><div class="pswp" tabindex="-1" role="dialog" aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--share" title="Share"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button><button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div><div class="pcb" data-behaviour="badge-link" data-behaviour-link="#cookie-settings" data-revision="1" data-config-ttl="90" data-debug-mode="false"><div role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-title" aria-describedby="pcb-txt" class="pcb__banner"><div class="pcb__inner"><div id="pcb-title" role="heading" aria-level="2" class="pcb__title">Ce site web mange des cookies</div><div id="pcb-txt" class="pcb__txt">Le système de commentaire (Disqus) utilisé sur ce site enregistre des cookies sur votre appareil. Et c'est tout.</div><div class="pcb__buttons"><button type="button" class="pcb__btn pcb__btn--link pcb__btn--configure" aria-haspopup="dialog">Manage preferences</button> <button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Enregistrer</button></div></div></div><div class="pcb__popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="pcb-popup-title"><div class="pcb__popup__wrapper"><div class="pcb__inner pcb__popup__inner"><div class="pcb__popup__heading"><div id="pcb-popup-title" role="heading" aria-level="2" class="pcb__title">Cookie settings</div><button class="pcb__popup__close" aria-label="Close"></button></div><div class="pcb__popup__content"><div class="pcb__txt pcb__popup__txt">We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</div><ul class="pcb__groups"><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Obligatoire</summary></details><div class="pcb__popup__switch is-checked"><input type="checkbox" data-group-name="" id="pcb-group-0" checked="checked"> <label for="pcb-group-0">Obligatoire</label></div></li><li class="pcb__group"><details><summary class="pcb__group__title no-desc">Disqus (système de commentaires)</summary></details><div class="pcb__popup__switch"><input type="checkbox" data-group-name="disqus" id="disqus-cookies"> <label for="disqus-cookies">Disqus (système de commentaires)</label></div></li></ul></div><div class="pcb__buttons pcb__popup__buttons"><button type="button" class="pcb__btn pcb__btn--solid pcb__btn--accept">Accept all</button> <button type="button" class="pcb__btn pcb__btn--reject">Reject all</button> <button type="button" class="pcb__btn pcb__btn--save">Save settings</button></div></div></div></div><div class="pcb__overlay" aria-hidden="true"></div><button class="pcb__badge" aria-label="Cookies" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" width="40" height="40" viewBox="0 0 23 23" fill="currentColor"><path d="M21.41 12.71c-.08-.01-.15 0-.22 0h-.03c-.03 0-.05 0-.08.01-.07 0-.13.01-.19.04-.52.21-1.44.19-2.02-.22-.44-.31-.65-.83-.62-1.53a.758.758 0 0 0-.27-.61.73.73 0 0 0-.65-.14c-1.98.51-3.49.23-4.26-.78-.82-1.08-.73-2.89.24-4.49.14-.23.14-.52 0-.75a.756.756 0 0 0-.67-.36c-.64.03-1.11-.1-1.31-.35-.19-.26-.13-.71-.01-1.29.04-.18.06-.38.03-.59-.05-.4-.4-.7-.81-.66C5.1 1.54 1 6.04 1 11.48 1 17.28 5.75 22 11.6 22c5.02 0 9.39-3.54 10.39-8.42.08-.4-.18-.78-.58-.87Zm-9.81 7.82c-5.03 0-9.12-4.06-9.12-9.06 0-4.34 3.05-8 7.25-8.86-.08.7.05 1.33.42 1.81.24.32.66.67 1.38.84-.76 1.86-.65 3.78.36 5.11.61.81 2.03 2 4.95 1.51.18.96.71 1.54 1.18 1.87.62.43 1.38.62 2.1.62.05 0 .09 0 .13-.01-1.23 3.64-4.7 6.18-8.64 6.18ZM13 17c0 .55-.45 1-1 1s-1-.45-1-1 .45-1 1-1 1 .45 1 1Zm5.29-12.3a.99.99 0 0 1-.29-.71c0-.55.45-.99 1-.99a1 1 0 0 1 .71.3c.19.19.29.44.29.71 0 .55-.45.99-1 .99a1 1 0 0 1-.71-.3ZM9 13.5c0 .83-.67 1.5-1.5 1.5S6 14.33 6 13.5 6.67 12 7.5 12s1.5.67 1.5 1.5Zm3.25.81a.744.744 0 0 1-.06-1.05c.28-.32.75-.34 1.05-.06.31.28.33.75.05 1.06-.15.16-.35.25-.56.25-.18 0-.36-.06-.5-.19ZM8.68 7.26c.41.37.44 1 .07 1.41-.2.22-.47.33-.75.33a.96.96 0 0 1-.67-.26c-.41-.37-.44-1-.07-1.41.37-.42 1-.45 1.41-.08Zm11.48 1.88c.18-.19.52-.19.7 0 .05.04.09.1.11.16.03.06.04.12.04.19 0 .13-.05.26-.15.35-.09.1-.22.15-.35.15s-.26-.05-.35-.15a.355.355 0 0 1-.11-.16.433.433 0 0 1-.04-.19c0-.13.05-.26.15-.35Zm-4.93-1.86a.75.75 0 1 1 1.059-1.06.75.75 0 0 1-1.059 1.06Z"/></svg></button></div><script>(function(win) {
+    if (!document.querySelector('.pcb')) {
+        return;
+    }
+
+    var cbConfig = {
+        behaviour: document.querySelector('.pcb').getAttribute('data-behaviour'),
+        behaviourLink: document.querySelector('.pcb').getAttribute('data-behaviour-link'),
+        revision: document.querySelector('.pcb').getAttribute('data-revision'),
+        configTTL: parseInt(document.querySelector('.pcb').getAttribute('data-config-ttl'), 10),
+        debugMode: document.querySelector('.pcb').getAttribute('data-debug-mode') === 'true',
+        initialState: null,
+        initialLsState: null,
+        previouslyAccepted: []
+    };
+
+    var cbUI = {
+        wrapper: document.querySelector('.pcb'),
+        banner: {
+            element: null,
+            btnAccept: null,
+            btnReject: null,
+            btnConfigure: null
+        },
+        popup: {
+            element: null,
+            btnClose: null,
+            btnSave: null,
+            btnAccept: null,
+            btnReject: null,
+            checkboxes: null,
+        },
+        overlay: null,
+        badge: null,
+        blockedScripts: document.querySelectorAll('script[type^="gdpr-blocker/"]'),
+        triggerLinks: cbConfig.behaviourLink ? document.querySelectorAll('a[href*="' + cbConfig.behaviourLink + '"]') : null
+    };
+
+    function initUI () {
+        // setup banner elements
+        cbUI.banner.element = cbUI.wrapper.querySelector('.pcb__banner');
+        cbUI.banner.btnAccept = cbUI.banner.element.querySelector('.pcb__btn--accept');
+        cbUI.banner.btnReject = cbUI.banner.element.querySelector('.pcb__btn--reject');
+        cbUI.banner.btnConfigure = cbUI.banner.element.querySelector('.pcb__btn--configure');
+
+        // setup popup elements
+        if (cbUI.wrapper.querySelector('.pcb__popup')) {
+            cbUI.popup.element = cbUI.wrapper.querySelector('.pcb__popup');
+            cbUI.popup.btnClose = cbUI.wrapper.querySelector('.pcb__popup__close');
+            cbUI.popup.btnSave = cbUI.popup.element.querySelector('.pcb__btn--save');
+            cbUI.popup.btnAccept = cbUI.popup.element.querySelector('.pcb__btn--accept');
+            cbUI.popup.btnReject = cbUI.popup.element.querySelector('.pcb__btn--reject');
+            cbUI.popup.checkboxes = cbUI.popup.element.querySelector('input[type="checkbox"]');
+            // setup overlay
+            cbUI.overlay = cbUI.wrapper.querySelector('.pcb__overlay');
+        }
+
+        cbUI.badge = cbUI.wrapper.querySelector('.pcb__badge');
+
+        if (cbConfig.behaviour.indexOf('link') > -1) {
+            for (var i = 0; i < cbUI.triggerLinks.length; i++) {
+                cbUI.triggerLinks[i].addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showBannerOrPopup();
+                });
+            }
+        }
+    }
+
+    function initState () {
+        var lsKeyName = getConfigName();
+        var currentConfig = localStorage.getItem(lsKeyName);
+        var configIsFresh = checkIfConfigIsFresh();
+
+        if (!configIsFresh || currentConfig === null) {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config not found, or configuration expired');
+            }
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                    'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                    'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                    'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                    'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                    'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                    'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                });  
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': window.publiiCBGCM.defaultState.ad_storage ? 'granted' : 'denied',
+                        'ad_personalization': window.publiiCBGCM.defaultState.ad_personalization ? 'granted' : 'denied',
+                        'ad_user_data': window.publiiCBGCM.defaultState.ad_user_data ? 'granted' : 'denied',
+                        'analytics_storage': window.publiiCBGCM.defaultState.analytics_storage ? 'granted' : 'denied',
+                        'personalization_storage': window.publiiCBGCM.defaultState.personalization_storage ? 'granted' : 'denied',
+                        'functionality_storage': window.publiiCBGCM.defaultState.functionality_storage ? 'granted' : 'denied',
+                        'security_storage': window.publiiCBGCM.defaultState.security_storage ? 'granted' : 'denied'
+                    }));
+                }
+            }
+
+            showBanner();
+        } else if (typeof currentConfig === 'string') {
+            if (cbConfig.debugMode) {
+                console.log('🍪 Config founded');
+            }
+
+            cbConfig.initialLsState = currentConfig.split(',');
+
+            if (window.publiiCBGCM) {
+                gtag('consent', 'default', {
+                    'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                    'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                    'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                    'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                    'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                    'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                    'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                });
+                
+                if (cbConfig.debugMode) {
+                    console.log('🍪 GCMv2 DEFAULT STATE: ' + JSON.stringify({
+                        'ad_storage': getDefaultConsentState(currentConfig, 'ad_storage'),
+                        'ad_personalization': getDefaultConsentState(currentConfig, 'ad_personalization'),
+                        'ad_user_data': getDefaultConsentState(currentConfig, 'ad_user_data'),
+                        'analytics_storage': getDefaultConsentState(currentConfig, 'analytics_storage'),
+                        'personalization_storage': getDefaultConsentState(currentConfig, 'personalization_storage'),
+                        'functionality_storage': getDefaultConsentState(currentConfig, 'functionality_storage'),
+                        'security_storage': getDefaultConsentState(currentConfig, 'security_storage')
+                    }));
+                }
+            }
+
+            showBadge();
+
+            if (cbUI.popup.element) {
+                var allowedGroups = currentConfig.split(',');
+                var checkedCheckboxes = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+
+                for (var j = 0; j < checkedCheckboxes.length; j++) {
+                    var name = checkedCheckboxes[j].getAttribute('data-group-name');
+
+                    if (name && name !== '-' && allowedGroups.indexOf(name) === -1) {
+                        checkedCheckboxes[j].checked = false;
+                    }
+                }
+
+                for (var i = 0; i < allowedGroups.length; i++) {
+                    var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + allowedGroups[i] + '"]');
+
+                    if (checkbox) {
+                        checkbox.checked = true;
+                    }
+
+                    allowCookieGroup(allowedGroups[i]);
+                }
+            }
+        }
+
+        setTimeout(function () {
+            cbConfig.initialState = getInitialStateOfConsents();
+        }, 0);
+    }
+
+    function checkIfConfigIsFresh () {
+        var lastConfigSave = localStorage.getItem('publii-gdpr-cookies-config-save-date');
+
+        if (lastConfigSave === null) {
+            return false;
+        }
+
+        lastConfigSave = parseInt(lastConfigSave, 10);
+
+        if (lastConfigSave === 0) {
+            return true;
+        }
+
+        if (+new Date() - lastConfigSave < cbConfig.configTTL * 24 * 60 * 60 * 1000) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function getDefaultConsentState (currentConfig, consentGroup) {
+        let configGroups = currentConfig.split(',');
+
+        for (let i = 0; i < configGroups.length; i++) {
+            let groupName = configGroups[i];
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === groupName);
+
+            if (group && group[consentGroup]) {
+                return 'granted';
+            }
+        }  
+        
+        if (window.publiiCBGCM.defaultState[consentGroup]) {
+            return 'granted'; 
+        }
+        
+        return 'denied';
+    }
+
+    function initBannerEvents () {
+        cbUI.banner.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('banner');
+            showBadge();
+        }, false);
+
+        if (cbUI.banner.btnReject) {
+            cbUI.banner.btnReject.addEventListener('click', function (e) {
+                e.preventDefault();
+                rejectAllCookies();
+                showBadge();
+            }, false);
+        }
+
+        if (cbUI.banner.btnConfigure) {
+            cbUI.banner.btnConfigure.addEventListener('click', function (e) {
+                e.preventDefault();
+                hideBanner();
+                showAdvancedPopup();
+                showBadge();
+            }, false);
+        }
+    }
+
+    function initPopupEvents () {
+        if (!cbUI.popup.element) {
+            return;
+        }
+
+        cbUI.overlay.addEventListener('click', function (e) {
+            hideAdvancedPopup();
+        }, false);
+
+        cbUI.popup.element.addEventListener('click', function (e) {
+            e.stopPropagation();
+        }, false);
+
+        cbUI.popup.btnAccept.addEventListener('click', function (e) {
+            e.preventDefault();
+            acceptAllCookies('popup');
+        }, false);
+
+        cbUI.popup.btnReject.addEventListener('click', function (e) {
+            e.preventDefault();
+            rejectAllCookies();
+        }, false);
+
+        cbUI.popup.btnSave.addEventListener('click', function (e) {
+            e.preventDefault();
+            saveConfiguration();
+        }, false);
+
+        cbUI.popup.btnClose.addEventListener('click', function (e) {
+            e.preventDefault();
+            hideAdvancedPopup();
+        }, false);
+    }
+
+    function initBadgeEvents () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.addEventListener('click', function (e) {
+            showBannerOrPopup();
+        }, false);
+    }
+
+    initUI();
+    initState();
+    initBannerEvents();
+    initPopupEvents();
+    initBadgeEvents();
+
+    /**
+     * API
+     */
+    function addScript (src, inline) {
+        var newScript = document.createElement('script');
+
+        if (src) {
+            newScript.setAttribute('src', src);
+        }
+
+        if (inline) {
+            newScript.text = inline;
+        }
+
+        document.body.appendChild(newScript);
+    }
+
+    function allowCookieGroup (allowedGroup) {
+        var scripts = document.querySelectorAll('script[type="gdpr-blocker/' + allowedGroup + '"]');
+        cbConfig.previouslyAccepted.push(allowedGroup);
+    
+        for (var j = 0; j < scripts.length; j++) {
+            addScript(scripts[j].src, scripts[j].text);
+        }
+
+        var groupEvent = new Event('publii-cookie-banner-unblock-' + allowedGroup);
+        document.body.dispatchEvent(groupEvent);
+        unlockEmbeds(allowedGroup);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Allowed group: ' + allowedGroup);
+        }
+
+        if (window.publiiCBGCM && cbConfig.initialLsState.indexOf(allowedGroup) === -1) {
+            let consentResult = {};
+            let group = window.publiiCBGCM.groups.find(group => group.cookieGroup === allowedGroup);
+
+            if (group) {
+                let foundSomeConsents = false;
+
+                Object.keys(group).forEach(key => {
+                    if (key !== 'cookieGroup' && group[key] === true) {
+                        consentResult[key] = 'granted';
+                        foundSomeConsents = true;
+                    }
+                });
+
+                if (foundSomeConsents) {
+                    gtag('consent', 'update', consentResult);   
+
+                    if (cbConfig.debugMode) {
+                        console.log('🍪 GCMv2 UPDATE: ' + JSON.stringify(consentResult));
+                    }
+                }
+            }
+        }
+    }
+
+    function showBannerOrPopup () {
+        if (cbUI.popup.element) {
+            showAdvancedPopup();
+        } else {
+            showBanner();
+        }
+    }
+
+    function showAdvancedPopup () {
+        cbUI.popup.element.classList.add('is-visible');
+        cbUI.overlay.classList.add('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'false');
+        cbUI.overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideAdvancedPopup () {
+        cbUI.popup.element.classList.remove('is-visible');
+        cbUI.overlay.classList.remove('is-visible');
+        cbUI.popup.element.setAttribute('aria-hidden', 'true');
+        cbUI.overlay.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBanner () {
+        cbUI.banner.element.classList.add('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideBanner () {
+        cbUI.banner.element.classList.remove('is-visible');
+        cbUI.banner.element.setAttribute('aria-hidden', 'true');
+    }
+
+    function showBadge () {
+        if (!cbUI.badge) {
+            return;
+        }
+
+        cbUI.badge.classList.add('is-visible');
+        cbUI.badge.setAttribute('aria-hidden', 'false');
+    }
+
+    function getConfigName () {
+        var lsKeyName = 'publii-gdpr-allowed-cookies';
+
+        if (cbConfig.revision) {
+            lsKeyName = lsKeyName + '-v' + parseInt(cbConfig.revision, 10);
+        }
+
+        return lsKeyName;
+    }
+
+    function storeConfiguration (allowedGroups) {
+        var lsKeyName = getConfigName();
+        var dataToStore = allowedGroups.join(',');
+        localStorage.setItem(lsKeyName, dataToStore);
+
+        if (cbConfig.configTTL === 0) {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', 0);
+
+            if (cbConfig.debugMode) {
+                console.log('🍪 Store never expiring configuration');
+            }
+        } else {
+            localStorage.setItem('publii-gdpr-cookies-config-save-date', +new Date());
+        }
+    }
+
+    function getInitialStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Initial state: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getCurrentStateOfConsents () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]:checked');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 State to save: ' + groups.join(', '));
+        }
+
+        return groups;
+    }
+
+    function getAllGroups () {
+        if (!cbUI.popup.element) {
+            return [];
+        }
+
+        var checkedGroups = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+        var groups = [];
+
+        for (var i = 0; i < checkedGroups.length; i++) {
+            var allowedGroup = checkedGroups[i].getAttribute('data-group-name');
+
+            if (allowedGroup !== '') {
+                groups.push(allowedGroup);
+            }
+        }
+
+        return groups;
+    }
+
+    function acceptAllCookies (source) {
+        var groupsToAccept = getAllGroups();
+        storeConfiguration(groupsToAccept);
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        if (cbUI.popup.element) {
+            var checkboxesToCheck = cbUI.popup.element.querySelectorAll('input[type="checkbox"]');
+
+            for (var j = 0; j < checkboxesToCheck.length; j++) {
+                checkboxesToCheck[j].checked = true;
+            }
+        }
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Accept all cookies: ', groupsToAccept.join(', '));
+        }
+
+        if (source === 'popup') {
+            hideAdvancedPopup();
+        } else if (source === 'banner') {
+            hideBanner();
+        }
+    }
+
+    function rejectAllCookies () {
+        if (cbConfig.debugMode) {
+            console.log('🍪 Reject all cookies');
+        }
+
+        storeConfiguration([]);
+        setTimeout(function () {
+            window.location.reload();
+        }, 100);
+    }
+
+    function saveConfiguration () {
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+
+        if (reloadIsNeeded(groupsToAccept)) {
+            setTimeout(function () {
+                window.location.reload();
+            }, 100);
+            return;
+        }
+
+        for (var i = 0; i < groupsToAccept.length; i++) {
+            var group = groupsToAccept[i];
+
+            if (cbConfig.initialState.indexOf(group) > -1 || cbConfig.previouslyAccepted.indexOf(group) > -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Skip previously activated group: ' + group);
+                }
+
+                continue;
+            }
+
+            allowCookieGroup(group);
+        }
+
+        hideAdvancedPopup();
+    }
+
+    function reloadIsNeeded (groupsToAccept) {
+        // check if user rejected consent for initial groups
+        var initialGroups = cbConfig.initialState;
+        var previouslyAcceptedGroups = cbConfig.previouslyAccepted;
+        var groupsToCheck = initialGroups.concat(previouslyAcceptedGroups);
+
+        for (var i = 0; i < groupsToCheck.length; i++) {
+            var groupToCheck = groupsToCheck[i];
+
+            if (groupToCheck !== '' && groupsToAccept.indexOf(groupToCheck) === -1) {
+                if (cbConfig.debugMode) {
+                    console.log('🍪 Reload is needed due lack of: ', groupToCheck);
+                }
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    function unlockEmbeds (cookieGroup) {
+        var iframesToUnlock = document.querySelectorAll('.pec-wrapper[data-consent-group-id="' + cookieGroup + '"]');
+
+        for (var i = 0; i < iframesToUnlock.length; i++) {
+            var iframeWrapper = iframesToUnlock[i];
+            iframeWrapper.querySelector('.pec-overlay').classList.remove('is-active');
+            iframeWrapper.querySelector('.pec-overlay').setAttribute('aria-hidden', 'true');
+            var iframe = iframeWrapper.querySelector('iframe');
+            iframe.setAttribute('src', iframe.getAttribute('data-consent-src'));
+        }
+    }
+
+    win.publiiEmbedConsentGiven = function (cookieGroup) {
+        // it will unlock embeds
+        allowCookieGroup(cookieGroup);
+
+        var checkbox = cbUI.popup.element.querySelector('input[type="checkbox"][data-group-name="' + cookieGroup + '"]');
+
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+
+        var groupsToAccept = getCurrentStateOfConsents();
+        storeConfiguration(groupsToAccept);
+
+        if (cbConfig.debugMode) {
+            console.log('🍪 Save new config: ', groupsToAccept.join(', '));
+        }
+    }
+})(window);</script></body></html>
