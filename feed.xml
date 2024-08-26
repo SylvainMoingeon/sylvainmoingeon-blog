@@ -3,12 +3,244 @@
     <title>Sylvain Moingeon</title>
     <link href="https://www.sylvainmoingeon.fr/feed.xml" rel="self" />
     <link href="https://www.sylvainmoingeon.fr" />
-    <updated>2021-03-23T11:42:14+01:00</updated>
+    <updated>2024-08-26T17:07:23+02:00</updated>
     <author>
         <name>Sylvain</name>
     </author>
     <id>https://www.sylvainmoingeon.fr</id>
 
+    <entry>
+        <title>De développeur à luthier, histoire d&#x27;une reconversion</title>
+        <author>
+            <name>Sylvain</name>
+        </author>
+        <link href="https://www.sylvainmoingeon.fr/de-developpeur-a-luthier-histoire-dune-reconversion/"/>
+        <id>https://www.sylvainmoingeon.fr/de-developpeur-a-luthier-histoire-dune-reconversion/</id>
+        <media:content url="https://www.sylvainmoingeon.fr/media/posts/43/cover.webp" medium="image" />
+            <category term="reconversion"/>
+            <category term="luthier"/>
+            <category term="lutherie"/>
+            <category term="guitare"/>
+            <category term="facture instrumentale"/>
+            <category term="développeur informatique"/>
+
+        <updated>2024-08-20T19:43:05+02:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://www.sylvainmoingeon.fr/media/posts/43/cover.webp" alt="Illustration d&#x27;un article de blog sur la reconversion d&#x27;un développeur informatique au métier de la lutherie" />
+                    Voilà un peu plus d'une année que je n'ai écrit une ligne&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://www.sylvainmoingeon.fr/media/posts/43/cover.webp" class="type:primaryImage" alt="Illustration d&#x27;un article de blog sur la reconversion d&#x27;un développeur informatique au métier de la lutherie" /></p>
+                
+  <p>
+    Voilà un peu plus d'une année que je n'ai écrit une ligne de code ! Je vais y revenir promis, mais à temps-partiel uniquement.
+  </p>
+
+  <p>
+    Pourquoi à temps-partiel ? C'est une longue remise en question qui a débutée en juin 2023 et j'aimerais en apporter le témoignage. Laissez-moi vous raconter l'histoire…
+<br>
+<br>Depuis plus de 15 ans je suis développeur informatique. J'ai travaillé en TPE, dans un grand groupe, en tant qu'indépendant, puis dans une start-up. Mais comme cela arrive souvent, la start-up subit un (et même plusieurs) mauvais coups et met la clé sous la porte.
+<br>
+<br>C'est ainsi que je me retrouve licencié économique en juin 2023. Je pourrais, étant donné le marché du travail dans mon domaine et mon expertise, retrouver rapidement un poste mais je décide de profiter de la période de chômage pour sortir la tête du guidon et prendre un peu de recul. 
+<br>
+<br>Et ce que je découvre n'est pas beau ! Ça craint !
+  </p>
+
+    <figure class="post__image post__image--center">
+      <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/burnout.webp" height="1024" width="1024" alt=""  sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/43/responsive/burnout-xs.webp 300w ,https://www.sylvainmoingeon.fr/media/posts/43/responsive/burnout-sm.webp 480w ,https://www.sylvainmoingeon.fr/media/posts/43/responsive/burnout-md.webp 768w ,https://www.sylvainmoingeon.fr/media/posts/43/responsive/burnout-lg.webp 1024w">
+      
+    </figure>
+
+  <p>
+    
+<br>Bien qu'aimant mon job, je me rends compte que je ne suis absolument pas épanoui. J'aime coder, développer, voir un projet évoluer et prendre forme, mais les conditions de travail me rendent malades :
+<br>
+<br>Je ne supporte plus d'être assis toute la journée derrière un écran, ça me rend aigri, le soir je suis complètement sous tension, la tête prête à exploser.
+<br>
+<br>Au fil du temps, mon corps développe toutes sortes de troubles musculo-squelettiques, j'ai en permanence mal aux mains, aux coudes, au dos, aux hanches et aux genoux. 
+<br>
+<br>Tous les soirs, je passe plus d'une heure à effectuer des exercices de mobilité et d'étirement pour réussir à atténuer la douleur. Sans quoi je ne dors pas la nuit. Tout ce temps, je pourrais le passer avec ma famille ou profiter de mes loisirs.
+<br>
+<br>En journée je me rends à mes séances d'orthoptie parce qu'à force de fixer un écran&nbsp; en permanence, mes yeux ont développé un strabisme et une incapacité à se relâcher. J'ai les yeux lourds et mal au crâne du matin au soir.
+<br>
+<br>Je me rends subitement compte que mes deux bébés sont des ados. Je ne les ai pas vu grandir.
+<br>
+<br>Et en plus, j'ai 45 ans, l'heure de la crise !
+  </p>
+
+    <figure class="post__image post__image--center">
+      <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/frustration.jpeg" height="1024" width="1024" alt=""  sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/43/responsive/frustration-xs.jpeg 300w ,https://www.sylvainmoingeon.fr/media/posts/43/responsive/frustration-sm.jpeg 480w ,https://www.sylvainmoingeon.fr/media/posts/43/responsive/frustration-md.jpeg 768w ,https://www.sylvainmoingeon.fr/media/posts/43/responsive/frustration-lg.jpeg 1024w">
+      
+    </figure>
+
+  <p>
+    Dans le cadre de mon licenciement, j'intègre le Contrat de Sécurisation Professionnel de Pole Travail (j'ai commencé avec l'un, terminé avec l'autre) qui délègue la tâche à la société Solerys.
+<br>
+<br>A ce moment-là, je suis complètement paumé. Je ne sais plus où je suis, ni où je vais. Ni dans quel état j'erre (j'ai le droit au "dad jokes", j'ai l'âge et les enfants requis). J'ai un dégout profond des écrans, je ne regarde même plus la TV. Impossible pour moi de m'imaginer retourner dans l'informatique.
+<br>
+<br>Dans le brouillard total, je tourne en rond, je ne sais quoi faire. Ou plutôt, je sais trop quoi faire mais dans quelle direction me tourner ? Entre rêves inassouvis et nombreux centres d'intérêts, je me dis pourquoi pas ? Mais quoi ?
+<br>
+<br>Lors de mon suivi, j'ai la chance de tomber sur une consultante à l'écoute et ouverte (coucou Lydie). Lorsqu'elle me demande si j'ai des projets, je me surprends moi-même à lui en sortir toute une liste :
+  </p>
+
+  <ul>
+    <li>Faire de la photo, une de mes passions laissée à l'abandon faute de temps</li><li>Capitaliser sur mes études scientifiques (BAC+5) pour revenir dans ce domaine<br></li><li>Me professionnaliser au niveau du sport (je suis animateur bénévole dans un club d'arts-martiaux)<br></li><li>Trouver une activité en lien avec la musique (passionné de guitare)<br></li><li>Me lancer dans un métier manuel, tiens pourquoi pas en rapport avec la guitare (je me souviens à cette occasion être passé plusieurs fois devant des ateliers de luthier en soupirant "pourquoi pas moi ?")<br></li>
+  </ul>
+
+  <p>
+    S'ensuit un accompagnement, avec bilan de compétences, profil psychologique, recherche d'un point d'accroche entre mes centres d'intérêts, mes qualités, mes aspirations et un éventuel projet professionnel.
+<br>
+<br>Et peu-à-peu, celui-ci se dessine, la balance penche de plus en plus vers la lutherie.
+<br>
+<br>C'est ainsi que je me retrouve en formation dans un atelier de facture instrumentale jusqu'en aout 2024. Et c'est le bonheur total. :-)
+  </p>
+
+  <div  class="gallery-wrapper gallery-wrapper--wide">
+    <div class="gallery" data-columns="3">
+      <figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20231128_184139.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20231128_184139-thumbnail.jpg" height="576" width="768" alt="Des instruments de musique pendus au plafond dans un atelier de lutherie" >
+      </a>
+      <figcaption>Ambiance au centre de formation</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20231129_112248.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20231129_112248-thumbnail.jpg" height="576" width="768" alt="Photo illustrant des moules utilisés pour fabriquer des guitares" >
+      </a>
+      <figcaption>Une belle collection de moules</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240301_095101.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240301_095101-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le cintrage d'une éclisse" >
+      </a>
+      <figcaption>Un pan coupé qui m'a donné du fil (ou plutôt du bois) à retordre</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240301_160706.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240301_160706-thumbnail.jpg" height="576" width="768" alt="" >
+      </a>
+      
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240402_154406.jpg" data-size="2576x1932">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240402_154406-thumbnail.jpg" height="576" width="768" alt="Photo illustrant un ciseau à bois affleurant un filet dans une rosace de guitare" >
+      </a>
+      <figcaption>Affleurage d'un filet de rosace</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240404_165316.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240404_165316-thumbnail.jpg" height="576" width="768" alt="Photo illustrant un collage au ciel" >
+      </a>
+      <figcaption>Collage au ciel</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240405_162705.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240405_162705-thumbnail.jpg" height="576" width="768" alt="Photo illustrant les barrages de table d'harmonie dans une guitare" >
+      </a>
+      <figcaption>Présentation de la table d'harmonie sous les éclisses. Ne paniquez pas les puristes, les barrages ne sont pas encore ajustés ni scalopés</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240411_165205.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240411_165205-thumbnail.jpg" height="576" width="768" alt="Photo illustrant une vielle à roue de 1742 et sa réplique exacte" >
+      </a>
+      <figcaption>Une très vieille vielle (1742) et sa réplique en vue de conservation</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240513_175718.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240513_175718-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le collage des filets d'éclisse sur une guitare classique" >
+      </a>
+      <figcaption>Collage des filets avec la technique ultra moderne et sophistiquée des "bouts de scotch"</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240516_121424.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240516_121424-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le chanfrein de confort d'une guitare classique" >
+      </a>
+      <figcaption>Chanfrein de confort</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240607_152241.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240607_152241-thumbnail.jpg" height="576" width="768" alt="Photo illustrant un luthier travaillant au racloir" >
+      </a>
+      <figcaption>On s'occupe du sillon interfessier de la guitare (vocabulaire très officiel, il va sans dire)</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240613_120653.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240613_120653-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le profilage d'un manche de guitare" >
+      </a>
+      <figcaption>Profilage du manche</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240613_161832.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240613_161832-thumbnail.jpg" height="576" width="768" alt="Photo illustrant l'emboitement du manche sur la caisse" >
+      </a>
+      <figcaption>Emboitement du manche sur la caisse</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240621_164653.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240621_164653-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le talon de la guitare" >
+      </a>
+      <figcaption>Décoration du talon en érable pour la continuité avec les filets</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240621_164717.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240621_164717-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le talon de la guitare" >
+      </a>
+      <figcaption>Décoration du talon en érable pour la continuité avec les filets</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240621_175523.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240621_175523-thumbnail.jpg" height="576" width="768" alt="Photo illustrant une guitare assemblée mais pas encore terminée" >
+      </a>
+      <figcaption>Ça semble presque terminé, mais comme en informatique, quand c'est presque fini, ça ne fait que commencer !</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240627_111132.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240627_111132-thumbnail.jpg" height="576" width="768" alt="Photo illustrant l'usinage d'un chevalet de guitare" >
+      </a>
+      <figcaption>Usinage du chevalet</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240702_162427.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240702_162427-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le chevalet terminé" >
+      </a>
+      <figcaption>Le chevalet prêt à être posé</figcaption>
+    </figure><figure class="gallery__item">
+      <a href="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240705_110756.jpg" data-size="4624x3468">
+        <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/43/gallery/20240705_110756-thumbnail.jpg" height="576" width="768" alt="Photo illustrant le collage du chevalet" >
+      </a>
+      <figcaption>Collage du chevalet (la guitare a été vernie entre temps)</figcaption>
+    </figure>
+    </div>
+  </div>
+
+  <p>
+    Enfin, nonobstant l'éloignement de ma famille (ce n'est pas à côté de chez moi) et les frais considérables, en moyenne 500€ par mois pour le logement et le carburant. Quand on vit sur les allocations chômage, ça pique. Mais toucher son rêve du bout du doigt mérite bien quelques sacrifices, n'est-ce pas ?
+<br>
+<br>J'y apprends le travail du bois, les bases de la fabrication d'instruments, en commençant petit (Ukulélé), puis viennent les guitares classiques et électriques. J'y vois aussi des techniques de réparations/restauration. Du réglage, mais ça je savais déjà faire. J'y découvre des instruments que je connaissais peu (balalaïka, bouzouki, vielle à roue) et d'autres qui m'étaient parfaitement inconnus (Nickelharpa).
+<br>
+<br>J'apprends, je découvre, j'explore et je crée. Mes activités préférées en somme. Je me rends d'ailleurs compte que c'est aussi, au départ, ce qui m'avait poussé dans le développement logiciel. Ce n'est pas coder qui m'attirait, mais apprendre de nouvelles techniques, les appliquer pour construire quelque chose de nouveau. Observer un logiciel "pousser" sous mes yeux. Et avec le recul, je me rends compte que c'est la même pour la photo et l'enseignement des arts-martiaux : apprendre et appliquer ce que j'ai appris pour construire quelque chose de nouveau !<br>
+<br>Aurai-je découvert mon Ikigaï ?
+<br>
+<br>Mais voilà, le temps de la formation est révolu, mes pieds redescendent lentement sur terre. Il me reste 3 mois d'allocations chômage et je sais pertinemment qu'il me faudra du temps avant d'être rentable en tant que luthier et avoir une activité pérenne.
+  </p>
+
+  <p>
+    Je reviens donc à la réalité : un travail que je sais faire qui paie bien et la lutherie comme complément. D'autant que ma conjointe est elle-même artisan et deux métiers indépendants pour une famille avec enfants, c'est trop dangereux. On en a fait les frais pendant la crise du covid (j'étais Freelance à cette époque), autant assurer un minimum de sécurité pour au moins l'un des deux.&nbsp;<br>
+<br>Voilà pourquoi, après une année de remise en question, je suis de nouveau à l'écoute d’opportunités, à partir du mois de décembre et à temps-partiel uniquement. 
+<br>
+<br>Dans le développement informatique de préférence, puisque c'est mon domaine d'expertise, mais après tout, je reste réceptif à d'autres propositions, cette dernière année ayant eu l'effet de considérablement m'ouvrir l'esprit.
+  </p>
+
+  <p>
+    Mon atelier de lutherie est en cours d'aménagement, on m'a déjà confié une guitare à restaurer et j'en ai une en cours de fabrication (pas une commande malheureusement, c'est pour exposer).
+  </p>
+
+  <p>
+    Mais d'ici à ce que ça m'occupe à plein temps, il y a, je pense, matière à ce que je participe activement à d'autres projets. 😉
+  </p>
+
+  <p>
+    Un développeur qui fabrique des guitares, qui a des rêves et se donne les moyens de les réaliser, ça vous intéresse ? contactez-moi !
+  </p>
+
+  <p>
+    Un luthier qui a l'esprit cartésien, le sens du détail et l'esprit d'analyse d'un développeur informatique, ça vous intéresse ? contactez-moi aussi, c'est le même mec !
+  </p>
+
+  <p>
+    Bien merci à toi qui a tout lu jusqu'ici !
+<br>
+<br>Ah, et oui, zut : like, partage et tout ça, hein.
+  </p>
+            ]]>
+        </content>
+    </entry>
     <entry>
         <title>Authentification Azure Directory B2C dans une application Xamarin.Forms</title>
         <author>
@@ -2829,65 +3061,6 @@ public class MaDependance : IMaDependance
   <p class="msg msg--highlight">
     Je voudrais juste terminer en précisant que MVVM est un choix d'architecture, pas quelque chose qu'on vous impose et qu'il faut contourner !<strong><br><br>Si MVVM ne vous convient pas, il existe des alternatives. Plutôt que massacrer MVVM, trouvez l'architecture qui convient à votre projet !</strong>
   </p>
-            ]]>
-        </content>
-    </entry>
-    <entry>
-        <title>Développez des applications sans crotte de nez !</title>
-        <author>
-            <name>Sylvain</name>
-        </author>
-        <link href="https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/"/>
-        <id>https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/</id>
-        <media:content url="https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg" medium="image" />
-            <category term="software craftsmanship"/>
-            <category term="professionnalisme"/>
-            <category term="bonnes pratiques"/>
-
-        <updated>2020-08-26T16:22:07+02:00</updated>
-            <summary>
-                <![CDATA[
-                        <img src="https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg" alt="Un boulanger pétrit sa pâte sans crotte de nez" />
-                    <p>Récemment, j’ai entendu un développeur tenir les propos suivants :</p><blockquote>
-<p>Non mais ça ne sert à rien de faire du bon code, tout ce que le client demande c’est que ça fonctionne.</p></blockquote>
-<p>Et malheureusement, sur la deuxième partie de l’assertion il n’a pas tort. Mais c’est parce que le client ne connait pas le métier et n’a aucune idée des répercussions sur le moyen/long terme d’un code de mauvaise qualité. Alors il faut que ça cesse ! </p><p>Et si au lieu de profiter de la situation pour justifier du travail de sagouin, on en profitait plutôt pour prendre ses responsabilités ?</p>
-                ]]>
-            </summary>
-        <content type="html">
-            <![CDATA[
-                    <p><img src="https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg" class="type:primaryImage" alt="Un boulanger pétrit sa pâte sans crotte de nez" /></p>
-                <p>Récemment, j’ai entendu un développeur tenir les propos suivants :</p><blockquote>
-<p>Non mais ça ne sert à rien de faire du bon code, tout ce que le client demande c’est que ça fonctionne.</p></blockquote>
-<p>Et malheureusement, sur la deuxième partie de l’assertion il n’a pas tort. Mais c’est parce que le client ne connait pas le métier et n’a aucune idée des répercussions sur le moyen/long terme d’un code de mauvaise qualité. Alors il faut que ça cesse ! </p><p>Et si au lieu de profiter de la situation pour justifier du travail de sagouin, on en profitait plutôt pour prendre ses responsabilités ?</p>
-
-<h1 id="être-vraiment-professionnel">Être vraiment professionnel</h1>
-<p>Laissez-moi vous raconter une histoire :</p><p>Vous vous rendez à la boulangerie, ça sent bon le pain chaud, la baguette est bien dorée, croustillante à l’extérieur, moelleuse à l’intérieur, une véritable baguette 100% fonctionnelle. Vous en salivez déjà.</p><p>Et maintenant, si je vous raconte que j’ai surpris le boulanger la main dans le froc en train de se gratter l’anus pendant qu’il pétrissait la pâte. Toujours envie de vous en faire des tartines ?</p><p>Livrer une baguette seulement <em>fonctionnelle</em> est-ce vraiment tout ce qu’on demande à un artisan boulanger ? Non, on exige de lui qu’il prépare son pain dans les règles de l’art, en respectant les bonnes pratiques de son métier et en suivant scrupuleusement les règles sanitaires.</p><p>Si je vous raconte qu’en cette période de crise covid19, votre boulanger travaille sans porter de masque et en éternuant allégrement sur la pâte des croissants qu’il est en train de préparer. Vous voyez la scène ? Un gros <em>ATCHOUM</em> accompagné d’un feu d’artifice de postillons et de sécrétions nasales qui viennent se déposer gaiement un peu partout dans la pâte. Mmmm, <em>un délice</em>. Vous en pensez quoi ? Sérieusement ? C’est professionnel comme comportement ?</p><p>Ça vous dit un croissant totalement fonctionnel aromatisé à la crotte de nez ?</p><figure class="post__image">
-    <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/30/croissants.jpg" alt="Croissants dans un panier - Image par Pexels de Pixabay" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/croissants-lg.jpg 1024w"></img>
-    <figcaption>Ce serait dommage d'y trouver des crottes de nez, n'est-ce-pas ?</figcaption>
-</figure>
-
-<p>Bien entendu, vous avez parfaitement le droit de répondre oui et de trouver que c’est normal de travailler comme ça tout en prétendant être un professionnel du métier. Mais je n’irai pas manger chez vous ni vous recommander auprès de mes clients !</p><p>Parce qu’un produit fonctionnel, c’est juste le B-A-BA, c’est le niveau zéro du métier. C’est ce qu’on demande de produire à un étudiant pour son projet de première année. Juste un truc qui marche. Mais être professionnel, c’est un peu plus que ça non ? Non !?</p><h1 id="artisan-développeur">Artisan développeur</h1>
-<p>Bien entendu, je ne prétends pas que tout est toujours parfait, peut-être le boulanger va-t-il y laisser un poil de bras ou une goutte de sueur. On ne peut pas tout prévoir, on n’est pas toujours au top. Parfois aussi on se trompe, c’est humain. Je vous le dis discrètement, ça reste entre nous, mais on n’a pas non plus la science infuse. Parfois on ne sait pas bien faire et on aurait pu faire mieux. </p><p>Alors quoi ?</p><p>Alors, on prend soin de respecter au mieux les bonnes pratiques, on se forme, on s’exerce, on ne se cache pas derrière un <em>de toute façon le client attend juste que ça fonctionne</em>. On se comporte comme un véritable artisan du code.</p><p>C’est-à-dire que s’il y a des bugs, c’est accidentel. Si le code lève une <em>exception</em>, c’est parce qu’on a rencontré un cas <em>exceptionnel</em> (le terme d’<em>exception</em> n’a pas été choisi par hasard).</p><p>Un bug issu de <em>l’erreur humaine</em> est acceptable. Un bug issu de <em>non mais ce n’est pas la peine de coder proprement il suffit juste que ça fonctionne</em> est juste inacceptable. Vous saisissez la nuance ?</p><p>Autrement dit, on évite autant que possible d’éternuer sur le clavier et de laisser des crottes de nez partout dans le code.</p><h1 id="cest-quoi-une-crotte-de-nez-dans-le-code--il-est-où-le-problème-">C’est quoi une crotte de nez dans le code ? Il est où le problème ?</h1>
-<p>Je pourrais écrire une thèse sur le sujet mais, que vous soyez développeur ou que vous ayez un projet de développement, je vous recommande plutôt la lecture du fantastique <a href="https://amzn.to/3gj03ST" title="Lien vers le livre The Pragmatic Programmer">The Pragmatic  Programmer, from journeyman to master</a> de Andrew Hunt et David Thomas.</p><figure class="post__image">
-    <a href="https://amzn.to/3gj03ST"![Image description](https://www.sylvainmoingeon.fr/media/posts/30/atchoum.jpg =5760x3840)>
-    <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/30/the-pragmatic-programmer.jpg" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/the-pragmatic-programmer-lg.jpg 1024w"></img>
-    </a>
-    <figcaption>The Pragmatic  Programmer, from journeyman to master</figcaption>
-</figure>
-
-<p>Ce livre qui date de plus d’une vingtaine d’années reste complètement d’actualité tant les thèmes qu’il aborde sont tranverses au développement informatique et se basent avant tout sur les bonnes pratiques et surtout les risques de ne pas les suivre.</p><p>Vous y apprendrez par exemple pourquoi en vertu de <em><a href="https://fr.wikipedia.org/wiki/Hypoth%C3%A8se_de_la_vitre_bris%C3%A9e" title="Lien vers l&#39;article Wikipédia sur l&#39;hypothèse de la vitre brisée">l’hypothèse de la vitre brisée</a></em>, si un développeur laisse traîner quelques crottes de nez par-ci par-là, le code finira irrémédiablement recouvert de sécrétions nasales.</p><p>Et en informatique, une crotte de nez peut avoir des répercussions graves.</p><p>En fait, une crotte de nez dans le code, c’est ce truc-là, qu’on ne voit pas de l’extérieur, qui ne semble pas influer sur le fonctionnel du point de vue de l’utilisateur mais qui, dans certains cas, laisse un arrière-goût plutôt désagréable.</p><p>Comme oublier de crypter des mots de passe. Je veux dire, au niveau du code, ce n’est pas grand-chose, hein (ah si ?). On oublie juste de passer le mot de passe dans la moulinette, rien de très grave en soit, personne ne s’en rend compte, tout est parfaitement fonctionnel. Et puis, un beau jour, c’est le scandale…</p><ul>
-<li><a href="https://www.commentcamarche.net/news/5872520-facebook-stockait-des-centaines-de-millions-de-mots-de-passe-en-clair" title="Lien vers un article qui explique que Facebook stockait des millions de mot de passe en clair">Facebook stockait des millions de mot de passe instagram en clair</a></li>
-<li><a href="https://www.cnetfrance.fr/news/oups-google-a-stocke-en-clair-des-mots-de-passe-durant-des-annees-39884993.htm" title="Lien vers un article qui explique que Google stockait des millions de mot de passe en clair">Petite crotte de nez chez Google : des mots de passe stockés en clair pendant des années</a></li>
-</ul>
-<p>J’ai une autre anecdote sympa, c’est cocasse vous allez voir. J’ai assisté à une scène surréaliste ou un développeur a voulu montrer à un opérateur comment supprimer des données dans la base clients. Jusque-là, rien de dramatique, on manipule des données, on les insère, on les modifie, on les supprime, c’est la raison d’être des bases de données.</p><p>Sauf qu’il a, par mégarde, sélectionné l’ensemble des données d’une table. Et que cette table avait une relation directe ou indirecte avec l’ensemble de toutes les autres tables de la base de données.</p><p>Vous voyez le coup venir ? Une crise d’éternuement en approche !</p><figure class="post__image">
-    <img decoding="async" loading="lazy" src="https://www.sylvainmoingeon.fr/media/posts/30/atchoum-2.jpg" alt="Femme sur le point d'éternuer" sizes="(max-width: 1024px) 100vw, 1024px" srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/atchoum-2-lg.jpg 1024w"></img>
-    <figcaption>Noooon, pas dans le code !</figcaption>
-</figure>
-
-<p>Dans le meilleur des mondes, il aurait dû y avoir une boite de dialogue de confirmation de suppression au niveau applicatif. Il aurait dû y avoir un contrôle au niveau de la base de données, en particulier sur une table critique comme celle-ci.</p><p>Mais voilà, la boite de dialogue est restée engluée dans une flaque de morve et la base de donnée a <strong>supprimé toutes les données en cascade</strong> sans broncher.</p><p>Quand le développeur a demandé, l’espoir dans l’âme, <em>Ce n’est rien, nous allons restaurer les données, vous avez bien une sauvegarde récente ?</em>, l’opérateur a constaté que les scripts de sauvegarde ne tournaient plus depuis des semaines, sans envoyer les messages d’avertissement prévus dans ce cas. La faute à une crotte de nez. Encore.</p><h1 id="conclusion">Conclusion</h1>
-<p>Être professionnel, ce n’est pas seulement produire du code fonctionnel, c’est aussi garantir une <strong>qualité</strong>, une <strong>pérennité</strong>, une <strong>évolutivité</strong> du code. C’est-à-dire un code qui fonctionne aujourd’hui et continuera de fonctionner demain, même après modification.</p><p>Je pourrais également parler de <strong>stabilité</strong> (ça fonctionne mais c’est un peu bancal), de <strong>fiabilité</strong> (ça fonctionne très bien… quand ça fonctionne), ou de <strong>performance</strong> (ça fonctionne mais il faut être patient, très patient).</p><p>Ou encore, insister sur la <strong>lisibilité</strong> d’un code que d’autres développeurs n’auront pas de mal à lire et à comprendre. D’un code qui <em>coule de source</em> (ah ah ah) dans lequel les autres n’auront pas peur de mettre les mains. J’ai failli dire les doigts… dans le nez, bien entendu.</p><blockquote>
-<p>Code toujours comme si la personne qui va maintenir ton code est un violent psychopathe qui sait où tu habites.</p><p><em>John F. Woods</em></p></blockquote>
-<p>Alors évidemment, comme je l’ai dit, on ne pas toujours être au top, on va parfois laisser quelques gouttes de sueurs perler dans la farine, le pain sera un peu moins cuit ou la pâte moins croustillante que d’habitude. C’est comme ça, c’est la vie.</p><p><strong>Mais s’il vous plait, cessez de vous gratter le cul ou de vous curer le nez en bossant sous prétexte que ça ne va pas se voir !</strong></p>
             ]]>
         </content>
     </entry>
