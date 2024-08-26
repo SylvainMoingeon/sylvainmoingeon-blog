@@ -21,10 +21,8 @@
     <link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/prism.css">
 
 	        <link rel="shortcut icon" href="https://www.sylvainmoingeon.fr/media/website/favicon.png" type="image/png" />
-        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-        <link href="https://fonts.googleapis.com/css?family=DM+Sans:400,700&display=swap&subset=latin-ext" rel="stylesheet">
-        <style>:root{--body-font:'DM Sans',sans-serif;--heading-font:var(--body-font);--post-entry-font:var(--body-font);--logo-font:var(--body-font);--menu-font:var(--body-font)}</style>
-        <link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/style.css?v=495aa24cb5af158054fa2e3ec3741a9a">
+        
+        <link rel="stylesheet" href="https://www.sylvainmoingeon.fr/assets/css/style.css?v=0e012ed91e5f5037de192001421feae3">
         <script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/"},"headline":"Développez des applications sans crotte de nez !","datePublished":"2020-08-26T16:22","dateModified":"2020-08-26T16:22","image":{"@type":"ImageObject","url":"https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg","height":3744,"width":5616},"description":"Livrer des applications fonctionnelles est nécessaire mais pas suffisant. Un vrai boulanger ne laisse pas de crotte de nez dans son pain.","author":{"@type":"Person","name":"Sylvain","url":"https://www.sylvainmoingeon.fr/auteurs/sylvain/"},"publisher":{"@type":"Organization","name":"Sylvain"}}</script>
         
         
@@ -90,40 +88,12 @@
                 </ul>
                </nav>
 
-            <div class="search">
-               <div class="search__overlay js-search-overlay">
-                  <div class="search__overlay-inner">
-                     <form action="https://www.sylvainmoingeon.fr/search.html" class="search__form">
-                        <input
-                           class="search__input js-search-input"
-                           type="search"
-                           name="q"
-                           placeholder="chercher..."
-                           aria-label="Search input"
-                           autofocus="autofocus"/>
-                     </form>
-                     <button
-                        class="search__close js-search-close"
-                        aria-label="Fermer">
-                        Fermer
-                     </button>
-                  </div>
-               </div>
-               <button
-                  class="search__btn js-search-btn"
-                  aria-label="Search">
-                  <svg role="presentation" focusable="false" height="15px" width="15px">
-                     <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#search"/>
-                  </svg>
-               </button>
-            </div>          
-
-         </div>
-      </header>
-<main>
-      <article class="post wrapper">
+      </div>
+   </header>
+<main class="post">
+      <article class="content wrapper">
          <div class="hero hero--narrow">
-            <header>
+            <header class="hero__header">
                      <p>
                         <a href="https://www.sylvainmoingeon.fr/tags/bonnes-pratiques/" title="">bonnes pratiques</a>
                      </p>                    
@@ -139,10 +109,10 @@
                         mercredi 26 août 2020
                   </time>
             </header>
-                  <figure class="hero__image post__featured-image">
+                  <figure class="hero__image">
                      <img
                         src="https://www.sylvainmoingeon.fr/media/posts/30/hands.jpg"
-                            srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-lg.jpg 1024w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-xl.jpg 1360w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-2xl.jpg 1600w" sizes="(max-width: 1600px) 100vw, 1600px"
+                            srcset="https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-xs.jpg 300w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-sm.jpg 480w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-md.jpg 768w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-lg.jpg 1024w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-xl.jpg 1360w ,https://www.sylvainmoingeon.fr/media/posts/30/responsive/hands-2xl.jpg 1600w" sizes="100vw"
                          loading="eager"
                         height="3744"
                         width="5616"
@@ -154,7 +124,7 @@
                         </figcaption>                      
                   </figure>
          </div>
-         <div class="post__entry">            
+         <div class="content__entry">            
             <p>Récemment, j’ai entendu un développeur tenir les propos suivants :</p><blockquote>
 <p>Non mais ça ne sert à rien de faire du bon code, tout ce que le client demande c’est que ça fonctionne.</p></blockquote>
 <p>Et malheureusement, sur la deuxième partie de l’assertion il n’a pas tort. Mais c’est parce que le client ne connait pas le métier et n’a aucune idée des répercussions sur le moyen/long terme d’un code de mauvaise qualité. Alors il faut que ça cesse ! </p><p>Et si au lieu de profiter de la situation pour justifier du travail de sagouin, on en profitait plutôt pour prendre ses responsabilités ?</p>
@@ -189,62 +159,66 @@
 <p>Alors évidemment, comme je l’ai dit, on ne pas toujours être au top, on va parfois laisser quelques gouttes de sueurs perler dans la farine, le pain sera un peu moins cuit ou la pâte moins croustillante que d’habitude. C’est comme ça, c’est la vie.</p><p><strong>Mais s’il vous plait, cessez de vous gratter le cul ou de vous curer le nez en bossant sous prétexte que ça ne va pas se voir !</strong></p>          
          </div>
             <aside>
-                     <p class="post__last-updated">
+                     <p class="content__last-updated">
                         Mis-à-jour le
                            mercredi 26 août 2020
                      </p>
-                  <div class="post__share">
-                      <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share facebook" title="Facebook" rel="nofollow noopener noreferrer">
-                         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
-                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook" />
-                         </svg> Facebook
-                     </a>
-                     
-                     <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F&amp;via=Sylvain%20Moingeon&amp;text=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20!
-                     " class="js-share twitter" title="Twitter" rel="nofollow noopener noreferrer">
-                         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
-                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter" />
-                         </svg> Twitter
-                     </a>
-                     
-                     
-                     <a href="https://mix.com/add?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share mix" title="Mix" rel="nofollow noopener noreferrer">
-                         <svg  aria-hidden="true" focusable="false" viewBox="0 0 32 32">
-                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#mix" />
-                         </svg>  Mix    
-                     </a>
-                     
-                     
-                     <a href="http://www.linkedin.com/shareArticle?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F&amp;title=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20!" class="js-share linkedin" title="LinkedIn" rel="nofollow noopener noreferrer">
-                         <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
-                             <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#linkedin" />
-                         </svg> LinkedIn
-                     </a>
-                     
-                     
-                        <a
-                           href="https://api.whatsapp.com/send?text=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20! https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" 
-                           class="js-share whatsapp"
-                           rel="nofollow noopener noreferrer">
-                           <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
-                              <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#whatsapp"/>
-                           </svg> WhatsApp
+                     <div class="content__share">
+                         <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share facebook" title="Facebook" rel="nofollow noopener noreferrer">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                                <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#facebook" />
+                            </svg> Facebook
                         </a>
-                  </div>
+                        
+                        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F&amp;via=Sylvain%20Moingeon&amp;text=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20!
+                        " class="js-share twitter" title="Twitter" rel="nofollow noopener noreferrer">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                                <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#twitter" />
+                            </svg> Twitter
+                        </a>
+                        
+                        
+                        <a href="https://mix.com/add?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share mix" title="Mix" rel="nofollow noopener noreferrer">
+                            <svg  aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                                <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#mix" />
+                            </svg>  Mix    
+                        </a>
+                        
+                        
+                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" class="js-share linkedin" title="LinkedIn" rel="nofollow noopener noreferrer">
+                            <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                                <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#linkedin" />
+                            </svg> LinkedIn
+                        </a>
+                        
+                        
+                           <a
+                              href="https://api.whatsapp.com/send?text=D%C3%A9veloppez%20des%20applications%20sans%20crotte%20de%20nez%20! https%3A%2F%2Fwww.sylvainmoingeon.fr%2Fdeveloppez-des-applications-sans-crotte-de-nez%2F" 
+                              class="js-share whatsapp"
+                              rel="nofollow noopener noreferrer">
+                              <svg aria-hidden="true" focusable="false" viewBox="0 0 32 32">
+                                 <use xlink:href="https://www.sylvainmoingeon.fr/assets/svg/svg-map.svg#whatsapp"/>
+                              </svg> WhatsApp
+                           </a>
+                     </div>
             </aside>
             <footer>
-                     <div class="post__bio">
-                           <img src="https://www.gravatar.com/avatar/f0139f72232177b730a57cff5c38c0b2?s&#x3D;240"  loading="lazy" alt="Sylvain">                          
+                     <div class="content__bio">
+                           <img 
+                              src="https://www.gravatar.com/avatar/f0139f72232177b730a57cff5c38c0b2?s&#x3D;240" 
+                               loading="lazy"
+                              height="240"
+                              width="240"
+                              alt="Sylvain">                      
                            <h3>
                               <a href="https://www.sylvainmoingeon.fr/auteurs/sylvain/" class="inverse" title="Sylvain">Sylvain</a>
                            </h3>
-                           <p>&lt;p&gt;Un peu geek, diplômé en sciences et en informatique, Sylvain confectionne logiciels et applications depuis 2007.&lt;/p&gt;
-&lt;p&gt;Depuis peu il fabrique, répare et règle des guitares classiques, folks et électriques.&lt;/p&gt;
-&lt;p&gt;C&#x27;est aussi un père de famille, instructeur de Yoseikan Budo bénévole et musicien amateur.&lt;/p&gt;
-                           </p>
+                        <p>Un peu geek, diplômé en sciences et en informatique, Sylvain confectionne logiciels et applications depuis 2007.</p>
+<p>Depuis peu il fabrique, répare et règle des guitares classiques, folks et électriques.</p>
+<p>C'est aussi un père de famille, instructeur de Yoseikan Budo bénévole et musicien amateur.</p>
                      </div>
 
-                     <ul class="post__tag">
+                     <ul class="content__tag">
                            <li>
                               <a href="https://www.sylvainmoingeon.fr/tags/bonnes-pratiques/">bonnes pratiques</a>
                            </li>
@@ -256,8 +230,8 @@
                            </li>
                      </ul>
 
-                     <nav class="post__nav">
-                           <div class="post__nav__prev">
+                     <nav class="content__nav">
+                           <div class="content__nav__prev">
                               Article précédent
                               <h3 class="h5">
                                  <a href="https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/" class="inverse" rel="prev">
@@ -265,7 +239,7 @@
                                  </a>
                               </h5>
                            </div>
-                           <div class="post__nav__next">
+                           <div class="content__nav__next">
                               Article suivant
                               <h3 class="h5">
                                  <a href="https://www.sylvainmoingeon.fr/xamarinforms-a-quoi-ca-sert-mvvm/" class="inverse" rel="next">
@@ -275,11 +249,11 @@
                            </div>
                      </nav>
 
-                     <div class="post__related">
+                     <div class="content__related">
                         <h3>
                            Cela vous intéressera peut-être
                         </h3>
-                        <div class="post__related__wrap">
+                        <div class="content__related__wrap">
                               <figure>
                                       <a href="https://www.sylvainmoingeon.fr/integrez-vos-images-sans-douleur-dans-xamarinforms-avec-resizetizernt/">
                                          <img 
@@ -301,49 +275,9 @@
             </footer>
       </article>
 
-         <div class="comments wrapper">
-            <h3>
-               Commentaires
-            </h3>
-            <div id="disqus_thread">
-            <p>
-            Pour utiliser les commentaires, merci d'<a href="https://www.sylvainmoingeon.fr/#cookie-settings" title="configuration des cookies">accepter les cookies du groupe "Disqus"</a>.
-            </p></div>
-            <script type="gdpr-blocker/disqus">
-                var disqus_config = function () {
-                    this.page.url = 'https://www.sylvainmoingeon.fr/developpez-des-applications-sans-crotte-de-nez/';
-            		this.page.identifier = '30';
-                    this.page.title = ' Développez des applications sans crotte de nez !';
-                };
+         <div class="comments-area wrapper">
             
-                var disqus_loaded = false;
-            
-                function publiiLoadDisqus() {
-                    if(disqus_loaded) {
-                        return false;
-                    }
-            
-                    var top = document.getElementById('disqus_thread').offsetTop;
-            
-                    if (!disqus_loaded && (window.scrollY || window.pageYOffset) + window.innerHeight > top) {
-                        disqus_loaded = true;
-            
-                        (function () {
-                            var d = document, s = d.createElement('script');
-                            s.src = 'https://artisanlogiciel.disqus.com/embed.js';
-                            s.setAttribute('data-timestamp', +new Date());
-                            (d.head || d.body).appendChild(s);
-                        })();
-                    }
-                }
-            
-                publiiLoadDisqus();
-            
-                window.onscroll = function() {
-                    publiiLoadDisqus();
-                };
-            </script>
-            <noscript>Veuillez activer javascript pour voir les <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>         </div>
+         </div>
     
     
 </main>
@@ -402,7 +336,7 @@
         relatedContainerForOverlayMenuSelector: '.top',
    };
 </script>
-<script defer src="https://www.sylvainmoingeon.fr/assets/js/scripts.min.js?v=18410cbe84c2356f2fa9c4bf730b3bca"></script>
+<script defer src="https://www.sylvainmoingeon.fr/assets/js/scripts.min.js?v=e2bc0e7d7ff60ea78ee920470cf8c8a1"></script>
     <script>        
         var images = document.querySelectorAll('img[loading]');
 
